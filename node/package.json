@@ -1,0 +1,25 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "demo.js",
+  "scripts": {
+    "predemo1": "node demo2.js",
+    "demo1": "node demo1.js",
+    "postdemo1": "node demo3.js",
+    "demo2": "node demo2.js",
+    "demo3": "node demo3.js",
+    "chuanxing": "npm run demo1 && npm run demo2 && npm run demo3",
+    "chuanxing:jianhua": "run-s demo1 demo2 demo3",
+    "bingxing": "npm run demo1 & npm run demo2 & npm run demo3",
+    "bingxing:jianhua": "run-p demo1 demo2 demo3",
+    "demo": "npm run demo1 & npm run demo2 && npm run demo3",
+    "start": "concurrently \"npm run demo1\"  \"npm run demo2\"  \"npm run demo3\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.3.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
