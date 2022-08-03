@@ -1,0 +1,16 @@
+{
+  "name": "ast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "read": "node read.js demo.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "recast": "^0.21.1"
+  }
+}
