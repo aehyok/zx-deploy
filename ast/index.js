@@ -17,3 +17,20 @@ const fun = recast.print(ast).code
 console.log(fun, 'fun')
 
 // recast.run(code,)
+
+
+
+class Order {
+  constructor() {
+
+  }
+
+  getInfo() {
+    console.log('这里是订单的信息')
+  }
+}
+
+let order = new Order()
+order.getInfo()
+
+

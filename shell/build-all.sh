@@ -6,7 +6,7 @@ branchVersion="dev"
 current_path=$(cd $(dirname $0); pwd)
 
 ################1、 通过命令行执行传入的参数值   ##############
-# a(app) 、w(wechat)、 p(park)、q(qrcode)、c(pc)
+# a(app) 、w(wechat)、 p(park)、q(qrcode)、c(pc)local
 # tag=""  # 默认为空的时候要打tag,不为空的时候不进行tag管理
 while getopts tv:p: opt
 do
