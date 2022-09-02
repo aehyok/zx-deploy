@@ -31,3 +31,8 @@ class Weixin {
 let xiaoming: any = new Weixin("小明")
 xiaoming.Message.Send('我们一起出去玩吧？')
 xiaoming.Friends.Send('和小红出去玩的九宫格图片')
+
+
+
+
+const typeOfTest = (type: any) => (thing: any) => typeof thing === type;
