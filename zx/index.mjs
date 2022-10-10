@@ -21,7 +21,7 @@ let projectList = [
   },
   {
     shortName: "app",
-    name: "dvs-app-h5-develop",
+    name: "dvs-app-h5-dev",
     isqiankun: true,
   },
   {

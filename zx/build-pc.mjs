@@ -15,6 +15,9 @@ const appChildListPath =  [
   path + "/" + "dvs-park",
   path + "/" + "dvs-gis",
   path + "/" + "dvs-ffp",
+  path + "/" + "dvs-collect",
+  path + "/" + "dvs-company",
+  path + "/" + "dvs-facility",
 ];
 
 export const build_pc = async () => {

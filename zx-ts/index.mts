@@ -62,9 +62,7 @@ let currentProject = projectList.find(
 );
 console.log(currentProject, "currentProject");
 if (currentProject && Object.keys(currentProject).length > 0) {
-  global.projectName = projectList.find(
-    (item) => item.shortName === projectName
-  ).name;
+  global.projectName = projectList.find((item) => item.shortName === projectName).name;
   await build();
 }
 // // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.9.184.171:/usr/local/sunlight/dvs/dvs-uis/`

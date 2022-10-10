@@ -54,3 +54,7 @@ const kindOf = (cache => thing => {
   const str = toString.call(thing);
   return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
 })(Object.create(null));
+
+
+const pureObject = Object.create(null);
+console.log(pureObject,'111'); //=> {}
