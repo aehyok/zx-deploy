@@ -54,8 +54,10 @@ global.project = projectList.find((item) => item.shortName === projectName);
 if (projectName === "pc") {
   await build_pc();
 }
-if (projectName === "app") {
+else if (projectName === "app") {
   await build_app();
+} else {
+  await build();
 }
 let currentProject = projectList.find(
   (item) => !item.isqiankun && item.shortName === projectName
