@@ -13,7 +13,7 @@ let gitProject = baseUrl + projectRelease;
 let projectList = [
   {
     shortName: "pc",
-    name: "vue-qiankun",
+    name: "dvs-server-ui-dev",
     isqiankun: true,
   },
   {
@@ -47,6 +47,8 @@ global.version = version;
 // 获取项目信息
 console.log(argv.p, "p");
 let projectName = argv.p;
+let tag = argv.t;
+console.log(tag, 'tag');
 global.project = projectList.find((item) => item.shortName === projectName);
 
 // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.159.245.209:/usr/local/aehyok/sunlight/`
@@ -57,14 +59,15 @@ if (projectName === "pc") {
 else if (projectName === "app") {
   await build_app();
 } else {
-  await build();
+  await build(tag);
 }
-let currentProject = projectList.find(
-  (item) => !item.isqiankun && item.shortName === projectName
-);
-console.log(currentProject, "currentProject");
-if (currentProject && Object.keys(currentProject).length > 0) {
-  global.projectName = projectList.find((item) => item.shortName === projectName).name;
-  await build();
-}
+// let currentProject = projectList.find(
+//   (item) => !item.isqiankun && item.shortName === projectName
+// );
+// console.log(currentProject, "currentProject");
+// if (currentProject && Object.keys(currentProject).length > 0) {
+//   global.projectName = projectList.find((item: any) => item.shortName === projectName).name;
+//   await build(tag);
+// }
+
 // // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.9.184.171:/usr/local/sunlight/dvs/dvs-uis/`

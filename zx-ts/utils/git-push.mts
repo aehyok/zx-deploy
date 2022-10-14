@@ -5,15 +5,16 @@ import { $ } from 'zx'
 export const gitPush = async() => {
     const { name } = global.project
     const path = baseUrl + name
-    await gitPushBy(name, path)
+    await gitPushBy(name)
 }
 
-export const gitPushBy = async(name: string, path: string) => {
+export const gitPushBy = async(name: string) => {
     try {
+        const releasePath = baseUrl + 'release';
         await writerLog(name, `git push start`, global.version);
         // const message=`build：前端${name} -- commit-version:${global.version}`
-        const message=`build：前端app、qrocde、wechat、park、console(child)commit-version:${global.version}`
-        const result = await $`cd ${path}; git add . ; sleep 2; git commit -m ${message}; git push origin;`
+        const message=`$chore: ${name}::commit-version-${global.version}`
+        const result = await $`cd ${releasePath}; git add . ; sleep 3; git commit -m ${message}; git push origin;`
         if(result && result.exitCode === 0 ) {
             await writerLog(name, `git push end success`, global.version);
         } else {
