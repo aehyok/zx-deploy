@@ -49,15 +49,18 @@ console.log(argv.p, "p");
 let projectName = argv.p;
 let tag = argv.t;
 console.log(tag, 'tag');
+
+let child = argv.c;
+console.log(child, 'child');
 global.project = projectList.find((item) => item.shortName === projectName);
 console.log('global.project', global.project);
 // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.159.245.209:/usr/local/aehyok/sunlight/`
 
 if (projectName === "pc") {
-  await build_pc();
+  await build_pc(tag,child);
 }
 else if (projectName === "app") {
-  await build_app();
+  await build_app(tag,child);
 } else {
   await build(tag);
 }

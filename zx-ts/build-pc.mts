@@ -19,14 +19,20 @@ const appChildListPath =  [
   path + "/" + "dvs-company",
   path + "/" + "dvs-facility",
 ];
-export const build_pc = async () => {
+export const build_pc = async (tag,child) => {
   console.log("build_pc", 'appversion');
 
   await gitPull();
 
-  await yarnBuildBy(mainPath);
+  if(!child) {
+    await yarnBuildBy(mainPath);
+  }
+  
 
   await yarnBuildChildList(appChildListPath);
 
-  await gitTag();
+  if(tag) {
+    await gitTag();
+  }
+
 };

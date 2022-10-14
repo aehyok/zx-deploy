@@ -7,7 +7,7 @@ import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
 
 
-export const build_app = async () => {
+export const build_app = async (tag,child) => {
 
   const { name } = global.project
 
@@ -20,12 +20,15 @@ export const build_app = async () => {
   console.log('build_app', 'appversion');
 
   await gitPull();
-
-  await yarnBuildBy(mainPath);
+  if(!child) {
+    await yarnBuildBy(mainPath);
+  }
 
   await yarnBuildChildList(appChildListPath);
 
-  await gitTag();
+  if(tag) {
+    await gitTag();
+  }
 
   await copyFile()
   await gitPush()
