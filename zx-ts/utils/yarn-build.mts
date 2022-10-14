@@ -3,6 +3,7 @@ import { baseUrl } from "./common.mjs";
 import { $ } from 'zx'
 
 export const yarnBuild = async () => {
+  
   const { name } = global.project;
   const path = baseUrl + name;
     await yarnBuildBy(path)
@@ -10,7 +11,7 @@ export const yarnBuild = async () => {
 
 export const yarnBuildBy = async (path: string) => {
     try {
-         oneLogger(`yarn build start`);
+         oneLogger(`yarn build start ${path}`);
         const buildInfo = await $` cd ${path};yarn build;`;
         console.log(buildInfo, "buildInfo");
         if (buildInfo.exitCode === 0) {

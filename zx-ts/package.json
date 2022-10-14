@@ -10,6 +10,7 @@
     "prebuild": "ts-node-esm pull.mts -v 1.0.0.0010",
     "build": "concurrently \"pnpm build:pc\"",
     "postbuild": "ts-node-esm push.mts -v 1.0.0.0010",
+    "app":"ts-node-esm index.mts -v 1.0.0.0010 -p app",
     "wechat":"ts-node-esm index.mts -v 1.0.0.0010 -p wechat",
     "qrcode":"ts-node-esm index.mts -v 1.0.0.0010 -p qrcode",
     "park":"ts-node-esm index.mts -v 1.0.0.0010 -p park",

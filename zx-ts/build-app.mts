@@ -2,13 +2,21 @@ import { baseUrl } from "./utils/common.mjs";
 import { gitPull } from "./utils/git-pull.mjs";
 import { yarnBuildBy, yarnBuildChildList } from "./utils/yarn-build.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
-const project = "dvs-app-h5-develop";
-const path = baseUrl + project;
-const mainPath = path + "/" + "main-app";
+import { $ } from 'zx'
+import { copyFile } from "./utils/copy-file.mjs";
+import { gitPush } from "./utils/git-push.mjs";
 
-const appChildListPath = [path + "/" + "ffp-app"];
 
 export const build_app = async () => {
+
+  const { name } = global.project
+
+  const path = baseUrl + name;
+  const mainPath = path + "/" + "main-app";
+  
+  const appChildListPath = [path + "/" + "ffp-app"];
+
+
   console.log('build_app', 'appversion');
 
   await gitPull();
@@ -18,4 +26,7 @@ export const build_app = async () => {
   await yarnBuildChildList(appChildListPath);
 
   await gitTag();
+
+  await copyFile()
+  await gitPush()
 };

@@ -18,7 +18,7 @@ let projectList = [
   },
   {
     shortName: "app",
-    name: "dvs-app-h5-develop",
+    name: "dvs-app-h5-dev",
     isqiankun: true,
   },
   {
@@ -50,7 +50,7 @@ let projectName = argv.p;
 let tag = argv.t;
 console.log(tag, 'tag');
 global.project = projectList.find((item) => item.shortName === projectName);
-
+console.log('global.project', global.project);
 // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.159.245.209:/usr/local/aehyok/sunlight/`
 
 if (projectName === "pc") {

@@ -1,6 +1,7 @@
 import { writerLog } from "./sql-helper.mjs"
 import { baseUrl } from "./common.mjs";
 import { $ } from 'zx'
+import { gitPullBy } from "./git-pull.mjs";
 
 export const gitPush = async() => {
     const { name } = global.project
@@ -11,6 +12,7 @@ export const gitPush = async() => {
 export const gitPushBy = async(name: string) => {
     try {
         const releasePath = baseUrl + 'release';
+        await gitPullBy(name,releasePath)
         await writerLog(name, `git push start`, global.version);
         // const message=`build：前端${name} -- commit-version:${global.version}`
         const message=`$chore: ${name}::commit-version-${global.version}`
