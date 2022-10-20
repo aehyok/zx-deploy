@@ -5,14 +5,17 @@ import { build_app } from "./build-app.mjs";
 import { build_pc } from "./build-pc.mjs";
 import { build } from "./build-one.mjs";
 import { baseUrl } from "./utils/common.mjs";
+import fs from 'fs-extra';
 
+const packageJson = fs.readJsonSync('./package.json')
+console.log(packageJson.version, 'packageObj');
 $.verbose = true;
 let projectRelease = "release";
 let gitProject = baseUrl + projectRelease;
 
 let projectList = [
   {
-    shortName: "pc",
+    shortName: "console",
     name: "dvs-server-ui-dev",
     isqiankun: true,
   },
@@ -41,9 +44,7 @@ let projectList = [
 // 获取版本信息
 
 console.log(argv, '---------------parameters---------------')
-console.log(argv.v, "v");
-let version = argv.v;
-global.version = version;
+global.version = packageJson.version;
 // 获取项目信息
 console.log(argv.p, "p");
 let projectName = argv.p;
@@ -56,7 +57,7 @@ global.project = projectList.find((item) => item.shortName === projectName);
 console.log('global.project', global.project);
 // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.159.245.209:/usr/local/aehyok/sunlight/`
 
-if (projectName === "pc") {
+if (projectName === "console") {
   await build_pc(tag,child);
 }
 else if (projectName === "app") {

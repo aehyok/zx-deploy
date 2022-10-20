@@ -21,6 +21,7 @@ export const build_app = async (tag,child) => {
 
   await gitPull();
   if(!child) {
+    
     await yarnBuildBy(mainPath);
   }
 

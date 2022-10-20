@@ -26,6 +26,7 @@ export const yarnBuildBy = async (path: string) => {
 }
 
 export const yarnBuildChildList = async(list: any) => {
+  console.log(list, 'yarn build child list')
   oneLogger("yarn build childList start");
     try {
       const result =await Promise.all(
@@ -37,7 +38,8 @@ export const yarnBuildChildList = async(list: any) => {
           console.log('all', result)
           oneLogger("yarn build childList start");
       }
-    } catch {
+    } catch(error) {
+      console.log(error,'error')
       oneLogger("yarn build childList error");
     }
 }
