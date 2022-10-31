@@ -43,7 +43,7 @@ let projectList = [
 
 // 获取版本信息
 
-console.log(argv, '---------------parameters---------------')
+console.log($, argv, '---------------parameters---------------')
 global.version = packageJson.version;
 // 获取项目信息
 console.log(argv.p, "p");
@@ -53,6 +53,7 @@ console.log(tag, 'tag');
 
 let child = argv.c;
 console.log(child, 'child');
+global.childName = child
 global.project = projectList.find((item) => item.shortName === projectName);
 console.log('global.project', global.project);
 // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.159.245.209:/usr/local/aehyok/sunlight/`

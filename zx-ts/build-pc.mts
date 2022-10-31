@@ -12,12 +12,12 @@ const mainPath = path + "/" + "dvs-main";
 const appChildListPath =  [
   path + "/" + "dvs-basic",
   path + "/" + "dvs-cons",
-  // path + "/" + "dvs-village",
+  path + "/" + "dvs-village",
   path + "/" + "dvs-digital",
   path + "/" + "dvs-park",
   path + "/" + "dvs-gis",
   path + "/" + "dvs-ffp",
-  // path + "/" + "dvs-collect",
+  path + "/" + "dvs-collect",
   path + "/" + "dvs-company",
   path + "/" + "dvs-facility",
 ];
