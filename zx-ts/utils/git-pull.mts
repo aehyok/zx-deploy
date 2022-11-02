@@ -5,9 +5,9 @@ import { $ } from 'zx'
  * 通过全局项目进行拉取
  */
 export const gitPull = async () => {
-  const { name } = global.project;
-  const path = baseUrl + name;
-  await gitPullBy(name, path);
+  const { projectPath, projectName } = global.project;
+  const path = baseUrl + projectPath;
+  await gitPullBy(projectName, path);
 };
 
 /**
@@ -15,17 +15,17 @@ export const gitPull = async () => {
  * @param {*} name
  * @param {*} path
  */
-export const gitPullBy = async(name: string, path: string) => {
+export const gitPullBy = async(projectName: string, path: string) => {
   try {
-     writerLog(name, `git pull start`, global.version);
+     writerLog(projectName, `git pull start`, global.version);
     const gitPullInfo = await $`cd ${path}; git pull;`;
     console.log(gitPullInfo, "pullInfo");
     if (gitPullInfo.exitCode === 0) {
-       writerLog(name, `git pull end success`, global.version);
+       writerLog(projectName, `git pull end success`, global.version);
     } else {
       console.log("fail", $`$?`);
     }
   } catch {
-     writerLog(name, `git pull error`, global.version);
+     writerLog(projectName, `git pull error`, global.version);
   }
 };

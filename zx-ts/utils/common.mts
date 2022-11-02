@@ -9,3 +9,5 @@ export const isMac = () => {
  * dvs项目基础路径test
  */
 export const baseUrl = isMac() ? '/Users/admin/Desktop/aehyok/github/' : '/e/work/git-lingyuan/' 
+
+export const baseBranch = () =>  'dev'

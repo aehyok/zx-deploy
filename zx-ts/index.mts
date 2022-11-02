@@ -8,36 +8,33 @@ import { baseUrl } from "./utils/common.mjs";
 import fs from 'fs-extra';
 
 const packageJson = fs.readJsonSync('./package.json')
-console.log(packageJson.version, 'packageObj');
+console.log(packageJson.version, packageJson.branch, 'packageObj');
 $.verbose = true;
-let projectRelease = "release";
-let gitProject = baseUrl + projectRelease;
 
 let projectList = [
   {
-    shortName: "console",
-    name: "dvs-server-ui-dev",
-    isqiankun: true,
+    projectName: "console",
+    path: "dvs-server-ui-dev",
   },
   {
-    shortName: "app",
-    name: "dvs-app-h5-dev",
-    isqiankun: true,
+    projectName: "app",
+    path: "dvs-app-h5-dev",
   },
   {
-    shortName: "wechat",
-    name: "dvs-offiaccount-dev",
-    isqiankun: false,
+    projectName: "mp",
+    path: "mp-h5",
   },
   {
-    shortName: "park",
-    name: "dvs-park-h5-app",
-    isqiankun: false,
+    projectName: "wechat",
+    path: "dvs-offiaccount-dev",
   },
   {
-    shortName: "qrcode",
-    name: "qrcode-demo-dev",
-    isqiankun: false,
+    projectName: "park",
+    path: "dvs-park-h5-app",
+  },
+  {
+    projectName: "qrcode",
+    path: "qrcode-demo-dev",
   },
 ];
 
@@ -54,25 +51,15 @@ console.log(tag, 'tag');
 let child = argv.c;
 console.log(child, 'child');
 global.childName = child
-global.project = projectList.find((item) => item.shortName === projectName);
+global.project = projectList.find((item) => item.projectName === projectName);
 console.log('global.project', global.project);
 // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.159.245.209:/usr/local/aehyok/sunlight/`
 
 if (projectName === "console") {
   await build_pc(tag,child);
 }
-else if (projectName === "app") {
+else if (["app", "mp"].includes(projectName)) {
   await build_app(tag,child);
 } else {
   await build(tag);
 }
-// let currentProject = projectList.find(
-//   (item) => !item.isqiankun && item.shortName === projectName
-// );
-// console.log(currentProject, "currentProject");
-// if (currentProject && Object.keys(currentProject).length > 0) {
-//   global.projectName = projectList.find((item: any) => item.shortName === projectName).name;
-//   await build(tag);
-// }
-
-// // await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.9.184.171:/usr/local/sunlight/dvs/dvs-uis/`

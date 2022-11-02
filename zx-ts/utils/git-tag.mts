@@ -3,8 +3,8 @@ import { writerLog } from "./sql-helper.mjs";
 import { $ } from 'zx'
 
 export const gitTag = async () => {
-    const { name } = global.project
-    const path = baseUrl + name
+    const { projectPath } = global.project
+    const path = baseUrl + projectPath
     const isExist = await isExistTag(path)
     console.log(isExist, 'isExist')
   if (isExist) {
@@ -64,6 +64,6 @@ const addTag = async (path, isExist) => {
 
 const oneLogger = (info) => {
   console.log(info);
-  const { name } = global.project
-  writerLog(name, info, global.version);
+  const { projectName } = global.project
+  writerLog(projectName, info, global.version);
 };

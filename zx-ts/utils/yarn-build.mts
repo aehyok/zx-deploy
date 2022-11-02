@@ -4,8 +4,8 @@ import { $ } from 'zx'
 
 export const yarnBuild = async () => {
   
-  const { name } = global.project;
-  const path = baseUrl + name;
+  const { projectPath } = global.project;
+  const path = baseUrl + projectPath;
     await yarnBuildBy(path)
 };
 
@@ -46,6 +46,6 @@ export const yarnBuildChildList = async(list: any) => {
 
 const oneLogger = (info) => {
   console.log(info);
-  const { name } = global.project;
-  writerLog(name, info, global.version);
+  const { projectName } = global.project;
+  writerLog(projectName, info, global.version);
 };

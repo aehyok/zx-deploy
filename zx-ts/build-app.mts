@@ -9,9 +9,9 @@ import { gitPush } from "./utils/git-push.mjs";
 
 export const build_app = async (tag,child) => {
 
-  const { name } = global.project
+  const { projectPath } = global.project
 
-  const path = baseUrl + name;
+  const path = baseUrl + projectPath;
   const mainPath = path + "/" + "main-app";
   
   const appChildListPath = [path + "/" + "ffp-app"];

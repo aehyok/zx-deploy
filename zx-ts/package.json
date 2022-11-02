@@ -12,6 +12,7 @@
     "postbuild": "ts-node-esm push.mts",
     "console": "ts-node-esm index.mts -p console",
     "app": "ts-node-esm index.mts -p app",
+    "mp": "ts-node-esm index.mts -p mp",
     "app-ffp": "ts-node-esm index.mts  -p app -c",
     "wechat": "ts-node-esm index.mts  -p wechat",
     "qrcode": "ts-node-esm index.mts  -p qrcode",
