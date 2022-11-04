@@ -14,19 +14,19 @@ $.verbose = true;
 let projectList = [
   {
     projectName: "console",
-    path: "dvs-server-ui-dev",
+    projectPath: "dvs-server-ui-dev",
   },
   {
     projectName: "app",
-    path: "dvs-app-h5-dev",
+    projectPath: "dvs-app-h5-dev",
   },
   {
     projectName: "mp",
-    path: "mp-h5",
+    projectPath: "mp-h5",
   },
   {
     projectName: "wechat",
-    path: "dvs-offiaccount-dev",
+    projectPath: "dvs-offiaccount-dev",
   },
   {
     projectName: "park",
@@ -34,7 +34,7 @@ let projectList = [
   },
   {
     projectName: "qrcode",
-    path: "qrcode-demo-dev",
+    projectPath: "qrcode-demo-dev",
   },
 ];
 

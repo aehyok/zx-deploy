@@ -27,11 +27,10 @@ const result = await $`scp -r /h/work/dvs/server-csharp/publish/${buildpath}/* r
             console.log("fail", $`$?`);
           }
 
-const login = await $` 
-  ssh -t root@139.9.184.171; << EOF 
-    systemctl stop dev-collect
+// 可以执行本地的server.sh脚本指令 (-t保持登录状态    ssh -t root@139.9.184.171 < server.sh)
+// 还可以添加脚本参数
+const login = await $`ssh root@139.9.184.171 < server.sh`
 
-EOF`
 if(login.exitCode === 0) {
   console.log(`ssh login success`)
 }

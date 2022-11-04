@@ -10,7 +10,7 @@
     "prebuild": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm push.mts",
-    "console": "ts-node-esm index.mts -p console",
+    "console": "ts-node-esm index.mts -p console -c dvs-basic",
     "app": "ts-node-esm index.mts -p app",
     "mp": "ts-node-esm index.mts -p mp",
     "app-ffp": "ts-node-esm index.mts  -p app -c",
