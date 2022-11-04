@@ -10,6 +10,12 @@ export const isMac = () => {
  */
 // dev = /e/work/git/dvs-2.x/
 // lingyuan = '/e/work/git-lingyuan/' 
-export const baseUrl = isMac() ? '/Users/admin/Desktop/aehyok/github/' : '/e/work/git-lingyuan/' 
+// export const baseUrl = isMac() ? '/Users/admin/Desktop/aehyok/github/' : '/e/work/git-lingyuan/' 
+
+export const baseUrl = () => {
+    const env = global.environment
+
+    return `/e/work/git-${env}/`
+}
 
 export const baseBranch = () =>  'dev'

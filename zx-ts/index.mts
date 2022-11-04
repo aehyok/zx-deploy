@@ -4,7 +4,6 @@ import { $, argv } from "zx";
 import { build_app } from "./build-app.mjs";
 import { build_pc } from "./build-pc.mjs";
 import { build } from "./build-one.mjs";
-import { baseUrl } from "./utils/common.mjs";
 import fs from 'fs-extra';
 
 const packageJson = fs.readJsonSync('./package.json')
@@ -42,6 +41,10 @@ let projectList = [
 
 console.log($, argv, '---------------parameters---------------')
 global.version = packageJson.version;
+global.environment = packageJson.environment;
+console.log('--------------------------')
+console.log(`当前编译环境：${global.environment}`)
+console.log('--------------------------')
 // 获取项目信息
 console.log(argv.p, "p");
 let projectName = argv.p;
