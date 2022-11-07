@@ -7,7 +7,7 @@ import { build } from "./build-one.mjs";
 import fs from 'fs-extra';
 
 const packageJson = fs.readJsonSync('./package.json')
-console.log(packageJson.version, packageJson.branch, 'packageObj');
+console.log(packageJson.version, packageJson.environment, 'packageObj');
 $.verbose = true;
 
 let projectList = [

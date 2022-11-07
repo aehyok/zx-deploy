@@ -4,7 +4,7 @@ import { $ } from 'zx'
 
 export const gitTag = async () => {
     const { projectPath } = global.project
-    const path = baseUrl + projectPath
+    const path = baseUrl() + projectPath
     const isExist = await isExistTag(path)
     console.log(isExist, 'isExist')
   if (isExist) {

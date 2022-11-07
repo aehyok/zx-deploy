@@ -6,7 +6,7 @@ import { $ } from 'zx'
  */
 export const gitPull = async () => {
   const { projectPath, projectName } = global.project;
-  const path = baseUrl + projectPath;
+  const path = baseUrl() + projectPath;
   await gitPullBy(projectName, path);
 };
 

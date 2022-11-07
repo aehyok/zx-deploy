@@ -1,3 +1,5 @@
+import { $, argv } from "zx";
+
 export const isMac = () => {
     // win32 代表window平台
     // darwin 代表mac平台
@@ -12,9 +14,10 @@ export const isMac = () => {
 // lingyuan = '/e/work/git-lingyuan/' 
 // export const baseUrl = isMac() ? '/Users/admin/Desktop/aehyok/github/' : '/e/work/git-lingyuan/' 
 
-export const baseUrl = () => {
-    const env = global.environment
+// export const baseUrl =  `/e/work/git-xuanen/`
 
+export const baseUrl = ()=> {
+    const env = global.environment
     return `/e/work/git-${env}/`
 }
 

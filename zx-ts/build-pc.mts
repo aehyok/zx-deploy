@@ -6,7 +6,7 @@ import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
 
 const project = "dvs-server-ui-dev";
-const path = baseUrl + project;
+const path = baseUrl() + project;
 const mainPath = path + "/" + "dvs-main";
 
 const appChildListPath =  [

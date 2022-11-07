@@ -5,7 +5,7 @@ import { $ } from 'zx'
 export const yarnBuild = async () => {
   
   const { projectPath } = global.project;
-  const path = baseUrl + projectPath;
+  const path = baseUrl() + projectPath;
     await yarnBuildBy(path)
 };
 
