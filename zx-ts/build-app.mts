@@ -5,7 +5,7 @@ import { gitTag } from "./utils/git-tag.mjs";
 import { $ } from 'zx'
 import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
-
+import fs from 'fs-extra';
 
 export const build_app = async (tag,child) => {
 
@@ -21,7 +21,16 @@ export const build_app = async (tag,child) => {
 
   await gitPull();
   if(!child) {
-    
+    // let file = 'package.json';
+    // const cdInfo = await $` cd ${mainPath};`;
+    // if (cdInfo.exitCode === 0) {
+    //   const packageJson = await fs.readJsonSync('./package.json')
+    //   // console.log(packageJson.version, packageJson.environment, 'packageObj');
+    //   // const packageJson = JSON.parse(cdInfo.stdout)
+    //   console.log(packageJson.version, 'dddddd')
+    // } else {
+
+    // }
     await yarnBuildBy(mainPath);
   }
 

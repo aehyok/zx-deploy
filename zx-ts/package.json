@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.mts",
   "type": "module",
-  "environment":"xuanen",
+  "environment":"dev",
   "scripts": {
     "build:all": "concurrently \"pnpm app\"  \"pnpm console\"  \"pnpm wechat\"  \"pnpm qrcode\" \"pnpm park\" ",
     "lingyuan": "pnpm app  & pnpm console & pnpm wechat & pnpm qrcode & pnpm park",
