@@ -21,7 +21,7 @@ export const gitPushBy = async(name: string, projectName: string) => {
         } else {
             buildProject = projectName
         }
-        const message=`$chore: ${buildProject}::commit-version-${global.version}`
+        const message=`chore: ${buildProject}::commit-version-${global.version}`
         const result = await $`cd ${releasePath}; git add . ; sleep 3; git commit -m ${message}; git push origin;`
         if(result && result.exitCode === 0 ) {
             await writerLog(name, `git push end success`, global.version);
