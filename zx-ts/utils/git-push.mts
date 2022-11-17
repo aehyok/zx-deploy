@@ -5,19 +5,20 @@ import { gitPullBy } from "./git-pull.mjs";
 
 export const gitPush = async() => {
     const { projectPath, projectName } = global.project
-    const path = baseUrl() + projectPath
     await gitPushBy(projectPath, projectName)
 }
 
 export const gitPushBy = async(name: string, projectName: string) => {
     try {
-        const releasePath = baseUrl() + 'release';
+        const releasePath = baseUrl() +'\\' + 'release';
+        console.log(releasePath, 'releasePath');
+        
         await gitPullBy(name,releasePath)
         await writerLog(name, `git push start`, global.version);
         // const message=`build：前端${name} -- commit-version:${global.version}`
         let buildProject = "";
         if(global.childName) {
-            buildProject = projectName + '/'+  global.childName
+            buildProject = projectName + '\\'+  global.childName
         } else {
             buildProject = projectName
         }

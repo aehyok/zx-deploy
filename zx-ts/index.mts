@@ -35,6 +35,10 @@ let projectList = [
     projectName: "qrcode",
     projectPath: "qrcode-demo-dev",
   },
+  {
+    projectName: "server",
+    projectPath: ""
+  }
 ];
 
 // 获取版本信息

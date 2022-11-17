@@ -3,10 +3,10 @@ import { writerLog } from "./sql-helper.mjs";
 import { $ } from 'zx'
 
 export const gitTag = async () => {
-    const { projectPath } = global.project
-    const path = baseUrl() + projectPath
-    const isExist = await isExistTag(path)
-    console.log(isExist, 'isExist')
+  const { projectPath } = global.project
+  const path = baseUrl() + projectPath
+  const isExist = await isExistTag(path)
+  console.log(isExist, 'isExist')
   if (isExist) {
     let isSuccess = await deleteTag(path);
     if (isSuccess) {
@@ -15,11 +15,11 @@ export const gitTag = async () => {
       oneLogger(`delete tag [${global.version}] error`);
     }
   } else {
-    await addTag(path,isExist);
+    await addTag(path,false);
   }
 };
 
-const isExistTag = async (path) => {
+const isExistTag = async (path: string) => {
   const result = await $` cd ${path};git tag;`;
   console.log("判断是否存在tag", result);
   if (result && result.exitCode === 0) {
@@ -31,7 +31,7 @@ const isExistTag = async (path) => {
   }
 };
 
-const deleteTag = async (path) => {
+const deleteTag = async (path: string) => {
   oneLogger(`delete tag [${global.version}] start`);
   const result = await $` cd ${path}; 
                             git tag -d ${global.version}; 
@@ -48,7 +48,7 @@ const deleteTag = async (path) => {
  * @param {*} path 路径
  * @param {*} isExist 0为不存在，直接创建的；1为已存在删除的，重新创建
  */
-const addTag = async (path, isExist) => {
+const addTag = async (path: string, isExist: boolean) => {
   console.log(path, '----------------path---------------')
   const result = await $` cd ${path};
                            git tag -a ${global.version} -m 'chore:version ${global.version}版本号'; 
@@ -62,7 +62,7 @@ const addTag = async (path, isExist) => {
   }
 };
 
-const oneLogger = (info) => {
+const oneLogger = (info: any)=> {
   console.log(info);
   const { projectName } = global.project
   writerLog(projectName, info, global.version);
