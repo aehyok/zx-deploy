@@ -1,10 +1,10 @@
 {
   "name": "zx",
-  "version": "2.6.2",
+  "version": "3.0.3",
   "description": "",
   "main": "index.mts",
   "type": "module",
-  "environment":"dev",
+  "environment": "dev",
   "scripts": {
     "build:all": "concurrently \"pnpm app\"  \"pnpm console\"  \"pnpm wechat\"  \"pnpm qrcode\" \"pnpm park\" ",
     "lingyuan": "pnpm app  & pnpm console & pnpm wechat & pnpm qrcode & pnpm park",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "ts-node": "^10.8.0",
     "typescript": "^4.7.2",
-    "zx": "^5.2.0"
+    "zx": "7.1.1"
   },
   "dependencies": {
     "@types/file-saver": "^2.0.5",

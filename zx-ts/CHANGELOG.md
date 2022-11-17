@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/aehyok/blog-history/compare/v2.6.2...v3.0.3) (2022-11-17)
+
+
+### Features
+
+* 传递环境 ([f3253e4](https://github.com/aehyok/blog-history/commit/f3253e404f9e3bbe02cd653813f2ef5ac70a45b3))
+* 切换分支 编译 ([697b69e](https://github.com/aehyok/blog-history/commit/697b69e9ed47186600c47e00dc4b97c81b0c40ad))
+* 文件映射转换 ([341dc50](https://github.com/aehyok/blog-history/commit/341dc500f3088668e46ffb637d2ee759d3853907))
+* app child build ([f3cd52f](https://github.com/aehyok/blog-history/commit/f3cd52fefbb877210fc128edee0b0eb68108ad1e))
+* build update ([756f5ba](https://github.com/aehyok/blog-history/commit/756f5baa8a904d3ea488fbb966eb68f403e12d88))
+* dotnet build ([914474c](https://github.com/aehyok/blog-history/commit/914474cfd6e561d5a09e372bc016ceadb848af95))
+* update build dotnetcore  并自动化重启远程服务 ([6323214](https://github.com/aehyok/blog-history/commit/6323214720a986599b22b7c697fa80a7d476dfa0))
+
+
+### Bug Fixes
+
+* update common ([e92d5bd](https://github.com/aehyok/blog-history/commit/e92d5bdb64e9bd543eea052cf44e6b038962c415))
+
 ### 2.6.2 (2022-10-18)
 
 
