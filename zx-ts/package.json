@@ -1,6 +1,6 @@
 {
   "name": "zx",
-  "version": "3.0.3",
+  "version": "3.0.1",
   "description": "",
   "main": "index.mts",
   "type": "module",
@@ -13,7 +13,7 @@
     "postbuild": "ts-node-esm push.mts",
     "console": "ts-node-esm index.mts -p console -c",
     "app": "ts-node-esm index.mts -p app",
-    "mp": "ts-node-esm index.mts -p mp",
+    "mp": "pnpm release-patch && ts-node-esm index.mts -p mp",
     "app-ffp": "ts-node-esm index.mts  -p app -c",
     "wechat": "ts-node-esm index.mts  -p wechat",
     "qrcode": "ts-node-esm index.mts  -p qrcode",
@@ -26,6 +26,14 @@
     "node": "node  --experimental-json-modules ./other/minimist.mjs -a aa -b bb -c cc",
     "fileSave": "node  ./other/fileSave.mjs",
     "collect": "ts-node-esm build-server.mts"
+  },
+  "standard-version": {
+    "skip": {
+      "changelog": true,
+      "commit": true,
+      "tag": true,
+      "bump": false
+    }
   },
   "keywords": [],
   "author": "",

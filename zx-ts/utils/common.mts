@@ -18,7 +18,6 @@ export const isMac = () => {
 
 export const baseUrl = ()=> {
     const env = global.environment
-    return `/e/work/git-${env}/`
+    // return `/e/work/git-${env}/`
+    return `e:\\work\\git-${env}\\`
 }
-
-export const baseBranch = () =>  'dev'
