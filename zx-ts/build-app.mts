@@ -11,9 +11,9 @@ export const build_app = async (tag,child) => {
   const { projectPath } = global.project
 
   const path = baseUrl() + projectPath;
-  const mainPath = path + "/" + "main-app";
+  const mainPath = path + "\\" + "main-app";
   
-  const appChildListPath = [path + "/" + "ffp-app"];
+  const appChildListPath = [path + "\\\\" + "ffp-app"];
 
   console.log('build_app', 'appversion');
 

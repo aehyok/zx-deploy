@@ -65,9 +65,9 @@ const close = (conn) => {
 
 export const writerLog = async (project, content, version) => {
   let id = shortid.generate()
-  await executeSql("INSERT INTO CiCdLog values(?,?,?,?,null,null)", [id,
-    project,
-    content,
-    version,
-  ]);
+  // await executeSql("INSERT INTO CiCdLog values(?,?,?,?,null,null)", [id,
+  //   project,
+  //   content,
+  //   version,
+  // ]);
 };

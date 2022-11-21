@@ -5,7 +5,7 @@ const path = "/H/work/dvs/server-csharp/"
 const collectPath= path + "Services/DVS.Collect.API"
 
 
-await gitPull();
+// await gitPull();
 const buildInfo = await $`cd ${collectPath}; dotnet publish -o ../../publish/dvs-collect -f net6.0 -r linux-arm64 --no-self-contained;`;
 if(buildInfo.exitCode === 0) {
   console.log("build info ok")

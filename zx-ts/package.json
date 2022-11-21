@@ -1,6 +1,6 @@
 {
   "name": "zx",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "",
   "main": "index.mts",
   "type": "module",
@@ -11,7 +11,7 @@
     "prebuild": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm push.mts",
-    "console": "ts-node-esm index.mts -p console -c",
+    "console": "ts-node-esm index.mts -p console",
     "app": "ts-node-esm index.mts -p app",
     "mp": "pnpm release-patch && ts-node-esm index.mts -p mp",
     "app-ffp": "ts-node-esm index.mts  -p app -c",
