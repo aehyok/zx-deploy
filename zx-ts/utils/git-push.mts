@@ -10,7 +10,7 @@ export const gitPush = async() => {
 
 export const gitPushBy = async(name: string, projectName: string) => {
     try {
-        const releasePath = baseUrl() +'\\' + 'release';
+        const releasePath = baseUrl() +'\\\\' + 'release';
         console.log(releasePath, 'releasePath');
         
         await gitPullBy(name,releasePath)

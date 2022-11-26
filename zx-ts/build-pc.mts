@@ -14,17 +14,17 @@ export const build_pc = async (tag,child) => {
   console.log("build_pc", 'appversion');
   const { projectPath } = global.project
 
-  const path = baseUrl() + projectPath;
+  const path = baseUrl() +'\\' + projectPath;
   const mainPath = path + "\\" + "dvs-main";
 
   const appChildListPath =  [
-    // path + "\\\\" + "dvs-basic",
-    // path + "\\\\" + "dvs-cons",
-    // path + "\\\\" + "dvs-village",
-    // path + "\\\\" + "dvs-digital",
-    // path + "\\\\" + "dvs-park",
-    // path + "\\\\" + "dvs-gis",
-    // path + "\\\\" + "dvs-ffp",
+    path + "\\\\" + "dvs-basic",
+    path + "\\\\" + "dvs-cons",
+    path + "\\\\" + "dvs-village",
+    path + "\\\\" + "dvs-digital",
+    path + "\\\\" + "dvs-park",
+    path + "\\\\" + "dvs-gis",
+    path + "\\\\" + "dvs-ffp",
     path + "\\\\" + "dvs-collect",
     // path + "\\\\" + "dvs-company",
     // path + "\\\\" + "dvs-facility",
@@ -51,6 +51,6 @@ export const build_pc = async (tag,child) => {
     await gitTag();
   }
 
-  await copyFile()
-  await gitPush()
+  // await copyFile()
+  // await gitPush()
 };
