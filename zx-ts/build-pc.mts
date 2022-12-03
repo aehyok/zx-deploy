@@ -4,6 +4,7 @@ import { baseUrl } from "./utils/common.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
 import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
+import { updateVersion } from "./utils/fs-version.mjs";
 
 // const project = "dvs-server-ui-dev";
 // const path = baseUrl() + project;
@@ -18,13 +19,13 @@ export const build_pc = async (tag,child) => {
   const mainPath = path + "\\" + "dvs-main";
 
   const appChildListPath =  [
-    path + "\\\\" + "dvs-basic",
-    path + "\\\\" + "dvs-cons",
-    path + "\\\\" + "dvs-village",
-    path + "\\\\" + "dvs-digital",
-    path + "\\\\" + "dvs-park",
-    path + "\\\\" + "dvs-gis",
-    path + "\\\\" + "dvs-ffp",
+    // path + "\\\\" + "dvs-basic",
+    // path + "\\\\" + "dvs-cons",
+    // path + "\\\\" + "dvs-village",
+    // path + "\\\\" + "dvs-digital",
+    // path + "\\\\" + "dvs-park",
+    // path + "\\\\" + "dvs-gis",
+    // path + "\\\\" + "dvs-ffp",
     path + "\\\\" + "dvs-collect",
     // path + "\\\\" + "dvs-company",
     // path + "\\\\" + "dvs-facility",
@@ -33,6 +34,8 @@ export const build_pc = async (tag,child) => {
   await gitPull();
 
   if(!child) {
+    updateVersion(mainPath);
+
     console.log('main build failed',mainPath)
     await yarnBuildBy(mainPath);
   }
@@ -51,6 +54,6 @@ export const build_pc = async (tag,child) => {
     await gitTag();
   }
 
-  // await copyFile()
-  // await gitPush()
+  await copyFile()
+  await gitPush()
 };
