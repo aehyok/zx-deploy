@@ -11,8 +11,11 @@ export const build_app = async (tag,child) => {
   const { projectPath } = global.project
 
   const path = `${baseUrl()}\\${projectPath}`;
+
   const mainPath = path + "\\" + "main-app";
-  
+
+  const ffp = path + "\\" + "ffp-app";
+
   const appChildListPath = [path + "\\\\" + "ffp-app"];
 
   console.log('build_app', 'appversion');
@@ -20,7 +23,7 @@ export const build_app = async (tag,child) => {
   await gitPull();
   if(!child) {
     
-    updateVersion(mainPath);
+    updateVersion(ffp);
 
     await yarnBuildBy(mainPath);
   }

@@ -1,6 +1,6 @@
 {
   "name": "zx",
-  "version": "3.0.21",
+  "version": "3.0.22",
   "description": "",
   "main": "index.mts",
   "type": "module",
@@ -48,6 +48,7 @@
     "@types/node": "*",
     "chalk": "^5.0.1",
     "concurrently": "^7.2.1",
+    "date-fns": "^2.29.3",
     "enquirer": "^2.3.6",
     "execa": "^6.1.0",
     "file-save": "^0.2.0",
