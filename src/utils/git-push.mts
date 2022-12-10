@@ -36,5 +36,5 @@ export const gitPushBy = async(name: string, projectName: string) => {
         }
         await writerLog(name, `git push error`, global.version);
     }
-} 
+}
 
