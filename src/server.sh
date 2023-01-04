@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/bash
 
 echo "开始重启服务"
 systemctl restart dvs-collect
