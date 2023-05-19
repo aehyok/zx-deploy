@@ -1,3 +1,13 @@
+/*
+ * @Author: 刘启明 455043818@qq.com
+ * @Date: 2023-01-06 16:19:35
+ * @LastEditors: 刘启明 455043818@qq.com
+ * @LastEditTime: 2023-04-28 17:12:35
+ * @FilePath: \blog-history\src\build-server.mts
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
+ */
 
 import { $ } from 'zx'
 import { gitPull } from './utils/git-pull.mjs';
@@ -8,7 +18,7 @@ const collectPath= path + "Services/DVS.Collect.API"
 // await gitPull();
 // linux-x64 
 // linux-arm64
-const buildInfo = await $`cd ${collectPath}; dotnet publish -o ../../publish/dvs-collect -f net6.0 -r linux-x64 --no-self-contained;`;
+const buildInfo = await $`cd ${collectPath}; dotnet publish -o ../release -f net6.0 -r linux-x64 --no-self-contained;`;
 if(buildInfo.exitCode === 0) {
   console.log("build info ok")
 } else {

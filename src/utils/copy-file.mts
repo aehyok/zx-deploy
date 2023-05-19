@@ -1,3 +1,13 @@
+/*
+ * @Author: 刘启明 455043818@qq.com
+ * @Date: 2022-11-23 10:31:08
+ * @LastEditors: 刘启明 455043818@qq.com
+ * @LastEditTime: 2023-05-19 17:07:50
+ * @FilePath: \blog-history\src\utils\copy-file.mts
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
+ */
 import { $ } from 'zx'
 import { writerLog } from './sql-helper.mjs';
 import { format } from 'date-fns';
@@ -7,7 +17,7 @@ export const copyFile = async() => {
         const path = global.project.projectName
         const childPath = global.childName
         // const ipAddress = '139.9.184.171'  // '121.37.222.1'   //  139.9.184.171
-        const ipAddress = '121.37.222.1'
+        const ipAddress = '139.9.184.171'
         let result:any
         if(global.childName) {
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/child/${global.childName}/* root@${ipAddress}:/usr/local/sunlight/dvs/dvs-ui/${path}/child/${global.childName}/`
