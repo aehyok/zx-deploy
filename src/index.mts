@@ -29,7 +29,11 @@ let projectList = [
   },
   {
     projectName: "park",
-    path: "dvs-park-h5-app",
+    projectPath: "dvs-park-h5-app",
+  },
+  {
+    projectName: "robot",
+    projectPath: "robot-ui",
   },
   {
     projectName: "qrcode",
@@ -54,6 +58,15 @@ console.log(argv.p, "p");
 let projectName = argv.p;
 let tag = argv.t;
 console.log(tag, 'tag');
+
+let buildType = argv.b; // 通过什么工具进行编译 yarn  pnpm,默认为yarn
+if(buildType == 'pnpm') {
+  global.buildType = buildType;
+} else {
+  global.buildType = "yarn";
+}
+
+console.log(buildType, 'buildType');
 
 let child = argv.c;
 console.log(child, 'child');
