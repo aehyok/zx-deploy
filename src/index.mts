@@ -13,7 +13,7 @@ $.verbose = true;
 let projectList = [
   {
     projectName: "console",
-    projectPath: "dvs-server-ui-dev",
+    projectPath: "server-ui",
   },
   {
     projectName: "app",
