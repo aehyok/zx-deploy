@@ -50,6 +50,7 @@ let projectList = [
 console.log($, argv, '---------------parameters---------------')
 global.version = packageJson.version;
 global.environment = packageJson.environment;
+global.lastVersion = packageJson.lastVersion;
 console.log('--------------------------')
 console.log(`当前编译环境：${global.environment}`)
 console.log('--------------------------')

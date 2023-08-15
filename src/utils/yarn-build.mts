@@ -39,22 +39,19 @@ export const yarnBuildChildList = async (list: any) => {
     })
 
     console.log(execList, '--------------list--------------------')
-
     const resultList: any = []
-    execList.foreach(async(item) => {
-      const result = await Promise.all([item]);
+    for (let func of execList) {
+      const result = await func;
       resultList.push(result);
-    })
-    const result = ""
-    // const result = await Promise.all(
-    //   list.map((item) => {
-    //     return $`cd ${item}; ${global.buildType} build`;
-    //   })
-    // );
-    if (result) {
-      console.log("all", result);
-      oneLogger("yarn build childList start");
-    }
+  }
+
+  console.log(resultList, 'result-list');
+
+    // const result = await Promise.all(execList);
+    // if (result) {
+    //   console.log("all", result);
+    //   oneLogger("yarn build childList start");
+    // }
   } catch (error) {
     console.log(error, "error");
     oneLogger("yarn build childList error");

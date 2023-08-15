@@ -19,11 +19,11 @@ export const build_pc = async (tag,child) => {
   const mainPath = path + "\\" + "dvs-main";
 
   const appChildListPath =  [
-    path + "\\\\" + "dvs-base",
-    path + "\\\\" + "dvs-cons",
-    path + "\\\\" + "dvs-village",
-    path + "\\\\" + "dvs-digital",
-    path + "\\\\" + "dvs-ffp",
+    path + "\\" + "dvs-base",
+    path + "\\" + "dvs-cons",
+    path + "\\" + "dvs-village",
+    path + "\\" + "dvs-digital",
+    path + "\\" + "dvs-ffp",
     // path + "\\\\" + "dvs-park",
     // path + "\\\\" + "dvs-gis",
     // path + "\\\\" + "dvs-collect",
@@ -48,10 +48,10 @@ export const build_pc = async (tag,child) => {
     await yarnBuildChildList(appChildListPath);
   }
 
-  // if(tag) {
-  //   await gitTag();
-  // }
+  if(tag) {
+    await gitTag();
+  }
 
-  // await copyFile()
-  // await gitPush()
+  await copyFile()
+  await gitPush()
 };
