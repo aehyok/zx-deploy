@@ -19,11 +19,11 @@ export const build_app = async (tag,child) => {
   const appChildListPath = [path + "\\\\" + "ffp-app"];
 
   console.log('build_app', 'appversion');
-  // await backupFile();
+
   await gitPull();
   if(!child) {
     
-    updateVersion(ffp);
+    // updateVersion(ffp);
 
     await yarnBuildBy(mainPath);
   }
@@ -34,7 +34,7 @@ export const build_app = async (tag,child) => {
     await gitTag();
   }
 
-  await copyFile()
-  await gitPush()
+  // await copyFile()
+  // await gitPush()
 };
 
