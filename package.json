@@ -1,10 +1,10 @@
 {
   "name": "zx",
   "version": "3.0.0",
-  "lastVersion": "49",
+  "lastVersion": "54",
   "description": "",
   "main": "index.mts",
-  "type": "module",
+  "type": "commonjs",
   "environment": "refactor",
   "scripts": {
     "build:all": "concurrently \"pnpm app\"  \"pnpm console\"  \"pnpm wechat\"  \"pnpm qrcode\" \"pnpm park\" ",
@@ -12,6 +12,7 @@
     "prebuild": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
+    "mini": "ts-node-esm ./src/mini-program/index.mts",
     "console": "ts-node-esm ./src/index.mts -p console -t",
     "app": "ts-node-esm ./src/index.mts -p app",
     "app-ffp": "ts-node-esm ./src/index.mts  -p app -c ffp-app",
@@ -66,6 +67,7 @@
     "fs-extra": "^10.1.0",
     "gradient-string": "^2.0.1",
     "minimist": "^1.2.6",
+    "miniprogram-ci": "^1.9.8",
     "mysql": "^2.18.1",
     "nanospinner": "^1.1.0",
     "openai": "^3.2.1",
