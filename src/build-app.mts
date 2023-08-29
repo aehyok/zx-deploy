@@ -34,7 +34,7 @@ export const build_app = async (tag,child) => {
     await gitTag();
   }
 
-  // await copyFile()
-  // await gitPush()
+  await copyFile()
+  await gitPush()
 };
 

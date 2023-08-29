@@ -64,7 +64,6 @@ const oneLogger = (info) => {
   writerLog(projectName, info, global.version);
 };
 
-
 function executePromisesInSequence(promiseFunctions) {
   let chain: any = Promise.resolve();
   const results: any = [];
