@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.0.0",
-  "lastVersion": "56",
+  "lastVersion": "57",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -14,7 +14,7 @@
     "postbuild": "ts-node-esm ./src/push.mts",
     "all": "pnpm console && pnpm mp",
     "console": "ts-node-esm ./src/index.mts -p console -t",
-    "mp": "ts-node-esm ./src/index.mts -p mp",
+    "mp": "ts-node-esm ./src/index.mts -p mp -t",
     "app": "ts-node-esm ./src/index.mts -p app",
     "app-ffp": "ts-node-esm ./src/index.mts  -p app -c ffp-app",
     "wechat": "ts-node-esm ./src/index.mts  -p wechat",
