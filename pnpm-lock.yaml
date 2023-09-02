@@ -43,6 +43,9 @@ dependencies:
   gradient-string:
     specifier: ^2.0.1
     version: 2.0.1
+  hjson:
+    specifier: ^3.2.2
+    version: 3.2.2
   minimist:
     specifier: ^1.2.6
     version: 1.2.6
@@ -4184,6 +4187,11 @@ packages:
 
   /he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
+    hasBin: true
+    dev: false
+
+  /hjson@3.2.2:
+    resolution: {integrity: sha512-MkUeB0cTIlppeSsndgESkfFD21T2nXPRaBStLtf3cAYA2bVEFdXlodZB0TukwZiobPD1Ksax5DK4RTZeaXCI3Q==}
     hasBin: true
     dev: false
 

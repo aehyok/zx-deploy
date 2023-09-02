@@ -44,7 +44,9 @@ const projectPath = `${initPath}\\${project?.projectPath}`;
 // await gitPull();
 // linux-x64
 // linux-arm64
-const buildInfo = await $`cd ${projectPath}; dotnet publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r linux-arm64 --no-self-contained;`;
+const platform = "linux-x64"
+// const platform = "linux-arm64"
+const buildInfo = await $`cd ${projectPath}; dotnet publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r ${platform} --no-self-contained;`;
 if(buildInfo.exitCode === 0) {
   console.log("build info ok")
 } else {
