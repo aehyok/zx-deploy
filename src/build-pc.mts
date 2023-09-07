@@ -26,10 +26,7 @@ export const build_pc = async (tag,child) => {
     path + "\\" + "dvs-ffp",
     path + "\\\\" + "dvs-facility",
     path + "\\\\" + "dvs-company",
-    // path + "\\\\" + "dvs-park",
     // path + "\\\\" + "dvs-gis",
-    // path + "\\\\" + "dvs-collect",
-    // path + "\\\\" + "dvs-facility",
   ];
 
   await gitPull();

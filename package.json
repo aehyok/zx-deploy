@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.0.0",
-  "lastVersion": "58",
+  "lastVersion": "60",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -18,8 +18,11 @@
     "sit:preview": "node ./src/mini-program/index.js -e sit -t preview",
     "xe:upload": "node ./src/mini-program/index.js -e xe -t upload",
     "xe:preview": "node ./src/mini-program/index.js -e xe -t preview",
-    "all-mini": "pnpm sit:upload &&  pnpm xe:upload",
-    "all": "pnpm all-web && pnpm all-mini",
+    "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
+    "mini-build": "cd ../mini-deploy && pnpm all",
+    "mini-tag": "ts-node-esm ./src/index.mts -p mini -t -c tag",
+    "mini": "pnpm mini-pull && pnpm mini-build && pnpm mini-tag",
+    "all": "pnpm all-web && pnpm mini",
     "all-web": "pnpm console && pnpm mp",
     "console": "ts-node-esm ./src/index.mts -p console -t",
     "mp": "ts-node-esm ./src/index.mts -p mp -t",
@@ -41,7 +44,8 @@
     "node": "node  --experimental-json-modules ./other/minimist.mjs -a aa -b bb -c cc",
     "fileSave": "node  ./other/fileSave.mjs",
     "sql": "ts-node-esm ./src/sql-update.mts",
-    "gpt": "ts-node-esm ./src/chatgpt.mts"
+    "gpt": "ts-node-esm ./src/chatgpt.mts",
+    "mini-console": "pnpm cd && pnpm console"
   },
   "standard-version": {
     "skip": {

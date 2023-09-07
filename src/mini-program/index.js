@@ -50,6 +50,8 @@ const uploadMiniProgram = () => {
       es7: true,     // 对应小程序开发者工具的 "增强编译"
       minify: true,  // 压缩所有代码，对应小程序开发者工具的 "压缩代码"
       ignoreUploadUnusedFiles: true,
+      codeProtect: true, // 小程序开发者工具的 "代码保护"
+      autoPrefixWXSS: true, // 小程序开发者工具的 "样式自动补全"
     },
     onProgressUpdate: (info) => { console.log(info, "upload") },
   }).then(result => {
@@ -91,7 +93,6 @@ const init = () => {
     type: "miniProgram",
     projectPath: `${global.compilePath}\\apps\\digital-village\\dist\\build\\mp-weixin`,
     privateKeyPath: `h:\\github\\zx-deploy\\src\\mini-program\\private.${global.environment}.key`,
-    // ignores: ['node_modules/**/*'],
   });
 
   global.project = project;

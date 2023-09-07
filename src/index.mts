@@ -5,6 +5,8 @@ import { build_app } from "./build-app.mjs";
 import { build_pc } from "./build-pc.mjs";
 import { build } from "./build-one.mjs";
 import fs from 'fs-extra';
+import { gitPull } from "./utils/git-pull.mjs";
+import { gitTag } from "./utils/git-tag.mjs";
 
 const packageJson = fs.readJsonSync('./package.json')
 console.log(packageJson.version, packageJson.environment, 'packageObj');
@@ -28,8 +30,8 @@ let projectList = [
     projectPath: "dvs-offiaccount-dev",
   },
   {
-    projectName: "park",
-    projectPath: "dvs-park-h5-app",
+    projectName: "mini",
+    projectPath: "mini-program",
   },
   {
     projectName: "robot",
@@ -74,13 +76,23 @@ console.log(child, 'child');
 global.childName = child
 global.project = projectList.find((item) => item.projectName === projectName);
 console.log('global.project', global.project);
-// await $`scp -r /e/work/git/dvs-2.x/release/cms/* root@139.159.245.209:/usr/local/aehyok/sunlight/`
 
 if (projectName === "console") {
   await build_pc(tag,child);
 }
 else if (["app", "mp"].includes(projectName)) {
   await build_app(tag,child);
-} else {
+}
+else if(projectName === "mini") {
+  console.log(projectName, "-----------------------微信小程序");
+  if(global.childName === "pull") {
+    await gitPull();
+  }
+  if(global.childName === "tag") {
+    await gitTag();
+  }
+}
+else {
   await build(tag);
 }
+
