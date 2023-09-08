@@ -7,7 +7,7 @@ import { build } from "./build-one.mjs";
 import fs from 'fs-extra';
 import { gitPull } from "./utils/git-pull.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
-
+import { getFullVersion } from "./utils/common.mjs";
 const packageJson = fs.readJsonSync('./package.json')
 console.log(packageJson.version, packageJson.environment, 'packageObj');
 $.verbose = true;
@@ -56,6 +56,8 @@ global.lastVersion = packageJson.lastVersion;
 console.log('--------------------------')
 console.log(`当前编译环境：${global.environment}`)
 console.log('--------------------------')
+
+console.log(getFullVersion(), "--------------getFullVersion---------------------")
 // 获取项目信息
 console.log(argv.p, "p");
 let projectName = argv.p;

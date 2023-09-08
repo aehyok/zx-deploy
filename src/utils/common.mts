@@ -27,15 +27,21 @@ function getLength(s: any) {
     return match ? match[0].length : null;
   }
 export const getFullVersion = () => {
-    const lastVersion = global.lastVersion
-    const length = getLength(lastVersion)
-  
-    let strVersion = ""
-    if(length === 2) {
-      strVersion = `0${lastVersion}`
-    }
-    else if(length ===1) {
-      strVersion = `00${lastVersion}`
-    }
-    return `v${global.version}.${strVersion}`
+  const lastVersion = global.lastVersion
+  let arrayVersion = lastVersion.split('.');
+  const length = getLength(arrayVersion[0])
+
+  let strVersion = ""
+  if(length === 2) {
+    strVersion = `0${arrayVersion[0]}`
   }
+  else if(length ===1) {
+    strVersion = `00${arrayVersion[0]}`
+  }
+
+  if(arrayVersion.length > 1) {
+    return `${global.version}.${strVersion}.${arrayVersion[1]}`
+  } else {
+    return `${global.version}.${strVersion}`
+  }
+}

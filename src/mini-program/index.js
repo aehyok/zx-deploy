@@ -113,6 +113,7 @@ const initWechatConfig = () => {
   global.compilePath = compilePath
   global.command = command
   global.version = getFullVersion()
+  console.log(global.version,"version")
 } 
 
 // 初始化命令行参数
@@ -138,6 +139,7 @@ const getFullVersion = () => {
   const packageObject = require('../../package.json');
   const version =packageObject.version;
   const lastVersion = packageObject.lastVersion;
+  let arrayVersion = lastVersion.spilit('.');
   global.lastVersion = lastVersion;
 
   const length = getLength(lastVersion)
@@ -149,7 +151,12 @@ const getFullVersion = () => {
   else if(length ===1) {
     strVersion = `00${lastVersion}`
   }
-  return `${version}.${strVersion}`
+
+  if(arrayVersion.length > 1) {
+    return `${version}.${strVersion}.${arrayVersion[1]}`
+  } else {
+    return `${version}.${strVersion}`
+  }
 }
 
 

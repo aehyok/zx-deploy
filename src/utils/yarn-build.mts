@@ -35,7 +35,7 @@ export const yarnBuildChildList = async (list: any) => {
   oneLogger("yarn build childList start");
   try {
     const execList = list.map((item) => {
-      return $`cd ${item}; ${global.buildType} build`;
+      return $`cd ${item}; ${global.buildType}; ${global.buildType} build`;
     })
 
     console.log(execList, '--------------list--------------------')

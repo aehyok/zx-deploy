@@ -1,25 +1,6 @@
-import { baseUrl } from "./common.mjs";
+import { baseUrl, getFullVersion } from "./common.mjs";
 import { writerLog } from "./sql-helper.mjs";
 import { $ } from 'zx'
-
-function getLength(s: any) {
-  const match = s.match(/^(\d+)$/);
-  return match ? match[0].length : null;
-}
-
-const getFullVersion = () => {
-  const lastVersion = global.lastVersion
-  const length = getLength(lastVersion)
-
-  let strVersion = ""
-  if(length === 2) {
-    strVersion = `0${lastVersion}`
-  }
-  else if(length ===1) {
-    strVersion = `00${lastVersion}`
-  }
-  return `v${global.version}.${strVersion}`
-}
 
 export const gitTag = async () => {
   const { projectPath } = global.project
