@@ -5,7 +5,6 @@ import { gitTag } from "./utils/git-tag.mjs";
 import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
 import { updateVersion } from "./utils/fs-version.mjs";
-
 export const build_app = async (tag,child) => {
 
   const { projectPath } = global.project

@@ -6,7 +6,7 @@ import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
 
 
-export const build = async (tag: string) => {
+export const build_one = async (tag: string) => {
   const { projectPath } = global.project
 
   const path = `${baseUrl()}\\\\${projectPath}`;

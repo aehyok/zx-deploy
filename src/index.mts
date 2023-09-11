@@ -3,11 +3,13 @@
 import { $, argv } from "zx";
 import { build_app } from "./build-app.mjs";
 import { build_pc } from "./build-pc.mjs";
-import { build } from "./build-one.mjs";
+import { build_one } from "./build-one.mjs";
 import fs from 'fs-extra';
 import { gitPull } from "./utils/git-pull.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
-import { getFullVersion } from "./utils/common.mjs";
+import { getFullVersion, baseUrl } from "./utils/common.mjs";
+import { updateVersion } from "./utils/fs-version.mjs";
+
 const packageJson = fs.readJsonSync('./package.json')
 console.log(packageJson.version, packageJson.environment, 'packageObj');
 $.verbose = true;
@@ -82,12 +84,17 @@ console.log('global.project', global.project);
 if (projectName === "console") {
   await build_pc(tag,child);
 }
-else if (["app", "mp"].includes(projectName)) {
+else if (["app"].includes(projectName)) {
   await build_app(tag,child);
+}
+else if (["mp"].includes(projectName)) {
+  await build_one(tag);
 }
 else if(projectName === "mini") {
   console.log(projectName, "-----------------------微信小程序");
   if(global.childName === "pull") {
+    let path = `H:\\github\\mini-deploy`
+    updateVersion(path);     //`${baseUrl()}\\${projectPath}`;
     await gitPull();
   }
   if(global.childName === "tag") {
@@ -95,6 +102,7 @@ else if(projectName === "mini") {
   }
 }
 else {
-  await build(tag);
+  await build_one(tag);
 }
+
 

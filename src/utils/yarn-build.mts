@@ -17,7 +17,7 @@ export const yarnBuildBy = async (path: string, pnpm: string = '') => {
     } else {
       buildType = "yarn"
     }
-    const buildInfo = await $` cd ${path}; ${buildType} build;`;
+    const buildInfo = await $` cd ${path}; ${buildType}; ${buildType} build;`;
     console.log(buildInfo, "buildInfo");
     if (buildInfo.exitCode === 0) {
       oneLogger(`yarn build end success`);
