@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.0.0",
-  "lastVersion": "61.2",
+  "lastVersion": "62",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -33,6 +33,7 @@
     "park": "ts-node-esm ./src/index.mts -p park",
     "ffp-mp": "pnpm release-patch && ts-node-esm ./src/index.mts  -p mp -c ffp-mp",
     "robot": "pnpm release-patch && ts-node-esm ./src/index.mts  -p robot -b pnpm",
+    "server-f": "ts-node-esm ./src/build-server.mts -p dvs-customform",
     "server-c": "ts-node-esm ./src/build-server.mts -p dvs-collect",
     "server-r": "ts-node-esm ./src/build-server.mts -p dvs-robot",
     "server-q": "ts-node-esm ./src/build-server.mts -p dvs-query -f 3.1",

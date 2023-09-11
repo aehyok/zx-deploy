@@ -19,7 +19,15 @@ if(frameworkVersion == '3.1') {
   frameworkVersion = 'net6.0'
 }
 
+//server-csharp\Services\CustomForm\DVS.CustomForm.Api
+
 let projectList = [
+  {
+    projectName: "dvs-customform",
+    serverName: "dvsv3-customform",
+    projectPath: "server-csharp/Services/CustomForm/DVS.CustomForm.Api",
+    projectBuild: "../../../../"
+  },
   {
     projectName: "dvs-collect",
     projectPath: "server-csharp/Services/DVS.Collect.API",
@@ -44,8 +52,8 @@ const projectPath = `${initPath}\\${project?.projectPath}`;
 // await gitPull();
 // linux-x64
 // linux-arm64
-const platform = "linux-x64"
-// const platform = "linux-arm64"
+// const platform = "linux-x64"
+const platform = "linux-arm64"
 const buildInfo = await $`cd ${projectPath}; dotnet publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r ${platform} --no-self-contained;`;
 if(buildInfo.exitCode === 0) {
   console.log("build info ok")
@@ -54,7 +62,7 @@ if(buildInfo.exitCode === 0) {
 }
 
 const ipAddress = '139.9.184.171'   //  139.9.184.171   // 121.37.222.1
-const result = await $`scp -r /e/work/git-dev/release/server/${project?.projectName}/* root@${ipAddress}:/usr/local/sunlight/dvs/${project?.projectName}/`
+const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/${project?.projectName}/`
 if(result.exitCode === 0) {
     console.log(`copy file to linux server end success`)
 }
@@ -65,7 +73,7 @@ else {
 // 可以执行本地的server.sh脚本指令 (-t保持登录状态    ssh -t root@139.9.184.171 < server.sh)
 // 还可以添加脚本参数
 await $`pwd`
-const login = await $`ssh -t root@${ipAddress} 'bash -s' <./src/server.sh ${project?.projectName}`
+const login = await $`ssh -t root@${ipAddress} 'bash -s' <./src/server.sh ${project?.serverName}`
 
 if(login.exitCode === 0) {
   console.log(`ssh login success`)
