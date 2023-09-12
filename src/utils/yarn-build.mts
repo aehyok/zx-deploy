@@ -35,17 +35,25 @@ export const yarnBuildChildList = async (list: any) => {
   oneLogger("yarn build childList start");
   try {
     const execList = list.map((item) => {
-      return $`cd ${item}; ${global.buildType}; ${global.buildType} build`;
+      return {
+        key: item,
+        exec: $`cd ${item}; ${global.buildType}; ${global.buildType} build`
+      };
     })
 
     console.log(execList, '--------------list--------------------')
     const resultList: any = []
-    for (let func of execList) {
-      const result = await func;
-      resultList.push(result);
-  }
+    for (let item of execList) {
+      try{
+        const result = await item.exec;
+        resultList.push(result);
+      }
+      catch {
+        console.log(item.key, "编译时发生异常")
+      }
+    }
 
-  console.log(resultList, 'result-list');
+    console.log(resultList, 'result-list');
 
     // const result = await Promise.all(execList);
     // if (result) {
