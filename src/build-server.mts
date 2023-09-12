@@ -23,6 +23,12 @@ if(frameworkVersion == '3.1') {
 
 let projectList = [
   {
+    projectName: "dvs-dynamic",
+    serverName: "dvsv3-dynamic",
+    projectPath: "server-csharp/Services/Dynamic/DVS.Dynamic.Api",
+    projectBuild: "../../../../"
+  },
+  {
     projectName: "dvs-customform",
     serverName: "dvsv3-customform",
     projectPath: "server-csharp/Services/CustomForm/DVS.CustomForm.Api",
