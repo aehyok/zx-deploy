@@ -9,6 +9,9 @@ import { gitPull } from "./utils/git-pull.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
 import { getFullVersion, baseUrl } from "./utils/common.mjs";
 import { updateVersion } from "./utils/fs-version.mjs";
+import { config } from "dotenv"
+
+config();
 
 const packageJson = fs.readJsonSync('./package.json')
 console.log(packageJson.version, packageJson.environment, 'packageObj');

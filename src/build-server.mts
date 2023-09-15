@@ -1,13 +1,16 @@
 import { $, argv } from 'zx'
 import { baseUrl } from './utils/common.mjs';
 import fs from 'fs-extra';
+import { writerLog } from './utils/sql-helper.mjs';
+import { config } from "dotenv"
+
+config()
 
 const packageJson = fs.readJsonSync('./package.json')
 console.log(packageJson.version, packageJson.environment, 'packageObj');
 $.verbose = true;
 global.version = packageJson.version;
 global.environment = packageJson.environment;
-
 const initPath = baseUrl()
 console.log(argv.p, "p");
 let projectName = argv.p;
@@ -54,7 +57,6 @@ let projectList = [
 const project = projectList.find((item) => item.projectName === projectName);
 
 const projectPath = `${initPath}\\${project?.projectPath}`;
-
 // await gitPull();
 // linux-x64
 // linux-arm64

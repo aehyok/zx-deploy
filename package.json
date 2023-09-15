@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.0.0",
-  "lastVersion": "63",
+  "lastVersion": "64",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -83,6 +83,7 @@
     "minimist": "^1.2.6",
     "miniprogram-ci": "^1.9.8",
     "mysql": "^2.18.1",
+    "mysql2": "^3.6.1",
     "nanospinner": "^1.1.0",
     "openai": "^3.2.1",
     "semver": "^7.3.7",

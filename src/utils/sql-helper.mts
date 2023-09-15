@@ -1,73 +1,42 @@
-import mysql from "mysql";
+import { createConnection } from "mysql2";
 import shortid from "shortid";
+const executeSql = async(sql, params) => {
+  interface DbConfig {
+    host: string,
+    port: number,
+    user: string,
+    password: string,
+    database: string
+  }
 
-let _conn: any = {}
+  let dbConfig: DbConfig = {
+    host: process.env.host || "",
+    port: process.env.port? Number(process.env.port) : 0,
+    user: process.env.user || "",
+    password: process.env.password || "",
+    database: process.env.database || ""
+  }
 
-const logDbState = function () {
-    console.log(
-      "db state %s and threadID %s",
-      _conn.state,
-      _conn.threadId
-    );
-  };
-
-const executeSql = (sql, params) => {
-  let _conn = mysql.createConnection({
+  let _conn = createConnection({
     // 创建mysql实例
-    host: "139.159.245.209",
-    port: "3306",
-    user: "meta",
-    password: "meta",
-    database: "meta",
+    host: dbConfig.host,
+    port: dbConfig.port,
+    user: dbConfig.user,
+    password: dbConfig.password,
+    database: dbConfig.database,
   });
-  _conn.connect(function (err) {
-    if (err) {
-      console.log("fail to connect db", err.stack);
-      throw err;
-    }
-    // 这里正真连接上数据库了。
-    console.log(
-      "链接成功--db state %s and threadID %s",
-      _conn.state,
-      _conn.threadId
-    );
-    logDbState();
-  });
-  return new Promise((resolve, reject) => {
-    try {
-      let sqlParamsList = [sql];
-      if (params) {
-        sqlParamsList.push(params);
-      }
-      _conn.query(...sqlParamsList, (err, res) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(res);
-          close(_conn);
-        }
-      });
-    } catch (error) {
-      reject(error);
-    }
-  });
+  
+  return await _conn.execute(sql, params);
 };
 
-const close = (conn) => {
-  conn.end((err) => {
-    if (err) {
-      console.log("error ", err);
-    } else {
-      console.log("关闭成功", conn.state, conn.threadId);
-    }
-  });
-};
-
-export const writerLog = async (project, content, version) => {
+export const writerLog = async (project, content, version, type= 'info') => {
   let id = shortid.generate()
-  // await executeSql("INSERT INTO CiCdLog values(?,?,?,?,null,null)", [id,
-  //   project,
-  //   content,
-  //   version,
-  // ]);
+  console.log(id, "id-writelog")
+  await executeSql("INSERT INTO CiCdLog values(?,?,?,?,?,?)", [id,
+    project,
+    content,
+    version,
+    new Date(),
+    type
+  ]);
 };
