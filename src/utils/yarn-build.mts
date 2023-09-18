@@ -1,5 +1,5 @@
 import { writerLog } from "./sql-helper.mjs";
-import { baseUrl } from "./common.mjs";
+import { baseUrl, getFullVersion } from "./common.mjs";
 import { $ } from "zx";
 
 export const yarnBuild = async () => {
@@ -12,21 +12,26 @@ export const yarnBuildBy = async (path: string, pnpm: string = '') => {
   try {
     oneLogger(`yarn build start ${path}`);
     let buildType = ""
+    let install = ""
+    let buildInfo: any = null
     if(pnpm) {
       buildType = 'pnpm'
+      install = 'pnpm i'
+      buildInfo = await $` cd ${path};pnpm i; ${buildType} build;`;
     } else {
       buildType = "yarn"
+      install = "yarn"
+      buildInfo = await $` cd ${path}; yarn; ${buildType} build;`;
     }
-    const buildInfo = await $` cd ${path}; ${buildType}; ${buildType} build;`;
     console.log(buildInfo, "buildInfo");
     if (buildInfo.exitCode === 0) {
-      oneLogger(`yarn build end success`);
+      oneLogger(`yarn build end success:  ${path}`);
     } else {
-      oneLogger(`yarn build error: ${buildInfo.stderr}`);
+      oneLogger(`yarn build error: ${path}:  ${buildInfo.stderr}`, "error");
     }
   } catch (error) {
     console.log("yarn build error", error);
-    oneLogger("yarn build error");
+    oneLogger(`yarn build error: ${path}`, "error");
   }
 };
 
@@ -46,10 +51,12 @@ export const yarnBuildChildList = async (list: any) => {
     for (let item of execList) {
       try{
         const result = await item.exec;
+        oneLogger(`build child success: ${item.key}`);
         resultList.push(result);
       }
       catch {
         console.log(item.key, "编译时发生异常")
+        oneLogger(`yarn build childList error: ${item.key}`, "error");
       }
     }
 
@@ -62,14 +69,13 @@ export const yarnBuildChildList = async (list: any) => {
     // }
   } catch (error) {
     console.log(error, "error");
-    oneLogger("yarn build childList error");
+    oneLogger("yarn build childList error", "error");
   }
 };
 
-const oneLogger = (info) => {
-  console.log(info);
+const oneLogger = (info, type= 'info') => {
   const { projectName } = global.project;
-  writerLog(projectName, info, global.version);
+  writerLog(projectName, info, getFullVersion(), type);
 };
 
 function executePromisesInSequence(promiseFunctions) {

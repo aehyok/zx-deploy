@@ -7,9 +7,9 @@ import { build_one } from "./build-one.mjs";
 import fs from 'fs-extra';
 import { gitPull } from "./utils/git-pull.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
-import { getFullVersion, baseUrl } from "./utils/common.mjs";
+import { getFullVersion } from "./utils/common.mjs";
 import { updateVersion } from "./utils/fs-version.mjs";
-import { config } from "dotenv"
+import { config } from "dotenv";
 
 config();
 

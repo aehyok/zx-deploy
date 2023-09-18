@@ -1,5 +1,7 @@
 import { createConnection } from "mysql2";
 import shortid from "shortid";
+
+let _conn: any = null;
 const executeSql = async(sql, params) => {
   interface DbConfig {
     host: string,
@@ -17,7 +19,7 @@ const executeSql = async(sql, params) => {
     database: process.env.database || ""
   }
 
-  let _conn = createConnection({
+  _conn = createConnection({
     // 创建mysql实例
     host: dbConfig.host,
     port: dbConfig.port,
@@ -26,7 +28,8 @@ const executeSql = async(sql, params) => {
     database: dbConfig.database,
   });
   
-  return await _conn.execute(sql, params);
+  const result = await _conn.execute(sql, params);
+  await _conn.end();
 };
 
 export const writerLog = async (project, content, version, type= 'info') => {

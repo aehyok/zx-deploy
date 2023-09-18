@@ -1,7 +1,7 @@
 import { $ } from 'zx'
 import { writerLog } from './sql-helper.mjs';
 import { format } from 'date-fns';
-import { baseUrl } from './common.mjs';
+import { baseUrl, getFullVersion } from './common.mjs';
 export const copyFile = async() => {
     try {
         const path = global.project.projectName
@@ -19,13 +19,13 @@ export const copyFile = async() => {
         }
         
         if(result.exitCode === 0) {
-            oneLogger(`copy file  [${global.version}] end success`)
+            oneLogger(`copy file  [${getFullVersion()}] end success`)
         }
         else {
             console.log("fail", $`$?`);
         }
     } catch {
-        oneLogger(`copy file [${global.version}] end error`)
+        oneLogger(`copy file [${getFullVersion()}] end error`)
     }
 }
 
@@ -50,6 +50,6 @@ export const copyFile = async() => {
 
 const oneLogger = (info) => {
     console.log(info);
-    const { projectName } = global.project
-    writerLog(projectName, info, global.version);
+    const { projectPath } = global.project
+    writerLog(projectPath, info, getFullVersion());
 };

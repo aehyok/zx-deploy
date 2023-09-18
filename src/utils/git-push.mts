@@ -14,8 +14,7 @@ export const gitPushBy = async(name: string, projectName: string) => {
         console.log(releasePath, 'releasePath');
         
         await gitPullBy(name,releasePath)
-        await writerLog(name, `git push start`, getFullVersion());
-        // const message=`build：前端${name} -- commit-version:${global.version}`
+        await writerLog(name, `git push start: ${releasePath}`, getFullVersion());
         let buildProject = "";
         if(global.childName) {
             buildProject = projectName + '\\'+  global.childName
@@ -25,7 +24,7 @@ export const gitPushBy = async(name: string, projectName: string) => {
         const message=`chore: ${buildProject}::commit-version-${getFullVersion()}`
         const result = await $`cd ${releasePath}; git add . ; sleep 3; git commit -m ${message}; git push origin;`
         if(result && result.exitCode === 0 ) {
-            await writerLog(name, `git push end success`, getFullVersion());
+            await writerLog(name, `git push end success ${releasePath}`, getFullVersion());
         } else {
             await writerLog(name, `git push error: ${result.stderr}`, getFullVersion()); 
         }

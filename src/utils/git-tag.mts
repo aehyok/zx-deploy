@@ -12,7 +12,7 @@ export const gitTag = async () => {
     if (isSuccess) {
       await addTag(path, isExist);
     } else {
-      oneLogger(`delete tag [${getFullVersion()}] error`);
+      await oneLogger(`delete tag [${getFullVersion()}] error`);
     }
   } else {
     await addTag(path,false);
@@ -64,6 +64,6 @@ const addTag = async (path: string, isExist: boolean) => {
 
 const oneLogger = (info: any)=> {
   console.log(info);
-  const { projectName } = global.project
+  const { projectName } = global.project;
   writerLog(projectName, info, getFullVersion());
 };
