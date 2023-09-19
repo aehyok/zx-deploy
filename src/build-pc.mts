@@ -5,6 +5,7 @@ import { gitTag } from "./utils/git-tag.mjs";
 import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
 import { updateVersion } from "./utils/fs-version.mjs";
+import { $ } from 'zx'
 
 // const project = "dvs-server-ui-dev";
 // const path = baseUrl() + project;
@@ -32,21 +33,34 @@ export const build_pc = async (tag,child) => {
 
   await gitPull();
 
-  if(!child) {
+  console.log("child----project-----------------------------------", child !=="dvs-main");
+
+  // 编译主应用前，先备份child目录
+  if(child ==="dvs-main") { 
+    const deleteResult = await $`rm -rf /e/work/git-${global.environment}/release/cms/child/`
+    const createResult = await $`mkdir /e/work/git-${global.environment}/release/cms/child/`
+    const copyResult = await $`scp -r /e/work/git-${global.environment}/release/cms/console/child/* /e/work/git-${global.environment}/release/cms/child/`
+  }
+  if(!child || child === "dvs-main") {
     updateVersion(mainPath);
 
     console.log('main build failed',mainPath)
     await yarnBuildBy(mainPath, 'pnpm');
   }
 
-  if(child) {
+  if(child && child !== "dvs-main") {
     const childList = appChildListPath.find(item => item.includes(child))
     
     await yarnBuildChildList([childList]);
-  } else {
+  } else if (!child) {
     await yarnBuildChildList(appChildListPath);
   }
 
+  if(child ==="dvs-main") {
+    const createResult = await $`mkdir /e/work/git-${global.environment}/release/cms/console/child/`
+    const copyResult = await $`scp -r /e/work/git-${global.environment}/release/cms/child/* /e/work/git-${global.environment}/release/cms/console/child/`
+    const deleteResult = await $`rm -rf /e/work/git-${global.environment}/release/cms/child/`
+  }
   if(tag) {
     await gitTag();
   }

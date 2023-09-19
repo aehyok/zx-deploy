@@ -7,7 +7,7 @@ import { gitPush } from "./utils/git-push.mjs";
 
 
 export const build_one = async (tag: string) => {
-  const { projectPath } = global.project
+  const { projectPath } = global.project;
 
   const path = `${baseUrl()}\\\\${projectPath}`;
   await gitPull();

@@ -10,7 +10,7 @@ export const copyFile = async() => {
         const ipAddress = '139.9.184.171'
         const sit_IpAddress =  '139.9.1.176'
         let result:any
-        if(global.childName) {
+        if(global.childName && global.childName !== "dvs-main") {
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/child/${global.childName}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/ui/${path}/child/${global.childName}/`
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/child/${global.childName}/* root@${sit_IpAddress}:/usr/local/sunlight/dvsv3/ui/${path}/child/${global.childName}/`
         } else {
