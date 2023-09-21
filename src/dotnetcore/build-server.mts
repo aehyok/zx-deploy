@@ -28,12 +28,14 @@ let projectList = [
   {
     projectName: "dvs-dynamic",
     serverName: "dvsv3-dynamic",
+    serverPath: "dvsv3",
     projectPath: "server-csharp/Services/Dynamic/DVS.Dynamic.Api",
     projectBuild: "../../../../"
   },
   {
     projectName: "dvs-customform",
     serverName: "dvsv3-customform",
+    serverPath: "dvsv3",
     projectPath: "server-csharp/Services/CustomForm/DVS.CustomForm.Api",
     projectBuild: "../../../../"
   },
@@ -44,6 +46,8 @@ let projectList = [
   },
   {
     projectName: "dvs-robot",
+    serverName: "dvs-robot",
+    serverPath: "dvs",
     projectPath: "SLRobotAdmin/SLRobot.Admin",
     projectBuild: "./../../"
   },
@@ -55,7 +59,7 @@ let projectList = [
 ];
 
 const project = projectList.find((item) => item.projectName === projectName);
-
+console.log(project, "----------------------------project-=---------")
 const projectPath = `${initPath}\\${project?.projectPath}`;
 // await gitPull();
 // linux-x64
@@ -70,7 +74,7 @@ if(buildInfo.exitCode === 0) {
 }
 
 const ipAddress = '139.9.184.171'   //  139.9.184.171   // 121.37.222.1
-const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/${project?.projectName}/`
+const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${ipAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
 if(result.exitCode === 0) {
     console.log(`copy file to linux server end success`)
 }
