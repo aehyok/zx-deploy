@@ -13,8 +13,8 @@ export const gitPushBy = async(name: string, projectName: string) => {
         const releasePath = baseUrl() +'\\\\' + 'release';
         console.log(releasePath, 'releasePath');
         
-        await gitPullBy(name,releasePath)
-        await writerLog(projectName, `git push start: ${releasePath}`, getFullVersion());
+        await gitPullBy("release",releasePath)
+        await writerLog("release", `git push start: ${releasePath}`, getFullVersion());
         let buildProject = "";
         if(global.childName) {
             buildProject = projectName + '\\'+  global.childName
@@ -24,16 +24,16 @@ export const gitPushBy = async(name: string, projectName: string) => {
         const message=`chore: ${buildProject}::commit-version-${getFullVersion()}`
         const result = await $`cd ${releasePath}; git add . ; sleep 3; git commit -m ${message}; git push origin;`
         if(result && result.exitCode === 0 ) {
-            await writerLog(projectName, `git push end success ${releasePath}`, getFullVersion());
+            await writerLog("release", `git push end success ${releasePath}`, getFullVersion());
         } else {
-            await writerLog(projectName, `git push error: ${result.stderr}`, getFullVersion()); 
+            await writerLog("release", `git push error: ${result.stderr}`, getFullVersion()); 
         }
     } catch (error){
         console.log(error, 'error')
         if(error.stdout.includes('nothing to commit, working tree clean')) {
-            await writerLog(projectName, `git push nothing to commit`, getFullVersion());
+            await writerLog("release", `git push nothing to commit`, getFullVersion());
         }
-        await writerLog(projectName, `git push error`, getFullVersion());
+        await writerLog("release", `git push error`, getFullVersion());
     }
 }
 
