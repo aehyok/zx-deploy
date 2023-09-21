@@ -1,7 +1,7 @@
 {
   "name": "zx",
-  "version": "3.0.0",
-  "lastVersion": "65.4",
+  "version": "3.1.0",
+  "lastVersion": "2",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -12,8 +12,8 @@
     "prebuild": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
-    "dev:upload": "node index.js -e dev2 -t upload",
-    "dev:preview": "node index.js -e dev2 -t preview",
+    "dev:upload": "node index.js -e dev -t upload",
+    "dev:preview": "node index.js -e dev -t preview",
     "sit:upload": "node ./src/mini-program/index.js -e sit -t upload",
     "sit:preview": "node ./src/mini-program/index.js -e sit -t preview",
     "xe:upload": "node ./src/mini-program/index.js -e xe -t upload",
@@ -33,10 +33,10 @@
     "park": "ts-node-esm ./src/index.mts -p park",
     "ffp-mp": "pnpm release-patch && ts-node-esm ./src/index.mts  -p mp -c ffp-mp",
     "robot": "pnpm release-patch && ts-node-esm ./src/index.mts  -p robot -b pnpm",
-    "server-f": "ts-node-esm ./src/build-server.mts -p dvs-dynamic",
-    "server-c": "ts-node-esm ./src/build-server.mts -p dvs-collect",
-    "server-r": "ts-node-esm ./src/build-server.mts -p dvs-robot",
-    "server-q": "ts-node-esm ./src/build-server.mts -p dvs-query -f 3.1",
+    "server-f": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-dynamic",
+    "server-c": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-collect",
+    "server-r": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-robot",
+    "server-q": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-query -f 3.1",
     "release-major": "standard-version --release-as major",
     "release-minor": "standard-version --release-as minor",
     "release-patch": "standard-version --release-as patch",
@@ -46,7 +46,8 @@
     "fileSave": "node  ./other/fileSave.mjs",
     "sql": "ts-node-esm ./src/sql-update.mts",
     "gpt": "ts-node-esm ./src/chatgpt.mts",
-    "mini-console": "pnpm cd && pnpm console"
+    "mini-console": "pnpm cd && pnpm console",
+    "go": "ts-node-esm ./src/go/build-go.mts"
   },
   "standard-version": {
     "skip": {

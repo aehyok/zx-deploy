@@ -1,7 +1,7 @@
 import { $, argv } from 'zx'
-import { baseUrl } from './utils/common.mjs';
+import { baseUrl } from '../utils/common.mjs';
 import fs from 'fs-extra';
-import { writerLog } from './utils/sql-helper.mjs';
+import { writerLog } from '../utils/sql-helper.mjs';
 import { config } from "dotenv"
 
 config()
@@ -81,7 +81,7 @@ else {
 // 可以执行本地的server.sh脚本指令 (-t保持登录状态    ssh -t root@139.9.184.171 < server.sh)
 // 还可以添加脚本参数
 await $`pwd`
-const login = await $`ssh -t root@${ipAddress} 'bash -s' <./src/server.sh ${project?.serverName}`
+const login = await $`ssh -t root@${ipAddress} 'bash -s' <./src/dotnetcore/server.sh ${project?.serverName}`
 
 if(login.exitCode === 0) {
   console.log(`ssh login success`)

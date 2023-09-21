@@ -35,7 +35,7 @@ const executeSql = async(sql, params) => {
 export const writerLog = async (project, content, version, type= 'info') => {
   let id = shortid.generate()
   console.log(id, "id-writelog")
-  await executeSql("INSERT INTO CiCdLog values(?,?,?,?,?,?)", [id,
+  await executeSql("INSERT INTO CicdLog values(?,?,?,?,?,?)", [id,
     project,
     content,
     version,

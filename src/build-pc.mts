@@ -27,7 +27,7 @@ export const build_pc = async (tag,child) => {
     path + "\\" + "dvs-ffp",
     path + "\\" + "dvs-facility",
     path + "\\" + "dvs-company",
-    path + "\\" + "dvs-collect",
+    // path + "\\" + "dvs-collect",
     // path + "\\\\" + "dvs-gis",
   ];
 
@@ -44,7 +44,7 @@ export const build_pc = async (tag,child) => {
   if(!child || child === "dvs-main") {
     updateVersion(mainPath);
 
-    console.log('main build failed',mainPath)
+    console.log('main build dvs-main start',mainPath)
     await yarnBuildBy(mainPath, 'pnpm');
   }
 

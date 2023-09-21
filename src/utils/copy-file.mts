@@ -50,6 +50,6 @@ export const copyFile = async() => {
 
 const oneLogger = (info) => {
     console.log(info);
-    const { projectPath } = global.project
-    writerLog(projectPath, info, getFullVersion());
+    const { projectName } = global.project
+    writerLog(projectName, info, getFullVersion());
 };
