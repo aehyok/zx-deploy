@@ -33,6 +33,13 @@ let projectList = [
     projectBuild: "../../../../"
   },
   {
+    projectName: "dvs-datamonitor",
+    serverName: "dvsv3-datamonitor",
+    serverPath: "dvsv3",
+    projectPath: "server-csharp/Services/DataMonitor/DVS.DataMonitor.Api",
+    projectBuild: "../../../../"
+  },
+  {
     projectName: "dvs-customform",
     serverName: "dvsv3-customform",
     serverPath: "dvsv3",
