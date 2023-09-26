@@ -80,7 +80,7 @@ if(buildInfo.exitCode === 0) {
   console.log(`build info error: ${buildInfo.stderr}`)
 }
 
-const ipAddress = '139.9.184.171'   //  139.9.184.171   // 121.37.222.1
+const ipAddress = process.env.devIp   
 const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${ipAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
 if(result.exitCode === 0) {
     console.log(`copy file to linux server end success`)
@@ -89,7 +89,7 @@ else {
   console.log("fail", $`$?`);
 }
 
-// 可以执行本地的server.sh脚本指令 (-t保持登录状态    ssh -t root@139.9.184.171 < server.sh)
+// 可以执行本地的server.sh脚本指令 (-t保持登录状态    ssh -t root@xxx.xx.xxx < server.sh)
 // 还可以添加脚本参数
 await $`pwd`
 const login = await $`ssh -t root@${ipAddress} 'bash -s' <./src/dotnetcore/server.sh ${project?.serverName}`
