@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "5",
+  "lastVersion": "6.1",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -35,7 +35,7 @@
     "robot": "pnpm release-patch && ts-node-esm ./src/index.mts  -p robot -b pnpm",
     "server-f": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-dynamic",
     "server-m": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-datamonitor",
-    "server-c": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-collect",
+    "server-c": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-customform",
     "server-r": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-robot",
     "server-q": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-query -f 3.1",
     "release-major": "standard-version --release-as major",
