@@ -1,10 +1,19 @@
-import { $ } from 'zx'
+import { $,argv } from 'zx'
+import { config } from "dotenv";
 
+const env = argv.e
+config({path: `.env.${env}`})
+
+console.log(process.env, "devIp");
 // 开发环境服务器IP
-const devIp = '139.9.184.171' 
+const devIp = process.env.devIp
 
 // 测试环境服务器IP地址
-const productIp = '139.9.1.176'
+const productIp = process.env.productIp
+
+const privateIp = process.env.privateIp
+const privatePort = process.env.privatePort
+const privatePwd = process.env.privatePwd
 
 // 登录开发服务器，相当于在开发服务器上执行 gen-sql脚本
 const result = await $`ssh root@${devIp} < ./src/sql/export-sql.sh` 
@@ -21,7 +30,7 @@ if(result.exitCode === 0) {
       if(copyToProduct.exitCode === 0) {
         console.log(`copy to sit success`)
         
-        const execResult = await $`ssh root@${productIp} < ./src/sql/import-sql.sh` 
+        const execResult = await $`ssh -t root@${productIp} 'bash -s' < ./src/sql/import-sql.sh ${privateIp}  ${privatePort}  ${privatePwd}`
         if(execResult.exitCode ===0) {
           console.log('exec sql success')
         }

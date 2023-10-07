@@ -7,7 +7,7 @@ export const copyFile = async() => {
         const path = global.project.projectName
         const childPath = global.childName
         const ipAddress = process.env.devIp 
-        const sit_IpAddress =  process.env.sitIp
+        const sit_IpAddress =  process.env.productIp
         let result:any
         if(global.childName && global.childName !== "dvs-main") {
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/child/${global.childName}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/ui/${path}/child/${global.childName}/`
