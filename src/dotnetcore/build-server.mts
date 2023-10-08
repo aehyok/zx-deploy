@@ -60,6 +60,8 @@ let projectList = [
   },
   {
     projectName: "dvs-query",
+    serverName: "dvs-query",
+    serverPath: "dvs",
     projectPath: "MDEngine/SLMDEngine.Base",
     projectBuild: "./../../"
   }

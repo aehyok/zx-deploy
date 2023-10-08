@@ -27,7 +27,7 @@ export const build_pc = async (tag,child) => {
     path + "\\" + "dvs-ffp",
     path + "\\" + "dvs-facility",
     path + "\\" + "dvs-company",
-    // path + "\\" + "dvs-collect",
+    path + "\\" + "dvs-collect",
     // path + "\\\\" + "dvs-gis",
   ];
 
