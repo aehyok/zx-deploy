@@ -11,10 +11,14 @@ export const copyFile = async() => {
         let result:any
         if(global.childName && global.childName !== "dvs-main") {
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/child/${global.childName}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/ui/${path}/child/${global.childName}/`
+            oneLogger(`copy file：${global.childName} [${getFullVersion()}]  dev end success`)
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/child/${global.childName}/* root@${sit_IpAddress}:/usr/local/sunlight/dvsv3/ui/${path}/child/${global.childName}/`
+            oneLogger(`copy file：${global.childName} [${getFullVersion()}]  sit end success`)
         } else {
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/ui/${path}/`
+            oneLogger(`copy file：${path} [${getFullVersion()}]  dev end success`)
             result = await $`scp -r /e/work/git-${global.environment}/release/cms/${path}/* root@${sit_IpAddress}:/usr/local/sunlight/dvsv3/ui/${path}/`
+            oneLogger(`copy file：${path} [${getFullVersion()}]  sit end success`)
         }
         
         if(result.exitCode === 0) {

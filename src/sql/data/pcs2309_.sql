@@ -141,6 +141,7 @@ CREATE TABLE `pcs2309_jch_jbxx` (
   `updateby` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人',
   `createtime` datetime DEFAULT current_timestamp() COMMENT '记录创建时间',
   `updatetime` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '记录最后更新时间',
+  `hzqz` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '手工签名',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='2023年防返贫摸排_监测户_基本信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -466,6 +467,7 @@ CREATE TABLE `pcs2309_tph_srqk` (
   `e3r` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '林果业支出说明',
   `e4` decimal(10,2) DEFAULT NULL COMMENT '其他生产经营性支出',
   `e4r` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '其他支出说明',
+  `d6pr` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '其他转移性收入说明',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='2023年防返贫摸排_脱贫户_收入情况';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -502,4 +504,4 @@ CREATE TABLE `pcs2309_tph_wjyqk` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-29  0:29:39
+-- Dump completed on 2023-10-10 10:39:04

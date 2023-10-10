@@ -291,6 +291,7 @@ CREATE TABLE `CollectFormMetaData` (
   `isDeleted` tinyint(4) DEFAULT 0 COMMENT '0未删除 1删除',
   `manualRTF` longtext CHARACTER SET utf8 DEFAULT NULL COMMENT '使用说明的RTF格式数据',
   `manualPDF` longblob DEFAULT NULL COMMENT '使用说明的PDF格式数据',
+  `bizType` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '本模型对应的业务类型',
   UNIQUE KEY `unique-name` (`name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -376,4 +377,4 @@ CREATE TABLE `CollectivePropertyCompany` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-29  0:29:39
+-- Dump completed on 2023-10-10 10:39:04

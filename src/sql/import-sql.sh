@@ -12,13 +12,11 @@ privatePwd=$3
 mkdir -p "${pPath}"
 
 mysqldump -h$privateIp -P $privatePort -uroot -p$privatePwd dvsdb30 CollectFormMetaData>${pPath}/CollectFormMetaData.sql;
-mysqldump -h$privateIp -P $privatePort -uroot -p$privatePwd dvsdb30 dm_reftabledata>${pPath}/dm_reftabledata.sql;
+# mysqldump -h$privateIp -P $privatePort -uroot -p$privatePwd dvsdb30 dm_reftabledata>${pPath}/dm_reftabledata.sql;
 mysqldump -h$privateIp -P $privatePort -uroot -p$privatePwd metadata tj_zdyzbdyb>${pPath}/tj_zdyzbdyb.sql;
 echo "mysqldump 备份远程服务器数据成功"
 ## 再执行
 
-# mysql -h192.168.0.149 -P 4006 -uroot -psunlight2021 dvsdb30</usr/local/sunlight/sql/Collect.sql
-# mysql -h192.168.0.149 -P 4006 -uroot -psunlight2021 dvsdb30</usr/local/sunlight/sql/pcs2309_.sql
 mysql -h$privateIp -P $privatePort -uroot -p$privatePwd dvsdb30</usr/local/sunlight/sql/CollectFormMetaData.sql
 mysql -h$privateIp -P $privatePort -uroot -p$privatePwd metadata</usr/local/sunlight/sql/tj_zdyzbdyb.sql
 mysql -h$privateIp -P $privatePort -uroot -p$privatePwd dvsdb30</usr/local/sunlight/sql/dm_reftabledata.sql

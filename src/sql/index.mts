@@ -4,7 +4,6 @@ import { config } from "dotenv";
 const env = argv.e
 config({path: `.env.${env}`})
 
-console.log(process.env, "devIp");
 // 开发环境服务器IP
 const devIp = process.env.devIp
 
