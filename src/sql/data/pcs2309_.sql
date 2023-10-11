@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `pcs2309_householdcode`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pcs2309_householdcode` (
   `id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'GUID',
-  `areaid` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '所属村id',
+  `areaid` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '所属村id',
   `hbh` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '户编号，国家平台的编号',
   `pid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '外链的户ID',
   `nf` int(11) DEFAULT NULL COMMENT '年份',
@@ -504,4 +504,4 @@ CREATE TABLE `pcs2309_tph_wjyqk` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-10 10:39:04
+-- Dump completed on 2023-10-11 20:47:04
