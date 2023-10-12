@@ -29,10 +29,10 @@ if(result.exitCode === 0) {
       if(copyToProduct.exitCode === 0) {
         console.log(`copy to sit success`)
         
-        // const execResult = await $`ssh -t root@${productIp} 'bash -s' < ./src/sql/import-sql.sh ${privateIp}  ${privatePort}  ${privatePwd}`
-        // if(execResult.exitCode ===0) {
-        //   console.log('exec sql success')
-        // }
+        const execResult = await $`ssh -t root@${productIp} 'bash -s' < ./src/sql/import-sql.sh ${privateIp}  ${privatePort}  ${privatePwd}`
+        if(execResult.exitCode ===0) {
+          console.log('exec sql success')
+        }
       }
     }
 }

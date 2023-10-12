@@ -29,40 +29,46 @@ let projectList = [
     projectName: "dvs-dynamic",
     serverName: "dvsv3-dynamic",
     serverPath: "dvsv3",
-    projectPath: "server-csharp/Services/Dynamic/DVS.Dynamic.Api",
+    projectPath: "server-csharp",
+    serviceApiPath: "/Services/Dynamic/DVS.Dynamic.Api",
     projectBuild: "../../../../"
   },
   {
     projectName: "dvs-datamonitor",
     serverName: "dvsv3-datamonitor",
     serverPath: "dvsv3",
-    projectPath: "server-csharp/Services/DataMonitor/DVS.DataMonitor.Api",
+    projectPath: "server-csharp",
+    serviceApiPath: "/Services/DataMonitor/DVS.DataMonitor.Api",
     projectBuild: "../../../../"
   },
   {
     projectName: "dvs-customform",
     serverName: "dvsv3-customform",
     serverPath: "dvsv3",
-    projectPath: "server-csharp/Services/CustomForm/DVS.CustomForm.Api",
+    projectPath: "server-csharp",
+    serviceApiPath: "/Services/CustomForm/DVS.CustomForm.Api",
     projectBuild: "../../../../"
   },
   {
     projectName: "dvs-collect",
-    projectPath: "server-csharp/Services/DVS.Collect.API",
+    projectPath: "server-csharp",
+    serviceApiPath: "/Services/DVS.Collect.API",
     projectBuild: "../../../"
   },
   {
     projectName: "dvs-robot",
     serverName: "dvs-robot",
     serverPath: "dvs",
-    projectPath: "SLRobotAdmin/SLRobot.Admin",
+    projectPath: "SLRobotAdmin",
+    serviceApiPath: "/SLRobot.Admin",
     projectBuild: "./../../"
   },
   {
     projectName: "dvs-query",
     serverName: "dvs-query",
     serverPath: "dvs",
-    projectPath: "MDEngine/SLMDEngine.Base",
+    projectPath: "MDEngine",
+    serviceApiPath: "/SLMDEngine.Base",
     projectBuild: "./../../"
   }
 ];
@@ -70,12 +76,15 @@ let projectList = [
 const project = projectList.find((item) => item.projectName === projectName);
 console.log(project, "----------------------------project-=---------")
 const projectPath = `${initPath}\\${project?.projectPath}`;
+const serviceApiPath = `${projectPath}${project?.serviceApiPath}`;
 // await gitPull();
 // linux-x64
 // linux-arm64
 // const platform = "linux-x64"
 const platform = "linux-arm64"
-const buildInfo = await $`cd ${projectPath}; dotnet publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r ${platform} --no-self-contained;`;
+const buildInfo = await $`cd ${projectPath}; 
+                          git pull; cd ${serviceApiPath};  
+                          dotnet publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r ${platform} --no-self-contained;`;
 if(buildInfo.exitCode === 0) {
   console.log("build info ok")
 } else {
@@ -103,5 +112,5 @@ else {
   console.log("fail", $`$?`);
 }
 
-  
+
 
