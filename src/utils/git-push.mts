@@ -11,9 +11,9 @@ export const gitPush = async() => {
 export const gitPushBy = async(name: string, projectName: string) => {
     try {
         const releasePath = baseUrl() +'\\\\' + 'release';
-        console.log(releasePath, 'releasePath');
+        console.log(releasePath, 'releasePath-111');
         
-        await gitPullBy("release",releasePath)
+        await gitPullBy("release",releasePath);
         let buildProject = "";
         if(global.childName) {
             buildProject = projectName + '\\'+  global.childName
