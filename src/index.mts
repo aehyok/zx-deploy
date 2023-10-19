@@ -68,6 +68,8 @@ console.log(argv.p, "p");
 let projectName = argv.p;
 let tag = argv.t;
 console.log(tag, 'tag');
+let git = argv.g;
+console.log(git, 'git');
 
 let buildType = argv.b; // 通过什么工具进行编译 yarn  pnpm,默认为yarn
 if(buildType == 'pnpm') {
@@ -85,10 +87,10 @@ global.project = projectList.find((item) => item.projectName === projectName);
 console.log('global.project', global.project);
 
 if (projectName === "console") {
-  await build_pc(tag,child);
+  await build_pc(tag,child,git);
 }
 else if (["app"].includes(projectName)) {
-  await build_app(tag,child);
+  await build_app(tag,child,git);
 }
 else if (["mp"].includes(projectName)) {
   await build_one(tag);

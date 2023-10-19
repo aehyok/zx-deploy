@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "9.3",
+  "lastVersion": "11",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -24,7 +24,8 @@
     "mini": "pnpm mini-pull && pnpm mini-build && pnpm mini-tag",
     "all": "pnpm all-web && pnpm mini",
     "all-web": "pnpm console && pnpm mp",
-    "console": "ts-node-esm ./src/index.mts -p console -t",
+    "console": "ts-node-esm ./src/index.mts -p console -t -g",
+    "console-dev": "ts-node-esm ./src/index.mts -p console",
     "mp": "ts-node-esm ./src/index.mts -p mp -t",
     "app": "ts-node-esm ./src/index.mts -p app",
     "app-ffp": "ts-node-esm ./src/index.mts  -p app -c ffp-app",

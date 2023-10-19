@@ -12,7 +12,7 @@ import { $ } from 'zx'
 // const mainPath = path + "\\" + "dvs-main";
 // console.log(path, mainPath, '-----path-----mainpath');
 
-export const build_pc = async (tag,child) => {
+export const build_pc = async (tag,child,git) => {
   console.log("build_pc", 'appversion');
   const { projectPath } = global.project
 
@@ -66,5 +66,10 @@ export const build_pc = async (tag,child) => {
   }
 
   await copyFile()
-  await gitPush()
+  
+  if(git) {
+    await gitPush()
+  }
 };
+
+// 创建自定义执行命令的方法
