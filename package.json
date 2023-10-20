@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "11",
+  "lastVersion": "11.1",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -20,8 +20,14 @@
     "xe:preview": "node ./src/mini-program/index.js -e xe -t preview",
     "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
     "mini-build": "cd ../mini-deploy && pnpm all",
+    "mini-build-ly": "cd ../mini-deploy && pnpm ly",
+    "mini-build-xe": "cd ../mini-deploy && pnpm xe",
+    "mini-build-sit": "cd ../mini-deploy && pnpm sit",
     "mini-tag": "ts-node-esm ./src/index.mts -p mini -t -c tag",
     "mini": "pnpm mini-pull && pnpm mini-build && pnpm mini-tag",
+    "mini-ly": "pnpm mini-pull && pnpm mini-build-ly && pnpm mini-tag",
+    "mini-xe": "pnpm mini-pull && pnpm mini-build-xe && pnpm mini-tag",
+    "mini-sit": "pnpm mini-pull && pnpm mini-build-sit && pnpm mini-tag",
     "all": "pnpm all-web && pnpm mini",
     "all-web": "pnpm console && pnpm mp",
     "console": "ts-node-esm ./src/index.mts -p console -t -g",
@@ -54,7 +60,7 @@
     "go": "ts-node-esm ./src/go/build-go.mts"
   },
   "standard-version": {
-    "skip": {
+    "skip": { 
       "changelog": true,
       "commit": true,
       "tag": true,
