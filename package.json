@@ -1,20 +1,20 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "11.1",
+  "lastVersion": "14",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
   "environment": "refactor",
   "scripts": {
     "build:all": "concurrently \"pnpm app\"  \"pnpm console\"  \"pnpm wechat\"  \"pnpm qrcode\" \"pnpm park\" ",
-    "lingyuan": "pnpm app  & pnpm console & pnpm wechat & pnpm qrcode & pnpm park",
+    "lingyu an": "pnpm app  & pnpm console & pnpm wechat & pnpm qrcode & pnpm park",
     "prebuild": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
     "dev:upload": "node index.js -e dev -t upload",
     "dev:preview": "node index.js -e dev -t preview",
-    "sit:upload": "node ./src/mini-program/index.js -e sit -t upload",
+    "sit:upload": "node ./src/mini-program/index.js -e sit -t upload",  
     "sit:preview": "node ./src/mini-program/index.js -e sit -t preview",
     "xe:upload": "node ./src/mini-program/index.js -e xe -t upload",
     "xe:preview": "node ./src/mini-program/index.js -e xe -t preview",
@@ -23,11 +23,13 @@
     "mini-build-ly": "cd ../mini-deploy && pnpm ly",
     "mini-build-xe": "cd ../mini-deploy && pnpm xe",
     "mini-build-sit": "cd ../mini-deploy && pnpm sit",
+    "mini-build-dev": "cd ../mini-deploy && pnpm dev",
     "mini-tag": "ts-node-esm ./src/index.mts -p mini -t -c tag",
     "mini": "pnpm mini-pull && pnpm mini-build && pnpm mini-tag",
     "mini-ly": "pnpm mini-pull && pnpm mini-build-ly && pnpm mini-tag",
     "mini-xe": "pnpm mini-pull && pnpm mini-build-xe && pnpm mini-tag",
     "mini-sit": "pnpm mini-pull && pnpm mini-build-sit && pnpm mini-tag",
+    "mini-dev": "pnpm mini-pull && pnpm mini-build-dev && pnpm mini-tag",
     "all": "pnpm all-web && pnpm mini",
     "all-web": "pnpm console && pnpm mp",
     "console": "ts-node-esm ./src/index.mts -p console -t -g",
@@ -57,7 +59,8 @@
     "sql:xe": "ts-node-esm ./src/sql/index.mts -e xe",
     "gpt": "ts-node-esm ./src/chatgpt.mts",
     "mini-console": "pnpm cd && pnpm console",
-    "go": "ts-node-esm ./src/go/build-go.mts"
+    "go": "ts-node-esm ./src/go/build-go.mts",
+    "docker": "ts-node-esm ./src/docker-course/index.mts"
   },
   "standard-version": {
     "skip": { 
