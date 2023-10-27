@@ -4,6 +4,20 @@ const minimist = require('minimist');
 const fs = require('fs-extra')
 const hjson = require('hjson');
 
+
+// const a = spawn('pwd');
+// a.stdout.on('data', (data) => {
+//   console.log(`stdout: ${data}`);
+// });
+
+// a.stderr.on('data', (data) => {
+//   console.error(`stderr: ${data}`);
+// });
+
+// a.on('close', (code) => {
+//   console.log(`child process exited with code ${code}`);
+// });
+
 // 修改manifest.json中的appid
 const resetWechatAppid = () => {
   const wechatPath = `${global.compilePath}\\apps\\digital-village\\src\\manifest.json`
@@ -18,13 +32,14 @@ const resetProjectLastVersion = () => {
   const packageString = fs.readFileSync(`${wechatPath}`,"utf-8").toString();
   let packageJson = hjson.parse(packageString)
   packageJson['lastVersion'] = global.lastVersion;
+  packageJson['version'] = global.currentVersion;
   console.log(packageJson, "packageJson version");
   fs.writeFileSync(`${wechatPath}`, JSON.stringify(packageJson, null, 2))
 }
 
 const buildMiniProgram = (callback) => {
   const sArgs = [global.environment];
-  const child = spawn(command, sArgs, { cwd: global.compilePath });
+  const child = spawn(global.command, sArgs, { cwd: global.compilePath });
   child.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
   });
@@ -45,13 +60,12 @@ const uploadMiniProgram = () => {
     project: global.project,
     version: global.version,
     desc: `自动化提交发布版本${global.version}`,
+    threads: 4, // 并发数，默认为 cpu 数量
     setting: {
       es6: true,     // 对应小程序开发者工具的 "es6 转 es5"
       es7: true,     // 对应小程序开发者工具的 "增强编译"
       minify: true,  // 压缩所有代码，对应小程序开发者工具的 "压缩代码"
       ignoreUploadUnusedFiles: true,
-      codeProtect: true, // 小程序开发者工具的 "代码保护"
-      autoPrefixWXSS: true, // 小程序开发者工具的 "样式自动补全"
     },
     onProgressUpdate: (info) => { console.log(info, "upload") },
   }).then(result => {
@@ -82,8 +96,7 @@ const previewMiniProgram = () => {
   })
 }
 
-
-const init = () => {
+const init = () => {  
   initWechatConfig();
   
   initCmdArguments();
@@ -93,6 +106,7 @@ const init = () => {
     type: "miniProgram",
     projectPath: `${global.compilePath}\\apps\\digital-village\\dist\\build\\mp-weixin`,
     privateKeyPath: `h:\\github\\zx-deploy\\src\\mini-program\\private.${global.environment}.key`,
+    // ignores: ['node_modules/**/*'],
   });
 
   global.project = project;
@@ -104,6 +118,7 @@ const initWechatConfig = () => {
     "dev": "wx858ddde80e1d69ec",
     "sit": "wx98011a7ed2295c2c",
     "xe": "wx636b10db5fe7f274",
+    "ly": "wxea256481926fa978"
   }
 
   compilePath = `e:\\work\\git-refactor\\mini-program`
@@ -113,7 +128,6 @@ const initWechatConfig = () => {
   global.compilePath = compilePath
   global.command = command
   global.version = getFullVersion()
-  console.log(global.version,"version")
 } 
 
 // 初始化命令行参数
@@ -139,17 +153,18 @@ const getFullVersion = () => {
   const packageObject = require('../../package.json');
   const version =packageObject.version;
   const lastVersion = packageObject.lastVersion;
-  let arrayVersion = lastVersion.spilit('.');
+  global.currentVersion = version;
   global.lastVersion = lastVersion;
 
-  const length = getLength(lastVersion)
+  let arrayVersion = lastVersion.split('.');
+  const length = getLength(arrayVersion[0])
 
   let strVersion = ""
   if(length === 2) {
-    strVersion = `0${lastVersion}`
+    strVersion = `0${arrayVersion[0]}`
   }
   else if(length ===1) {
-    strVersion = `00${lastVersion}`
+    strVersion = `00${arrayVersion[0]}`
   }
 
   if(arrayVersion.length > 1) {

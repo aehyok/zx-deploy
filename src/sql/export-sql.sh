@@ -3,6 +3,9 @@
 ## > 覆盖文件
 ## >> 原有文件中追加
 
+## 导出整个数据库的脚本
+# mysqldump -h192.168.0.104 -P4006  -uroot -psunlight2021 dvsv3>/usr/local/sunlight/sql/dvsv3.sql;
+
 ## CollectFormMetaData Form表单配置表
 mysqldump -h192.168.0.104 -P4006  -uroot -psunlight2021 dvsdb30 CollectFormMetaData>/usr/local/sunlight/sql/CollectFormMetaData.sql;
 
@@ -23,4 +26,4 @@ mysqldump -h192.168.0.104 -P4006  -uroot -psunlight2021 -d --routines --no-creat
 mysqldump -h192.168.0.104 -P4006  -uroot -psunlight2021 dvsdb30 view_CollectDataHouseholdStatus_202305 > /usr/local/sunlight/sql/view-one.sql
 
 ## 导出一个数据库下所有的视图
-mysqldump -h192.168.0.104 -P4006  -uroot -psunlight2021 -d dvsdb30 $(mysql -h192.168.0.104 -P4006  -uroot -psunlight2021 -BNe "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = '$dvsdb30'") > /usr/local/sunlight/sql/view-all.sql
+mysqldump -h192.168.0.104 -P4006  -uroot -psunlight2021 -d dvsdb30 $(mysql -h192.168.0.104 -P4006  -uroot -psunlight2021 -BNe "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = 'dvsdb30'") > /usr/local/sunlight/sql/view-all.sql

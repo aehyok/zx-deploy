@@ -14,6 +14,8 @@ global.environment = packageJson.environment;
 const initPath = baseUrl()
 console.log(argv.p, "p");
 let projectName = argv.p;
+
+let env = argv.e;
 console.log(argv.f, "f");
 let frameworkVersion = argv.f;
 if(frameworkVersion == '3.1') {
@@ -34,11 +36,19 @@ let projectList = [
     projectBuild: "../../../../"
   },
   {
-    projectName: "dvs-datamonitor",
-    serverName: "dvsv3-datamonitor",
+    projectName: "dvs-ncdp",
+    serverName: "dvsv3-ncdp",
     serverPath: "dvsv3",
     projectPath: "server-csharp",
-    serviceApiPath: "/Services/DataMonitor/DVS.DataMonitor.Api",
+    serviceApiPath: "/Services/NCDP/DVS.NCDP.Api",
+    projectBuild: "../../../../"
+  },
+  {
+    projectName: "dvs-basic",
+    serverName: "dvsv3-basic",
+    serverPath: "dvsv3",
+    projectPath: "server-csharp",
+    serviceApiPath: "/Services/Basic/DVS.Basic.Api",
     projectBuild: "../../../../"
   },
   {
@@ -91,7 +101,7 @@ if(buildInfo.exitCode === 0) {
   console.log(`build info error: ${buildInfo.stderr}`)
 }
 
-const ipAddress = process.env.devIp   
+const ipAddress = env=="dev" ? process.env.devIp : process.env.pxIp
 const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${ipAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
 if(result.exitCode === 0) {
     console.log(`copy file to linux server end success`)
