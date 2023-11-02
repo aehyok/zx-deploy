@@ -15,7 +15,11 @@ const initPath = baseUrl()
 console.log(argv.p, "p");
 let projectName = argv.p;
 
-let env = argv.e;
+
+// 区分环境 dev sit px xe
+let env = argv.e; 
+
+// 区分framework版本 3.1和 6.0
 console.log(argv.f, "f");
 let frameworkVersion = argv.f;
 if(frameworkVersion == '3.1') {
@@ -24,7 +28,15 @@ if(frameworkVersion == '3.1') {
   frameworkVersion = 'net6.0'
 }
 
-//server-csharp\Services\CustomForm\DVS.CustomForm.Api
+// linux-x64
+// linux-arm64
+// const platform = "linux-x64"
+// 编译平台
+console.log(argv.r, "r");
+let platform = argv.r;
+if(platform != 'linux-arm64') {
+  platform = 'linux-x64'
+}
 
 let projectList = [
   {
@@ -76,22 +88,27 @@ let projectList = [
   {
     projectName: "dvs-query",
     serverName: "dvs-query",
-    serverPath: "dvs",
+    serverPath: "dvsv3",
     projectPath: "MDEngine",
     serviceApiPath: "/SLMDEngine.Base",
     projectBuild: "./../../"
-  }
+  },
+  // {
+  //   projectName: "dvs-query",
+  //   serverName: "dvs-query",
+  //   serverPath: "dvs",
+  //   projectPath: "MDEngine",
+  //   serviceApiPath: "/SLMDEngine.Base",
+  //   projectBuild: "./../../"
+  // }
 ];
 
 const project = projectList.find((item) => item.projectName === projectName);
 console.log(project, "----------------------------project-=---------")
 const projectPath = `${initPath}\\${project?.projectPath}`;
 const serviceApiPath = `${projectPath}${project?.serviceApiPath}`;
-// await gitPull();
-// linux-x64
-// linux-arm64
-// const platform = "linux-x64"
-const platform = "linux-arm64"
+
+
 const buildInfo = await $`cd ${projectPath}; 
                           git pull; cd ${serviceApiPath};  
                           dotnet publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r ${platform} --no-self-contained;`;
@@ -101,26 +118,27 @@ if(buildInfo.exitCode === 0) {
   console.log(`build info error: ${buildInfo.stderr}`)
 }
 
-const ipAddress = env=="dev" ? process.env.devIp : process.env.pxIp
-const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${ipAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
-if(result.exitCode === 0) {
-    console.log(`copy file to linux server end success`)
+if(!env) {
+  env = 'dev'
 }
-else {
-  console.log("fail", $`$?`);
-}
+const ipAddress = process.env[env]
 
-// 可以执行本地的server.sh脚本指令 (-t保持登录状态    ssh -t root@xxx.xx.xxx < server.sh)
-// 还可以添加脚本参数
-await $`pwd`
-const login = await $`ssh -t root@${ipAddress} 'bash -s' <./src/dotnetcore/server.sh ${project?.serverName}`
+ipAddress?.split(',').forEach(async (itemIpAddress) => {
+  const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${itemIpAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
+  if(result.exitCode === 0) {
+      console.log(`copy file to linux server: ${itemIpAddress} end success`)
+  }
+  else {
+    console.log(`copy file to linux server: ${itemIpAddress} fail`, $`$?`);
+  }
 
-if(login.exitCode === 0) {
-  console.log(`ssh login success`)
-}
-else {
-  console.log("fail", $`$?`);
-}
+  await $`pwd`
+  const login = await $`ssh -t root@${itemIpAddress} 'bash -s' <./src/dotnetcore/server.sh ${project?.serverName}`
 
-
-
+  if(login.exitCode === 0) {
+    console.log(`ssh restart service: ${itemIpAddress} success`)
+  }
+  else {
+    console.log(`ssh restart service: ${itemIpAddress} fail`, $`$?`);
+  }
+})
