@@ -6,7 +6,7 @@ export const copyFile = async() => {
     try {
         const path = global.project.projectName
         const childPath = global.childName
-        const ipAddress = process.env.devIp 
+        const ipAddress = process.env.dev
         const sit_IpAddress =  process.env.productIp
         let result:any
         if(global.childName && global.childName !== "dvs-main") {

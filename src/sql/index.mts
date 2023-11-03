@@ -5,7 +5,7 @@ const env = argv.e
 config({path: `.env.${env}`})
 
 // 开发环境服务器IP
-const devIp = process.env.devIp
+const devIp = process.env.dev
 
 // 测试环境服务器IP地址
 const productIp = process.env.productIp

@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "19.1",
+  "lastVersion": "19.6",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -53,7 +53,7 @@
     "dvs-systemservice-px": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-systemservice -e px -r linux-arm64",
     "dvs-customform-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-customform -e dev -r linux-x64",
     "dvs-customform-xe": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-customform -e xe -r linux-x64",
-    "server-r": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-robot",
+    "dvs-robot": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-robot",
     "dvs-query-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-query -f 3.1 -e dev -r linux-arm64",
     "dvs-query-px": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-query -f 3.1 -e px -r linux-arm64",
     "release-major": "standard-version --release-as major",
