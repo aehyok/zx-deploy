@@ -7,11 +7,6 @@ import { gitPush } from "./utils/git-push.mjs";
 import { updateVersion } from "./utils/fs-version.mjs";
 import { $ } from 'zx'
 
-// const project = "dvs-server-ui-dev";
-// const path = baseUrl() + project;
-// const mainPath = path + "\\" + "dvs-main";
-// console.log(path, mainPath, '-----path-----mainpath');
-
 export const build_pc = async (tag,child,git) => {
   console.log("build_pc", 'appversion');
   const { projectPath } = global.project

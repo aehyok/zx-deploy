@@ -7,15 +7,6 @@ export const isMac = () => {
     return process.platform === "darwin" ? true : false;
 }
 
-/**
- * dvs项目基础路径test
- */
-// dev = /e/work/git/dvs-2.x/
-// lingyuan = '/e/work/git-lingyuan/' 
-// export const baseUrl = isMac() ? '/Users/admin/Desktop/aehyok/github/' : '/e/work/git-lingyuan/' 
-
-// export const baseUrl =  `/e/work/git-xuanen/`
-
 export const baseUrl = ()=> {
     const env = global.environment
     // return `/e/work/git-${env}/`
