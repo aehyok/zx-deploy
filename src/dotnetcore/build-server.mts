@@ -108,10 +108,10 @@ console.log(project, "----------------------------project-=---------")
 const projectPath = `${initPath}\\${project?.projectPath}`;
 const serviceApiPath = `${projectPath}${project?.serviceApiPath}`;
 
-
+const cmd = process.platform == "win32" ? "dotnet" : "/usr/local/dotnet-sdk/dotnet"
 const buildInfo = await $`cd ${projectPath}; 
                           git pull; cd ${serviceApiPath};  
-                          dotnet publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r ${platform} --no-self-contained;`;
+                          ${cmd} publish -c Release -o ${project?.projectBuild}release/server/${project?.projectName} -f ${frameworkVersion} -r ${platform} --no-self-contained;`;
 if(buildInfo.exitCode === 0) {
   console.log("build info ok")
 } else {
