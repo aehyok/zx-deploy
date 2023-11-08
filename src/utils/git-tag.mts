@@ -1,10 +1,10 @@
-import { baseUrl, getFullVersion } from "./common.mjs";
+import { baseUrl, getFullVersion, getPrefix } from "./common.mjs";
 import { writerLog } from "./sql-helper.mjs";
 import { $ } from 'zx'
 
 export const gitTag = async () => {
   const { projectPath } = global.project
-  const path = baseUrl() +'\\' + projectPath
+  const path = baseUrl() + getPrefix() + projectPath
   const isExist = await isExistTag(path)
   console.log(isExist, 'isExist')
   if (isExist) {

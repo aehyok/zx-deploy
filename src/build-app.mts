@@ -1,4 +1,4 @@
-import { baseUrl } from "./utils/common.mjs";
+import { baseUrl, isMac } from "./utils/common.mjs";
 import { gitPull } from "./utils/git-pull.mjs";
 import { yarnBuildBy, yarnBuildChildList } from "./utils/yarn-build.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
@@ -15,7 +15,8 @@ export const build_app = async (tag,child, git) => {
 
   const ffp = path + "\\" + "ffp-app";
 
-  const appChildListPath = [path + "\\\\" + "ffp-app"];
+  const prefix = isMac() ? "/" : "\\\\";
+  const appChildListPath = [path + prefix + "ffp-app"];
 
   console.log('build_app', 'appversion');
 

@@ -1,10 +1,10 @@
 import { writerLog } from "./sql-helper.mjs";
-import { baseUrl, getFullVersion } from "./common.mjs";
+import { baseUrl, getFullVersion, getPrefix } from "./common.mjs";
 import { $ } from "zx";
 
 export const yarnBuild = async () => {
   const { projectPath } = global.project;
-  const path = baseUrl() + "\\" + projectPath;
+  const path = baseUrl() + getPrefix() + projectPath;
   await yarnBuildBy(path);
 };
 

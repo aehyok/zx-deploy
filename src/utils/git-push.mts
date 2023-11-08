@@ -1,5 +1,5 @@
 import { writerLog } from "./sql-helper.mjs"
-import { baseUrl, getFullVersion } from "./common.mjs";
+import { baseUrl, getFullVersion, getPrefix, isMac } from "./common.mjs";
 import { $ } from 'zx'
 import { gitPullBy } from "./git-pull.mjs";
 
@@ -10,20 +10,23 @@ export const gitPush = async() => {
 
 export const gitPushBy = async(name: string, projectName: string) => {
     try {
-        const releasePath = baseUrl() +'\\\\' + 'release';
-        console.log(releasePath, 'releasePath-111');
+        let prefix = isMac() ? '/' : '\\\\'
+        const releasePath = baseUrl() + prefix + 'release';
         
         await gitPullBy("release",releasePath);
         let buildProject = "";
         if(global.childName) {
-            buildProject = projectName + '\\'+  global.childName
+            buildProject = projectName + getPrefix()+  global.childName
         } else {
             buildProject = projectName
         }
         await writerLog(projectName, `git push start: ${releasePath}`, getFullVersion());
 
         const message=`chore: ${buildProject}::commit-version-${getFullVersion()}`
-        const result = await $`cd ${releasePath}; git add . ; sleep 3; git commit -m ${message}; git push origin;`
+        const result = await $`cd ${releasePath} && 
+                               git add .  &&  
+                               git commit -m ${message} && 
+                               git push origin;`
         if(result && result.exitCode === 0 ) {
             await writerLog(projectName, `git push [${buildProject}] end success ${releasePath}`, getFullVersion());
         } else {

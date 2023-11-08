@@ -1,4 +1,4 @@
-import { baseUrl } from "./utils/common.mjs";
+import { baseUrl, getPrefix } from "./utils/common.mjs";
 import { gitTag } from './utils/git-tag.mjs'
 import { gitPull } from './utils/git-pull.mjs'
 import { yarnBuildBy } from "./utils/yarn-build.mjs";
@@ -9,7 +9,7 @@ import { gitPush } from "./utils/git-push.mjs";
 export const build_one = async (tag: string) => {
   const { projectPath } = global.project;
 
-  const path = `${baseUrl()}\\\\${projectPath}`;
+  const path = `${baseUrl()}${getPrefix()}${projectPath}`;
   await gitPull();
   await yarnBuildBy(path);
   if(tag) {

@@ -1,6 +1,6 @@
 import { gitPull } from "./utils/git-pull.mjs";
 import { yarnBuildBy, yarnBuildChildList } from "./utils/yarn-build.mjs";
-import { baseUrl } from "./utils/common.mjs";
+import { baseUrl, getPrefix } from "./utils/common.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
 import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
@@ -11,8 +11,8 @@ export const build_pc = async (tag,child,git) => {
   console.log("build_pc", 'appversion');
   const { projectPath } = global.project
 
-  const path = baseUrl() +'\\' + projectPath;
-  const mainPath = path + "\\" + "dvs-main";
+  const path = baseUrl() + getPrefix() + projectPath;
+  const mainPath = path + getPrefix() + "dvs-main";
 
   const appChildListPath =  [
     path + "\\" + "dvs-base",
@@ -23,7 +23,7 @@ export const build_pc = async (tag,child,git) => {
     path + "\\" + "dvs-company",
     path + "\\" + "dvs-collect",
     path + "\\" + "dvs-monitor",
-    // path + "\\\\" + "dvs-gis",
+    path + "\\" + "dvs-gis",
   ];
 
   await gitPull();

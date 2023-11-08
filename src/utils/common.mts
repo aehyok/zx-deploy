@@ -15,7 +15,28 @@ export const getMiniPath = () => {
 export const baseUrl = ()=> {
     const env = global.environment
     // return `/e/work/git-${env}/`
-    return `e:\\work\\git-${env}`
+    if (isMac())
+    {
+      return process.env.baseUrl_Linux
+    }
+    else {
+      return process.env.baseUrl_Window
+    }
+}
+
+export const getCopyBaseUrl = () => {
+  const env = global.environment
+  if (isMac())
+  {
+    return process.env.baseUrl
+  }
+  else {
+    return `/e/work/git-${env}`
+  }
+}
+
+export const getPrefix = () => {
+  return isMac() ? "/" : "\\";
 }
 
 function getLength(s: any) {
