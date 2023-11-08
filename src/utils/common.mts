@@ -4,7 +4,12 @@ export const isMac = () => {
     // win32 代表window平台
     // darwin 代表mac平台
     //
-    return process.platform === "darwin" ? true : false;
+    return process.platform === "win32" ? false : true;
+}
+
+// 微信小程序路径设置
+export const getMiniPath = () => {
+  return isMac() ? process.env.miniPath_Linux: process.env.miniPath_Window
 }
 
 export const baseUrl = ()=> {

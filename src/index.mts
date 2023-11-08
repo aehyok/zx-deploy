@@ -7,11 +7,13 @@ import { build_one } from "./build-one.mjs";
 import fs from 'fs-extra';
 import { gitPull } from "./utils/git-pull.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
-import { getFullVersion } from "./utils/common.mjs";
+import { getFullVersion, isMac, getMiniPath } from "./utils/common.mjs";
 import { updateVersion } from "./utils/fs-version.mjs";
 import { config } from "dotenv";
 
 config();
+
+console.log(isMac(), "isMac--------------");
 
 const packageJson = fs.readJsonSync('./package.json')
 console.log(packageJson.version, packageJson.environment, 'packageObj');
@@ -98,8 +100,8 @@ else if (["mp"].includes(projectName)) {
 else if(projectName === "mini") {
   console.log(projectName, "-----------------------微信小程序");
   if(global.childName === "pull") {
-    let path = `H:\\github\\mini-deploy`
-    updateVersion(path);     //`${baseUrl()}\\${projectPath}`;
+    let path = getMiniPath() || "";
+    updateVersion(path);
     await gitPull();
   }
   if(global.childName === "tag") {

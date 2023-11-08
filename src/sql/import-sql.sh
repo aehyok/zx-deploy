@@ -18,6 +18,6 @@ echo "mysqldump 备份远程服务器数据成功"
 ## 再执行
 
 mysql -h$privateIp -P $privatePort -uroot -p$privatePwd dvsdb30</usr/local/sunlight/sql/CollectFormMetaData.sql
-mysql -h$privateIp -P $privatePort -uroot -p$privatePwd metadata</usr/local/sunlight/sql/tj_zdyzbdyb.sql
+  mysql -h$privateIp -P $privatePort -uroot -p$privatePwd metadata</usr/local/sunlight/sql/tj_zdyzbdyb.sql
 mysql -h$privateIp -P $privatePort -uroot -p$privatePwd dvsdb30</usr/local/sunlight/sql/dm_reftabledata.sql
 echo "mysql 远程服务器拷贝数据成功"
