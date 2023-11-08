@@ -28,10 +28,10 @@ export const getCopyBaseUrl = () => {
   const env = global.environment
   if (isMac())
   {
-    return process.env.baseUrl
+    return process.env.baseUrl_Linux
   }
   else {
-    return `/e/work/git-${env}`
+    return process.env.copyBaseUrl_Window
   }
 }
 
