@@ -15,15 +15,15 @@ export const build_pc = async (tag,child,git) => {
   const mainPath = path + getPrefix() + "dvs-main";
 
   const appChildListPath =  [
-    path + "\\" + "dvs-base",
-    path + "\\" + "dvs-cons",
-    path + "\\" + "dvs-village",
-    path + "\\" + "dvs-ffp",
-    path + "\\" + "dvs-facility",
-    path + "\\" + "dvs-company",
-    path + "\\" + "dvs-collect",
-    path + "\\" + "dvs-monitor",
-    path + "\\" + "dvs-gis",
+    path + getPrefix() + "dvs-base",
+    path + getPrefix() + "dvs-cons",
+    path + getPrefix() + "dvs-village",
+    path + getPrefix() + "dvs-ffp",
+    path + getPrefix() + "dvs-facility",
+    path + getPrefix() + "dvs-company",
+    path + getPrefix() + "dvs-collect",
+    path + getPrefix() + "dvs-monitor",
+    path + getPrefix() + "dvs-gis",
   ];
 
   await gitPull();
