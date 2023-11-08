@@ -15,8 +15,6 @@ config();
 
 console.log(isMac(), "isMac--------------");
 
-console.log(process.env, "process.env--------------");
-
 const packageJson = fs.readJsonSync('./package.json')
 console.log(packageJson.version, packageJson.environment, 'packageObj');
 $.verbose = true;

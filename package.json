@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "19.42",
+  "lastVersion": "20.1",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
