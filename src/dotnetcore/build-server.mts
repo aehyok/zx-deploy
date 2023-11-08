@@ -1,5 +1,5 @@
 import { $, argv } from 'zx'
-import { baseUrl, getPrefix } from '../utils/common.mjs';
+import { baseUrl, getCopyBaseUrl, getPrefix } from '../utils/common.mjs';
 import fs from 'fs-extra';
 import { writerLog } from '../utils/sql-helper.mjs';
 import { config } from "dotenv"
@@ -125,7 +125,7 @@ if(!env) {
 const ipAddress = process.env[env]
 
 ipAddress?.split(',').forEach(async (itemIpAddress) => {
-  const result = await $`scp -r /e/work/git-refactor/release/server/${project?.projectName}/* root@${itemIpAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
+  const result = await $`scp -r ${getCopyBaseUrl()}/release/server/${project?.projectName}/* root@${itemIpAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
   if(result.exitCode === 0) {
       console.log(`copy file to linux server: ${itemIpAddress} end success`)
   }
