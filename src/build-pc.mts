@@ -1,6 +1,6 @@
 import { gitPull } from "./utils/git-pull.mjs";
 import { yarnBuildBy, yarnBuildChildList } from "./utils/yarn-build.mjs";
-import { baseUrl, getPrefix } from "./utils/common.mjs";
+import { baseUrl, getCopyBaseUrl, getPrefix } from "./utils/common.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
 import { copyFile } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
@@ -31,10 +31,10 @@ export const build_pc = async (tag,child,git) => {
   console.log("child----project-----------------------------------", child !=="dvs-main");
 
   // 编译主应用前，先备份child目录
-  if(child ==="dvs-main") { 
-    const deleteResult = await $`rm -rf /e/work/git-${global.environment}/release/cms/child/`
-    const createResult = await $`mkdir /e/work/git-${global.environment}/release/cms/child/`
-    const copyResult = await $`scp -r /e/work/git-${global.environment}/release/cms/console/child/* /e/work/git-${global.environment}/release/cms/child/`
+  if(child ==="dvs-main") {
+    const deleteResult = await $`rm -rf ${getCopyBaseUrl()}/release/cms/child/`
+    const createResult = await $`mkdir ${getCopyBaseUrl()}/release/cms/child/`
+    const copyResult = await $`scp -r ${getCopyBaseUrl()}/release/cms/console/child/* /e/work/git-${global.environment}/release/cms/child/`
   }
   if(!child || child === "dvs-main") {
     updateVersion(mainPath);
@@ -52,9 +52,9 @@ export const build_pc = async (tag,child,git) => {
   }
 
   if(child ==="dvs-main") {
-    const createResult = await $`mkdir /e/work/git-${global.environment}/release/cms/console/child/`
-    const copyResult = await $`scp -r /e/work/git-${global.environment}/release/cms/child/* /e/work/git-${global.environment}/release/cms/console/child/`
-    const deleteResult = await $`rm -rf /e/work/git-${global.environment}/release/cms/child/`
+    const createResult = await $`mkdir ${getCopyBaseUrl()}/release/cms/console/child/`
+    const copyResult = await $`scp -r ${getCopyBaseUrl()}/release/cms/child/* /e/work/git-${global.environment}/release/cms/console/child/`
+    const deleteResult = await $`rm -rf ${getCopyBaseUrl()}/release/cms/child/`
   }
   if(tag) {
     await gitTag();

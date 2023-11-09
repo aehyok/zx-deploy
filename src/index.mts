@@ -25,16 +25,8 @@ let projectList = [
     projectPath: "server-ui",
   },
   {
-    projectName: "app",
-    projectPath: "dvs-app-h5-dev",
-  },
-  {
     projectName: "mp",
     projectPath: "mp-h5",
-  },
-  {
-    projectName: "wechat",
-    projectPath: "dvs-offiaccount-dev",
   },
   {
     projectName: "mini",
@@ -43,14 +35,6 @@ let projectList = [
   {
     projectName: "robot",
     projectPath: "robot-ui",
-  },
-  {
-    projectName: "qrcode",
-    projectPath: "qrcode-demo-dev",
-  },
-  {
-    projectName: "server",
-    projectPath: ""
   }
 ];
 
