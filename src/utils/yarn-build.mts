@@ -35,38 +35,29 @@ export const yarnBuildBy = async (path: string, pnpm: string = '') => {
   }
 };
 
+const chunkArray = (array, size) => {
+  const chunked_arr: any[] = [];
+  let index = 0;
+  while (index < array.length) {
+    chunked_arr.push(array.slice(index, size + index));
+    index += size;
+  }
+  return chunked_arr;
+};
+
 export const yarnBuildChildList = async (list: any) => {
-  console.log(list, "yarn build child list");
   oneLogger("yarn build childList start");
   try {
-    const execList = list.map((item) => {
-      return {
-        key: item,
-        exec: $`cd ${item}; ${global.buildType}; ${global.buildType} build`
-      };
-    })
 
-    console.log(execList, '--------------list--------------------')
-    const resultList: any = []
-    for (let item of execList) {
-      try{
-        const result = await item.exec;
-        oneLogger(`build child success: ${item.key}`);
-        resultList.push(result);
-      }
-      catch {
-        console.log(item.key, "编译时发生异常")
-        oneLogger(`yarn build childList error: ${item.key}`, "error");
-      }
+    const threads = process.env.threads ? parseInt(process.env.threads) : 3;
+    console.log(threads, "threads");
+    const groupedPaths = chunkArray(list, threads);
+
+    for (const group of groupedPaths) {
+      const promises = group.map(item => $`cd ${item}; ${global.buildType}; ${global.buildType} build`);
+      const results = await Promise.all(promises);
+      results.forEach(result => console.log(result));
     }
-
-    console.log(resultList, 'result-list');
-
-    // const result = await Promise.all(execList);
-    // if (result) {
-    //   console.log("all", result);
-    //   oneLogger("yarn build childList start");
-    // }
   } catch (error) {
     console.log(error, "error");
     oneLogger("yarn build childList error", "error");
