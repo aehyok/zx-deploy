@@ -56,7 +56,7 @@ export const yarnBuildChildList = async (list: any) => {
     for (const group of groupedPaths) {
       const promises = group.map(item => $`cd ${item}; ${global.buildType}; ${global.buildType} build`);
       const results = await Promise.all(promises);
-      results.forEach(result => console.log(result));
+      results.forEach(result => console.log(result,"每个子项目的编译结果"));
     }
   } catch (error) {
     console.log(error, "error");
