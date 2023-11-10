@@ -1,5 +1,5 @@
 import { writerLog } from "./sql-helper.mjs";
-import { baseUrl, getFullVersion, getPrefix } from "./common.mjs";
+import { baseUrl, getFullVersion, getPrefix, isMac } from "./common.mjs";
 import { $ } from 'zx'
 /**
  * 通过全局项目进行拉取
@@ -29,3 +29,12 @@ export const gitPullBy = async(projectName: string, path: string) => {
      writerLog(projectName, `git pull error ${path}`, getFullVersion());
   }
 };
+
+/**
+ * 可用于每次编译前拉取release项目（保证为最新而不冲突）
+ */
+export const gitPullRelease = async () => {
+  let prefix = isMac() ? '/' : '\\\\'
+  const releasePath = baseUrl() + prefix + 'release';
+  await gitPullBy("release",releasePath);
+}

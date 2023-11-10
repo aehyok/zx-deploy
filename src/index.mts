@@ -5,7 +5,7 @@ import { build_app } from "./build-app.mjs";
 import { build_pc } from "./build-pc.mjs";
 import { build_one } from "./build-one.mjs";
 import fs from 'fs-extra';
-import { gitPull } from "./utils/git-pull.mjs";
+import { gitPull, gitPullRelease } from "./utils/git-pull.mjs";
 import { gitTag } from "./utils/git-tag.mjs";
 import { getFullVersion, isMac, getMiniPath } from "./utils/common.mjs";
 import { updateVersion } from "./utils/fs-version.mjs";
@@ -71,6 +71,8 @@ console.log(child, 'child');
 global.childName = child
 global.project = projectList.find((item) => item.projectName === projectName);
 console.log('global.project', global.project);
+
+await gitPullRelease();
 
 if (projectName === "console") {
   await build_pc(tag,child,git);
