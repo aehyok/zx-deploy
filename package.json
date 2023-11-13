@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "21.2",
+  "lastVersion": "22.1",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -11,6 +11,7 @@
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
 
+    "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
     "mini-build": "cd ../mini-deploy && pnpm all",
     "mini-build-ly": "cd ../mini-deploy && pnpm ly",
     "mini-build-xe": "cd ../mini-deploy && pnpm xe",
