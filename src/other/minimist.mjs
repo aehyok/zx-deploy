@@ -41,7 +41,7 @@ const semverTest = () => {
     console.log(semver.inc(currentVersion, 'major'), 'inc-major')  // 1.0.0
     console.log(semver.inc(currentVersion, 'minor'), 'inc-minor')  // 0.1.0
     console.log(semver.inc(currentVersion, 'patch'), 'inc-patch')  // 0.0.4
-}  
+}
 
 const chalkTest = () => {
     console.log('-------chalkTest--------')

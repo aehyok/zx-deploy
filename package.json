@@ -55,6 +55,7 @@
     "release": "standard-version",
     "release-version": "standard-version release-as 0.0.2.001",
     "node": "node  --experimental-json-modules ./src/other/minimist.mjs -a aa -b bb -c cc",
+    "nodejs": "node ./src/test.js",
     "fileSave": "node  ./other/fileSave.mjs",
     "sql:sit": "ts-node-esm ./src/sql/index.mts -e sit",
     "sql:ly": "ts-node-esm ./src/sql/index.mts -e ly",
