@@ -6,7 +6,7 @@ const app = new koa()
 const router = new Router();
 
 router.get('/api/cicd', async (ctx) => {
-  await $`cd .. && pnpm mp`
+  await $`cd . && pnpm mp`
   ctx.body = 'hello cicd';
 });
 
