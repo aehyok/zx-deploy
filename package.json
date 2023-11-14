@@ -98,6 +98,7 @@
     "gradient-string": "^2.0.1",
     "hjson": "^3.2.2",
     "koa": "^2.14.2",
+    "koa-bodyparser": "^4.4.1",
     "minimist": "^1.2.6",
     "miniprogram-ci": "^1.9.8",
     "mysql": "^2.18.1",
