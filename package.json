@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "22.1",
+  "lastVersion": "22.3",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -10,7 +10,6 @@
     "prebuild": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
-
     "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
     "mini-build": "cd ../mini-deploy && pnpm all",
     "mini-build-ly": "cd ../mini-deploy && pnpm ly",
@@ -23,7 +22,6 @@
     "mini-xe": "pnpm mini-pull && pnpm mini-build-xe && pnpm mini-tag",
     "mini-sit": "pnpm mini-pull && pnpm mini-build-sit && pnpm mini-tag",
     "mini-dev": "pnpm mini-pull && pnpm mini-build-dev && pnpm mini-tag",
-
     "all": "pnpm all-web && pnpm mini",
     "all-web": "pnpm console && pnpm mp",
     "console": "ts-node-esm ./src/index.mts -p console -t -g",
@@ -61,12 +59,13 @@
     "sql:sit": "ts-node-esm ./src/sql/index.mts -e sit",
     "sql:ly": "ts-node-esm ./src/sql/index.mts -e ly",
     "sql:xe": "ts-node-esm ./src/sql/index.mts -e xe",
+    "koa": "ts-node-esm ./src/app.mts",
     "gpt": "ts-node-esm ./src/chatgpt.mts",
     "go": "ts-node-esm ./src/go/build-go.mts",
     "docker": "ts-node-esm ./src/docker-course/index.mts"
   },
   "standard-version": {
-    "skip": { 
+    "skip": {
       "changelog": true,
       "commit": true,
       "tag": true,
@@ -97,6 +96,7 @@
     "fs-extra": "^10.1.0",
     "gradient-string": "^2.0.1",
     "hjson": "^3.2.2",
+    "koa": "^2.14.2",
     "minimist": "^1.2.6",
     "miniprogram-ci": "^1.9.8",
     "mysql": "^2.18.1",
