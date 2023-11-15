@@ -8,8 +8,22 @@ const router = new Router();
 app.use(bodyParser());
 app.use(router.routes()).use(router.allowedMethods());
 
-router.get('/api/cicd', async (ctx) => {
-  await $`cd . && pnpm mp`
+// 前端主项目
+const array = ["console", "mp", "mini"]
+
+// pc项目（可单独编译打包）
+const childArray = ["dvs-main", "dvs-base", "dvs-village","dvs-ffp", "dvs-cons","dvs-company", "dvs-facility","dvs-gis","dvs-collect","dvs-monitor"]
+
+router.post('/api/cicd', async (ctx) => {
+  const  { cmdStr } = ctx.request.body;
+
+  if(array.includes(cmdStr)) {
+    const result = await $ `cd . ; pnpm ${cmdStr}`;
+  } else if(childArray.includes(cmdStr)) {
+    const result = await $`cd .; pnpm console -c ${cmdStr}`
+  }
+
+  // console.log(result, "----------------result")
   ctx.body = 'hello cicd';
 }); 
 
