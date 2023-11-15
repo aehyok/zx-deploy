@@ -14,7 +14,7 @@ const array = ["console", "mp", "mini"]
 // pc项目（可单独编译打包）
 const childArray = ["dvs-main", "dvs-base", "dvs-village","dvs-ffp", "dvs-cons","dvs-company", "dvs-facility","dvs-gis","dvs-collect","dvs-monitor"]
 
-router.post('/api/cicd', async (ctx) => {
+router.post('/api/node/cicd', async (ctx) => {
   const  { cmdStr } = ctx.request.body;
 
   if(array.includes(cmdStr)) {
