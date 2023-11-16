@@ -14,6 +14,7 @@ const array = ["console", "mp", "mini"]
 // pc项目（可单独编译打包）
 const childArray = ["dvs-main", "dvs-base", "dvs-village","dvs-ffp", "dvs-cons","dvs-company", "dvs-facility","dvs-gis","dvs-collect","dvs-monitor"]
 
+// 执行编译打包的命令
 router.post('/api/node/cicd', async (ctx) => {
   const  { cmdStr } = ctx.request.body;
 
@@ -22,8 +23,6 @@ router.post('/api/node/cicd', async (ctx) => {
   } else if(childArray.includes(cmdStr)) {
     const result = await $`cd .; pnpm console -c ${cmdStr}`
   }
-
-  // console.log(result, "----------------result")
   ctx.body = 'hello cicd';
 }); 
 
