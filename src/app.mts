@@ -2,6 +2,13 @@ import koa from "koa"
 import { $ } from "zx"
 import Router from "@koa/router"
 import bodyParser  from 'koa-bodyparser'
+import fs from "fs-extra"
+import { config } from "dotenv";
+import { getCurrentPath, getPrefix } from "./utils/common.mjs"
+import { updatePackageConfig, updateVersion } from "./utils/fs-version.mjs"
+
+config();
+
 const app = new koa()
 const router = new Router();
 
@@ -35,8 +42,27 @@ router.post('/api/cicd/post', async (ctx) => {
   const postParams = ctx.request.body;
   console.log(postParams, "----------------postParams")
   ctx.body = `NAME:${postParams.name}, age:${postParams.age} `;
-}); 
+});
 
+//获取当前package.json中的版本号
+router.get('/api/cicd/getVersion', async (ctx) => {
+  const path = `${getCurrentPath()}${getPrefix()}package.json`;
+  console.log(path, "path");
+  const packageJson = fs.readJsonSync(path)
+  ctx.body = `${packageJson.version}${packageJson.lastVersion}`;
+});
+
+// 修改package.json中的版本号
+router.get('/api/cicd/setVersion', async (ctx) => {
+  const path = `${getCurrentPath()}`;
+  await updatePackageConfig(path, "version", "3.1.0");
+});
+
+// 修改package.json中的最后版本号
+router.post('/api/cicd/setLastVersion', async (ctx) => {
+  const path = `${getCurrentPath()}`;
+  await updatePackageConfig(path, "lastVersion", "24.1");
+});
 
 app.listen(3000, () => {
   console.log("server start")

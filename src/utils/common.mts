@@ -24,6 +24,19 @@ export const baseUrl = ()=> {
     }
 }
 
+// 获取当前项目的路径
+export const getCurrentPath = () => {
+  if (isMac())
+  {
+    return process.env.currentPath_Linux
+  }
+  else {
+    console.log(process.env.currentPath_Window, 'process.env.currentPath_Window')
+    return process.env.currentPath_Window
+  }
+}
+
+
 export const getCopyBaseUrl = () => {
   const env = global.environment
   if (isMac())
