@@ -2,11 +2,17 @@ import { baseUrl, getFullVersion, getPrefix } from "./common.mjs";
 import { writerLog } from "./sql-helper.mjs";
 import { $ } from 'zx'
 
-export const gitTag = async () => {
-  const { projectPath } = global.project
-  const path = baseUrl() + getPrefix() + projectPath
-  const isExist = await isExistTag(path)
-  console.log(isExist, 'isExist')
+export const gitTag = async (releasePath: string = '') => {
+  let path = ""
+  let isExist = false
+  if(releasePath) {
+    path = releasePath
+   } else {
+    const { projectPath } = global.project
+    path = baseUrl() + getPrefix() + projectPath
+    isExist = await isExistTag(path) || false
+    console.log(isExist, 'isExist')
+   }
   if (isExist) {
     let isSuccess = await deleteTag(path);
     if (isSuccess) {
