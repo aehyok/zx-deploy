@@ -14,7 +14,7 @@ export const gitPushBy = async(name: string, projectName: string) => {
         let prefix = isMac() ? '/' : '\\\\'
         const releasePath = baseUrl() + prefix + 'release';
         
-        await gitPullBy("release",releasePath);
+        await gitPullBy("release", releasePath);
         let buildProject = "";
         if(global.childName) {
             buildProject = projectName + getPrefix()+  global.childName
