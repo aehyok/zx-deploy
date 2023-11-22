@@ -40,7 +40,7 @@ export const build_pc = async (tag,child,git) => {
     updateVersion(mainPath);
 
     console.log('main build dvs-main start',mainPath)
-    await yarnBuildBy(mainPath, 'pnpm');
+    await yarnBuildBy(mainPath, 'yarn');
   }
 
   if(child && child !== "dvs-main") {
