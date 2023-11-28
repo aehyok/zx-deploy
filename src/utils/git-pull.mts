@@ -17,6 +17,7 @@ export const gitPull = async () => {
  */
 export const gitPullBy = async(projectName: string, path: string) => {
   try {
+     // && git checkout -- . ;  如果脱离本地 可以加上 防止git pull 冲突
      writerLog(projectName, `git pull start ${path}`, getFullVersion());
     const gitPullInfo = await $`cd ${path} && git pull;`;
     console.log(gitPullInfo, "pullInfo");
