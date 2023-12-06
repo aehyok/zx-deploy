@@ -133,7 +133,7 @@ const initWechatConfig = () => {
 // 初始化命令行参数
 const initCmdArguments = () => {
   const args = minimist(process.argv.slice(2));
-  console.log(args, "arguments")
+  // console.log(args, "arguments")
 
   // 通过命令行获取参数
   const environment = args.e;
