@@ -28,8 +28,6 @@ export const build_pc = async (tag,child,git) => {
 
   await gitPull();
 
-  console.log("child----project-----------------------------------", child !=="dvs-main");
-
   // 编译主应用前，先备份child目录
   if(child ==="dvs-main") {
     const deleteResult = await $`rm -rf ${getCopyBaseUrl()}/release/cms/child/`
