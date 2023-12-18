@@ -1,13 +1,13 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "32.11",
+  "lastVersion": "33.15",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
   "environment": "refactor",
   "scripts": {
-    "prebuild": "ts-node-esm pull.mts -v",
+    "prebuil`d": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
     "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
