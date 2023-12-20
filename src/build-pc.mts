@@ -24,6 +24,8 @@ export const build_pc = async (tag,child,git) => {
     path + getPrefix() + "dvs-collect",
     path + getPrefix() + "dvs-monitor",
     path + getPrefix() + "dvs-gis",
+    path + getPrefix() + "dvs-chat",
+    path + getPrefix() + "dvs-workflow",
   ];
 
   await gitPull();

@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "33.15",
+  "lastVersion": "34.1",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -60,7 +60,6 @@
     "sql:ly": "ts-node-esm ./src/sql/index.mts -e ly",
     "sql:xe": "ts-node-esm ./src/sql/index.mts -e xe",
     "koa": "ts-node-esm ./src/app.mts",
-    "gpt": "ts-node-esm ./src/chatgpt.mts",
     "go": "ts-node-esm ./src/go/build-go.mts",
     "docker": "ts-node-esm ./src/docker-course/index.mts"
   },
