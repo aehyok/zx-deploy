@@ -12,6 +12,11 @@ export const getMiniPath = () => {
   return isMac() ? process.env.miniPath_Linux: process.env.miniPath_Window
 }
 
+export const net8_baseUrl = () => {
+  return isMac() ? process.env.net8_baseUrl_Linux: process.env.net8_baseUrl_Window
+
+}
+
 export const baseUrl = ()=> {
     const env = global.environment
     // return `/e/work/git-${env}/`
@@ -45,6 +50,17 @@ export const getCopyBaseUrl = () => {
   }
   else {
     return process.env.copyBaseUrl_Window
+  }
+}
+
+export const getCopy_net8BaseUrl = () => {
+  const env = global.environment
+  if (isMac())
+  {
+    return process.env.baseUrl_Linux
+  }
+  else {
+    return process.env.net8_copyBaseUrl_Window
   }
 }
 
