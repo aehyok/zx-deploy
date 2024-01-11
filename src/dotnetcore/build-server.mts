@@ -131,7 +131,7 @@ if(!env) {
   env = 'dev'
 }
 const ipAddress = process.env[env]
-
+console.log(ipAddress, "ipAddress", env);
 ipAddress?.split(',').forEach(async (itemIpAddress) => {
   const result = await $`scp -r ${getCopyBaseUrl()}/release/server/${project?.projectName}/* root@${itemIpAddress}:/usr/local/sunlight/${project?.serverPath}/${project?.projectName}/`
   if(result.exitCode === 0) {

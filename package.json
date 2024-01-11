@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "37.1",
+  "lastVersion": "38.6",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -37,7 +37,7 @@
     "ffp-mp": "pnpm release-patch && ts-node-esm ./src/index.mts  -p mp -c ffp-mp",
     "robot": "pnpm release-patch && ts-node-esm ./src/index.mts  -p robot -b pnpm",
     "dvs-dynamic": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-dynamic",
-    "dvs-ncdp-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-ncdp -e  -r linux-arm64",
+    "dvs-ncdp-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-ncdp -e dev -r linux-arm64",
     "aehyok-ncdp": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p aehyok-ncdp -e xjp",
     "aehyok-basic": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p aehyok-basic -e xjp",
     "aehyok-systemservice": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p aehyok-systemservice -e xjp",
