@@ -45,24 +45,24 @@ let projectList = [
     serverName: "aehyok-ncdp",
     serverPath: "aehyok",
     projectPath: "NET8.0",
-    serviceApiPath: "/Services/NCDP/aehyok.NCDP.Api",
-    projectBuild: "../../../../"
+    serviceApiPath: "/src/Services/NCDP/aehyok.NCDP.Api",
+    projectBuild: "../../../../../"
   },
   {
     projectName: "aehyok-basic",
     serverName: "aehyok-basic",
     serverPath: "aehyok",
     projectPath: "NET8.0",
-    serviceApiPath: "/Services/Basic/aehyok.Basic.Api",
-    projectBuild: "../../../../"
+    serviceApiPath: "/src//Services/Basic/aehyok.Basic.Api",
+    projectBuild: "../../../../../"
   },
   {
     projectName: "aehyok-systemservice",
     serverName: "aehyok-systemservice",
     serverPath: "aehyok",
     projectPath: "NET8.0",
-    serviceApiPath: "/Services/SystemService/aehyok.SystemService",
-    projectBuild: "../../../../"
+    serviceApiPath: "/src/Services/SystemService/aehyok.SystemService",
+    projectBuild: "../../../../../"
   }
 ];
 
