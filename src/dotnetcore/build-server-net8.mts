@@ -41,27 +41,27 @@ if(platform != 'linux-arm64') {
 
 let projectList = [
   {
-    projectName: "aehyok-ncdp",
-    serverName: "aehyok-ncdp",
-    serverPath: "aehyok",
+    projectName: "sun-ncdp",
+    serverName: "sun-ncdp",
+    serverPath: "sunlight",
     projectPath: "NET8.0",
-    serviceApiPath: "/src/Services/NCDP/aehyok.NCDP.Api",
+    serviceApiPath: "/src/Services/NCDP/sun.NCDP.Api",
     projectBuild: "../../../../../"
   },
   {
-    projectName: "aehyok-basic",
-    serverName: "aehyok-basic",
-    serverPath: "aehyok",
+    projectName: "sun-basic",
+    serverName: "sun-basic",
+    serverPath: "sunlight",
     projectPath: "NET8.0",
-    serviceApiPath: "/src//Services/Basic/aehyok.Basic.Api",
+    serviceApiPath: "/src//Services/Basic/sun.Basic.Api",
     projectBuild: "../../../../../"
   },
   {
-    projectName: "aehyok-systemservice",
-    serverName: "aehyok-systemservice",
-    serverPath: "aehyok",
+    projectName: "sun-systemservice",
+    serverName: "sun-systemservice",
+    serverPath: "sunlight",
     projectPath: "NET8.0",
-    serviceApiPath: "/src/Services/SystemService/aehyok.SystemService",
+    serviceApiPath: "/src/Services/SystemService/sun.SystemService",
     projectBuild: "../../../../../"
   }
 ];
