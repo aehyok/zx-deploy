@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "43.5",
+  "lastVersion": "44.5",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -15,7 +15,7 @@
     "mini-build-ly": "cd ../mini-deploy && pnpm ly",
     "mini-build-lf": "cd ../mini-deploy && pnpm lf",
     "mini-build-xe": "cd ../mini-deploy && pnpm xe",
-    "mini-build-sit": "cd ../mini-deploy && pnpm sit",  
+    "mini-build-sit": "cd ../mini-deploy && pnpm sit",
     "mini-build-dev": "cd ../mini-deploy && pnpm dev",
     "mini-tag": "ts-node-esm ./src/index.mts -p mini -t -c tag",
     "mini": "pnpm mini-pull && pnpm mini-build && pnpm mini-tag",
