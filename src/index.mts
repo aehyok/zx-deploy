@@ -25,6 +25,10 @@ let projectList = [
     projectPath: "server-ui",
   },
   {
+    projectName: "dvschat",
+    projectPath: "dvs-chat",
+  },
+  {
     projectName: "mp",
     projectPath: "mp-h5",
   },
@@ -81,7 +85,7 @@ if (projectName === "console") {
   await build_pc(tag, child, git);
 } else if (["app"].includes(projectName)) {
   await build_app(tag, child, git);
-} else if (["mp"].includes(projectName)) {
+} else if (["mp", "dvschat"].includes(projectName)) {
   await build_one(tag);
 } else if (projectName === "mini") {
   console.log(projectName, "-----------------------微信小程序");
