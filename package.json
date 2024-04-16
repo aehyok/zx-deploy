@@ -1,7 +1,7 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "45.6",
+  "lastVersion": "49.5",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -38,7 +38,7 @@
     "qrcode": "ts-node-esm ./src/index.mts  -p qrcode",
     "park": "ts-node-esm ./src/index.mts -p park",
     "ffp-mp": "pnpm release-patch && ts-node-esm ./src/index.mts  -p mp -c ffp-mp",
-    "robot": "pnpm release-patch && ts-node-esm ./src/index.mts  -p robot -b pnpm",
+    "robot": "pnpm release-patch  && ts-node-esm ./src/index.mts  -p robot -b pnpm",
     "sun-ncdp": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-ncdp -e xjp",
     "sun-basic": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-basic -e xjp",
     "sun-systemservice": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-systemservice -e xjp",

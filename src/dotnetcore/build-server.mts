@@ -96,8 +96,8 @@ let projectList = [
   },
   {
     projectName: "dvs-query",
-    serverName: "dvsv3-query",
-    serverPath: "dvsv3",
+    serverName: "dvs-queryv3",
+    serverPath: "dvs",
     projectPath: "MDEngine",
     serviceApiPath: "/SLMDEngine.Base",
     projectBuild: "./../../"
