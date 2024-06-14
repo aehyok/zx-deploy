@@ -81,7 +81,16 @@ let projectList = [
     projectBuild: "../../../../"
   },
   {
+    projectName: "dvs-query",
+    serverName: "dvsv3-query",
+    serverPath: "dvsv3",
+    projectPath: "server-csharp",
+    serviceApiPath: "/Services/Query/DVS.Query.Api",
+    projectBuild: "../../../../"
+  },
+  {
     projectName: "dvs-collect",
+    serverPath: "dvsv3",
     projectPath: "server-csharp",
     serviceApiPath: "/Services/DVS.Collect.API",
     projectBuild: "../../../"
