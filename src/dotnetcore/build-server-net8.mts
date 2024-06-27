@@ -25,7 +25,11 @@ console.log(argv.f, "f");
 let frameworkVersion = argv.f;
 if(frameworkVersion == '3.1') {
   frameworkVersion= 'netcoreapp3.1'
-} else {
+}
+else if(frameworkVersion == '6.0') {
+  frameworkVersion= 'net6.0'
+}  
+else {
   frameworkVersion = 'net8.0'
 }
 
@@ -41,6 +45,14 @@ if(platform != 'linux-arm64') {
 
 let projectList = [
   {
+    projectName: "sun-xxm",
+    serverName: "sun-xxm",
+    serverPath: "sunlight",
+    projectPath: "xxm0624",
+    serviceApiPath: "/server/sun.xxm",
+    projectBuild: "../../../"
+  },
+  {
     projectName: "sun-ncdp",
     serverName: "sun-ncdp",
     serverPath: "sunlight",
@@ -53,7 +65,7 @@ let projectList = [
     serverName: "sun-basic",
     serverPath: "sunlight",
     projectPath: "NET8.0",
-    serviceApiPath: "/src//Services/Basic/sun.Basic.Api",
+    serviceApiPath: "/src/Services/Basic/sun.Basic.Api",
     projectBuild: "../../../../../"
   },
   {

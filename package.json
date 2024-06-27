@@ -1,13 +1,13 @@
 {
   "name": "zx",
   "version": "3.1.0",
-  "lastVersion": "56",
+  "lastVersion": "58.6",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
   "environment": "refactor",
   "scripts": {
-    "prebuil`d": "ts-node-esm pull.mts -v",
+    "prebuil`d": "ts-node-esm pull.mts -v", 
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
     "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
@@ -39,6 +39,7 @@
     "park": "ts-node-esm ./src/index.mts -p park",
     "ffp-mp": "pnpm release-patch && ts-node-esm ./src/index.mts  -p mp -c ffp-mp",
     "robot": "pnpm release-patch  && ts-node-esm ./src/index.mts  -p robot -b pnpm",
+    "sun-xxm": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-xxm -e xjp -f 6.0",
     "sun-ncdp": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-ncdp -e xjp",
     "sun-basic": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-basic -e xjp",
     "sun-systemservice": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-systemservice -e xjp",
