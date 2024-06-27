@@ -14,7 +14,7 @@ export const yarnBuildBy = async (path: string, pnpm: string = '') => {
     let buildType = ""
     let install = ""
     let buildInfo: any = null
-    if(pnpm) {
+    if(pnpm =="pnpm") {
       buildType = 'pnpm'
       install = 'pnpm'
       buildInfo = await $` cd ${path}; pnpm i; ${buildType} build;`;
