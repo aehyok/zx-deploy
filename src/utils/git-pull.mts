@@ -1,5 +1,5 @@
 import { writerLog } from "./sql-helper.mjs";
-import { baseUrl, getFullVersion, getPrefix, isMac } from "./common.mjs";
+import { baseUrl, baseUrl_github, getFullVersion, getPrefix, isMac } from "./common.mjs";
 import { $ } from 'zx'
 /**
  * 通过全局项目进行拉取
@@ -9,6 +9,14 @@ export const gitPull = async () => {
   const path = baseUrl() + getPrefix() + projectPath;
   await gitPullBy(projectName, path);
 };
+
+export const gitPull_Github = async () => {
+  const { projectPath, projectName } = global.project;
+  const path = baseUrl_github() + getPrefix() + projectPath;
+
+  console.log(path, "path-git pull")
+  await gitPullBy(projectName, path);
+}
 
 /**
  * 通过传入参数进行拉取

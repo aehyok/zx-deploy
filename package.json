@@ -31,6 +31,8 @@
     "console": "ts-node-esm ./src/index.mts -p console -t -g",
     "console-dev": "ts-node-esm ./src/index.mts -p console",
     "mp": "ts-node-esm ./src/index.mts -p mp -t",
+    "xxm-large": "ts-node-esm ./src/index-one.mts  -p xxm-large -b pnpm",
+    "xxm-pc": "ts-node-esm ./src/index-one.mts  -p xxm-pc -b pnpm",
     "chat": "ts-node-esm ./src/index.mts -p dvschat -t",
     "app": "ts-node-esm ./src/index.mts -p app",
     "app-ffp": "ts-node-esm ./src/index.mts  -p app -c ffp-app",

@@ -1,7 +1,7 @@
 import { $ } from 'zx'
 import { writerLog } from './sql-helper.mjs';
 import { format } from 'date-fns';
-import { baseUrl, getCopyBaseUrl, getFullVersion } from './common.mjs';
+import { baseUrl, getCopyBaseUrl, getFullVersion, getCopyBaseUrl_Github } from './common.mjs';
 export const copyFile = async() => {
     try {
         const path = global.project.projectName
@@ -18,6 +18,26 @@ export const copyFile = async() => {
             oneLogger(`copy file：${path} [${getFullVersion()}]  dev end success`)
             result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/* root@${sit_IpAddress}:/usr/local/sunlight/dvsv3/ui/${path}/`
             oneLogger(`copy file：${path} [${getFullVersion()}]  sit end success`)
+        }
+        
+        if(result.exitCode === 0) {
+            oneLogger(`copy file  [${getFullVersion()}] end success`)
+        }
+        else {
+            console.log("fail", $`$?`);
+        }
+    } catch {
+        oneLogger(`copy file [${getFullVersion()}] end error`)
+    }
+}
+
+export const copyFile_Github = async() => {
+    try {
+        const path = global.project.projectName
+        const ipAddress = process.env.xjp
+        let result:any
+        {
+            result = await $`scp -r ${getCopyBaseUrl_Github()}/release/cms/${path}/* root@${ipAddress}:/usr/local/sunlight/xxm-ui/${path}/`
         }
         
         if(result.exitCode === 0) {

@@ -1,10 +1,10 @@
 import { $, argv } from "zx";
 
 export const isMac = () => {
-    // win32 代表window平台
-    // darwin 代表mac平台
-    //
-    return process.platform === "win32" ? false : true;
+  // win32 代表window平台
+  // darwin 代表mac平台
+  //
+  return process.platform === "win32" ? false : true;
 }
 
 // 微信小程序路径设置
@@ -14,7 +14,6 @@ export const getMiniPath = () => {
 
 export const net8_baseUrl = () => {
   return isMac() ? process.env.net8_baseUrl_Linux: process.env.net8_baseUrl_Window
-
 }
 
 export const baseUrl = ()=> {
@@ -27,6 +26,16 @@ export const baseUrl = ()=> {
     else {
       return process.env.baseUrl_Window
     }
+}
+
+export const baseUrl_github = () => {
+  if (isMac())
+  {
+    return process.env.baseUrl_Linux
+  }
+  else {
+    return process.env.baseUrl_Window_Github
+  }
 }
 
 // 获取当前项目的路径
@@ -53,6 +62,17 @@ export const getCopyBaseUrl = () => {
   }
 }
 
+export const getCopyBaseUrl_Github = () => {
+  const env = global.environment
+  if (isMac())
+  {
+    return process.env.baseUrl_Linux
+  }
+  else {
+    return process.env.copyBaseUrl_Window_Github
+  }
+}
+
 export const getCopy_net8BaseUrl = () => {
   const env = global.environment
   if (isMac())
@@ -73,6 +93,9 @@ function getLength(s: any) {
     return match ? match[0].length : null;
   }
 export const getFullVersion = () => {
+  if(!global.version) {
+    return ""
+  }
   const lastVersion = global.lastVersion
   let arrayVersion = lastVersion.split('.');
   const length = getLength(arrayVersion[0])
