@@ -1,6 +1,6 @@
 {
   "name": "zx",
-  "version": "3.2.2",
+  "version": "3.2.6",
   "lastVersion": "4",
   "description": "",
   "main": "index.mts",
@@ -48,7 +48,7 @@
     "sun-basic": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-basic -e xjp",
     "sun-systemservice": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-systemservice -e xjp",
     "sun-all": "pnpm sun-ncdp && pnpm sun-basic && pnpm sun-systemservice",
-    "dvs-dynamic": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-dynamic",
+    "dvs-dynamic-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-dynamic -e dev -r linux-arm64",
     "dvs-ncdp-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-ncdp -e dev -r linux-arm64",
     "dvs-query-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-query -e dev -r linux-arm64",
     "dvs-ncdp-px": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-ncdp -e px -r linux-arm64",

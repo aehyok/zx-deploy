@@ -48,7 +48,6 @@ const chunkArray = (array, size) => {
 export const yarnBuildChildList = async (list: any) => {
   oneLogger("yarn build childList start");
   try {
-
     const threads = process.env.threads ? parseInt(process.env.threads) : 3;
     console.log(threads, "threads");
     const groupedPaths = chunkArray(list, threads);
@@ -57,7 +56,7 @@ export const yarnBuildChildList = async (list: any) => {
       const promises = group.map(item => $`cd ${item}; ${global.buildType}; ${global.buildType} build`);
       const results = await Promise.allSettled(promises);
       for (const [index, result]  of results.entries()) {
-        if((result as any).exitCode === 0) {
+        if((result as any).value.exitCode === 0) {
           console.log(result,"每个子项目的编译结果");
           oneLogger(`yarn build childList:${group[index]} `, "success");
         }
