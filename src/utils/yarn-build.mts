@@ -58,7 +58,7 @@ export const yarnBuildChildList = async (list: any) => {
       for (const [index, result]  of results.entries()) {
         if((result as any).value.exitCode === 0) {
           console.log(result,"每个子项目的编译结果");
-          oneLogger(`yarn build childList:${group[index]} `, "success");
+          oneLogger(`yarn build childList:${group[index]} `, "info");
         }
         else {
           oneLogger(`yarn build childList:${group[index]} `, "error");
