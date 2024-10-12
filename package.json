@@ -1,18 +1,19 @@
 {
   "name": "zx",
-  "version": "3.2.7",
-  "lastVersion": "1",
+  "version": "3.2.11",
+  "lastVersion": "4",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
   "environment": "refactor",
   "scripts": {
-    "prebuil`d": "ts-node-esm pull.mts -v", 
+    "prebuil`d": "ts-node-esm pull.mts -v",
     "build": "concurrently \"pnpm pc\"",
     "postbuild": "ts-node-esm ./src/push.mts",
     "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
     "mini-build": "cd ../mini-deploy && pnpm all",
     "mini-build-ly": "cd ../mini-deploy && pnpm ly",
+    "mini-build-hf": "cd ../mini-deploy && pnpm hf",
     "mini-build-lf": "cd ../mini-deploy && pnpm lf",
     "mini-build-liaoning": "cd ../mini-deploy && pnpm liaoning",
     "mini-build-xe": "cd ../mini-deploy && pnpm xe",
@@ -22,6 +23,7 @@
     "mini-tag": "ts-node-esm ./src/index.mts -p mini -t -c tag",
     "mini": "pnpm mini-pull && pnpm mini-build && pnpm mini-tag",
     "mini-lf": "pnpm mini-pull && pnpm mini-build-lf && pnpm mini-tag",
+    "mini-hf": "pnpm mini-pull && pnpm mini-build-hf && pnpm mini-tag",
     "mini-ly": "pnpm mini-pull && pnpm mini-build-ly && pnpm mini-tag",
     "mini-xe": "pnpm mini-pull && pnpm mini-build-xe && pnpm mini-tag",
     "mini-nx": "pnpm mini-pull && pnpm mini-build-nx && pnpm mini-tag",
@@ -76,7 +78,8 @@
     "sql:xe": "ts-node-esm ./src/sql/index.mts -e xe",
     "koa": "ts-node-esm ./src/app.mts",
     "go": "ts-node-esm ./src/go/build-go.mts",
-    "docker": "ts-node-esm ./src/docker-course/index.mts"
+    "docker": "ts-node-esm ./src/docker-course/index.mts",
+    "ncc": "ncc build ./src/index.mts"
   },
   "standard-version": {
     "skip": {
@@ -98,6 +101,7 @@
     "@koa/router": "^12.0.1",
     "@types/file-saver": "^2.0.5",
     "@types/node": "*",
+    "@vercel/ncc": "^0.38.2",
     "axios": "^1.3.4",
     "chalk": "^5.0.1",
     "concurrently": "^7.2.1",

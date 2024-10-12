@@ -34,3 +34,4 @@ node_modules/
 private.*.key
 .env
 .env.*
+dist
