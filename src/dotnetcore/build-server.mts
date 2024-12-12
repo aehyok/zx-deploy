@@ -103,14 +103,14 @@ let projectList = [
     serviceApiPath: "/SLRobot.Admin",
     projectBuild: "./../../"
   },
-  {
-    projectName: "dvs-query",
-    serverName: "dvs-queryv3",
-    serverPath: "dvs",
-    projectPath: "MDEngine",
-    serviceApiPath: "/SLMDEngine.Base",
-    projectBuild: "./../../"
-  },
+  // {
+  //   projectName: "dvs-query",
+  //   serverName: "dvs-queryv3",
+  //   serverPath: "dvs",
+  //   projectPath: "MDEngine",
+  //   serviceApiPath: "/SLMDEngine.Base",
+  //   projectBuild: "./../../"
+  // },
   // {
   //   projectName: "dvs-query",
   //   serverName: "dvs-query",

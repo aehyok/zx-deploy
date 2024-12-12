@@ -5,7 +5,6 @@ import { yarnBuildBy } from "./utils/yarn-build.mjs";
 import { copyFile, copyFile_Github } from "./utils/copy-file.mjs";
 import { gitPush } from "./utils/git-push.mjs";
 
-
 export const build_one = async (tag: string) => {
   const { projectPath } = global.project;
 

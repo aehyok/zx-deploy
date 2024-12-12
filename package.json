@@ -1,6 +1,6 @@
 {
   "name": "zx",
-  "version": "3.2.11",
+  "version": "3.2.25",
   "lastVersion": "4",
   "description": "",
   "main": "index.mts",
@@ -15,6 +15,7 @@
     "mini-build-ly": "cd ../mini-deploy && pnpm ly",
     "mini-build-hf": "cd ../mini-deploy && pnpm hf",
     "mini-build-lf": "cd ../mini-deploy && pnpm lf",
+    "mini-build-lc": "cd ../mini-deploy && pnpm lc",
     "mini-build-liaoning": "cd ../mini-deploy && pnpm liaoning",
     "mini-build-xe": "cd ../mini-deploy && pnpm xe",
     "mini-build-sit": "cd ../mini-deploy && pnpm sit",
@@ -24,6 +25,7 @@
     "mini": "pnpm mini-pull && pnpm mini-build && pnpm mini-tag",
     "mini-lf": "pnpm mini-pull && pnpm mini-build-lf && pnpm mini-tag",
     "mini-hf": "pnpm mini-pull && pnpm mini-build-hf && pnpm mini-tag",
+    "mini-lc": "pnpm mini-pull && pnpm mini-build-lc && pnpm mini-tag",
     "mini-ly": "pnpm mini-pull && pnpm mini-build-ly && pnpm mini-tag",
     "mini-xe": "pnpm mini-pull && pnpm mini-build-xe && pnpm mini-tag",
     "mini-nx": "pnpm mini-pull && pnpm mini-build-nx && pnpm mini-tag",
@@ -38,10 +40,10 @@
     "sun-large": "ts-node-esm ./src/index-one.mts  -p xxm-large -b pnpm",
     "sun-pc": "ts-node-esm ./src/index-one.mts  -p xxm-pc -b pnpm",
     "chat": "ts-node-esm ./src/index.mts -p dvschat -t",
-    "app": "ts-node-esm ./src/index.mts -p app",
+    "app": "t s-node-esm ./src/index.mts -p app",
     "app-ffp": "ts-node-esm ./src/index.mts  -p app -c ffp-app",
     "wechat": "ts-node-esm ./src/index.mts  -p wechat",
-    "qrcode": "ts-node-esm ./src/index.mts  -p qrcode",
+    "qrcode": "node ./src/qrcode.js",
     "park": "ts-node-esm ./src/index.mts -p park",
     "ffp-mp": "pnpm release-patch && ts-node-esm ./src/index.mts  -p mp -c ffp-mp",
     "robot": "pnpm release-patch  && ts-node-esm ./src/index.mts  -p robot -b pnpm",
@@ -79,7 +81,8 @@
     "koa": "ts-node-esm ./src/app.mts",
     "go": "ts-node-esm ./src/go/build-go.mts",
     "docker": "ts-node-esm ./src/docker-course/index.mts",
-    "ncc": "ncc build ./src/index.mts"
+    "ncc": "ncc build ./src/index.mts",
+    "ba": "ts-node-esm ./src/binance/index.mts"
   },
   "standard-version": {
     "skip": {
@@ -98,6 +101,7 @@
     "zx": "7.1.1"
   },
   "dependencies": {
+    "@binance/connector": "^3.5.0",
     "@koa/router": "^12.0.1",
     "@types/file-saver": "^2.0.5",
     "@types/node": "*",
@@ -123,8 +127,10 @@
     "mysql2": "^3.6.1",
     "nanospinner": "^1.1.0",
     "openai": "^3.2.1",
+    "qrcode": "^1.5.4",
     "semver": "^7.3.7",
     "shortid": "^2.2.16",
+    "skia-canvas": "^1.0.2",
     "socks-proxy-agent": "^8.0.1",
     "standard-version": "^9.3.2",
     "typechat": "^0.0.10"
