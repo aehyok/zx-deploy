@@ -41,6 +41,14 @@ if(platform != 'linux-arm64') {
 
 let projectList = [
   {
+    projectName: "dvs-basic",
+    serverName: "dvsv3-basic",
+    serverPath: "dvsv3",
+    projectPath: "server-csharp",
+    serviceApiPath: "/Services/Basic/DVS.Basic.Api",
+    projectBuild: "../../../../"
+  },
+  {
     projectName: "dvs-dynamic",
     serverName: "dvsv3-dynamic",
     serverPath: "dvsv3",
