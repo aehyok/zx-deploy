@@ -1,7 +1,7 @@
 {
   "name": "zx",
-  "version": "3.2.38",
-  "lastVersion": "5",
+  "version": "3.2.39",
+  "lastVersion": "3",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -13,8 +13,8 @@
     "mini-pull": "ts-node-esm ./src/index.mts -p mini -t -c pull",
     "mini-build": "cd ../mini-deploy && pnpm all",
     "mini-build-ly": "cd ../mini-deploy && pnpm ly",
-    "mini-build-hf": "cd ../mini-deploy && pnpm hf",  
-    "mini-build-yg": "cd ../mini-deploy && pnpm yg",  
+    "mini-build-hf": "cd ../mini-deploy && pnpm hf",
+    "mini-build-yg": "cd ../mini-deploy && pnpm yg",
     "mini-build-lf": "cd ../mini-deploy && pnpm lf",
     "mini-build-lc": "cd ../mini-deploy && pnpm lc",
     "mini-build-liaoning": "cd ../mini-deploy && pnpm liaoning",
@@ -33,7 +33,7 @@
     "mini-nx": "pnpm mini-pull && pnpm mini-build-nx && pnpm mini-tag",
     "mini-liaoning": "pnpm mini-pull && pnpm mini-build-liaoning && pnpm mini-tag",
     "mini-sit": "pnpm mini-pull && pnpm mini-build-sit && pnpm mini-tag",
-    "mini-dev": "pnpm mini-pull && pnpm mini-build-dev && pnpm mini-tag", 
+    "mini-dev": "pnpm mini-pull && pnpm mini-build-dev && pnpm mini-tag",
     "all": "pnpm all-web && pnpm mini",
     "all-web": "pnpm console && pnpm mp",
     "console": "ts-node-esm ./src/index.mts -p console -t -g",
@@ -84,7 +84,9 @@
     "go": "ts-node-esm ./src/go/build-go.mts",
     "docker": "ts-node-esm ./src/docker-course/index.mts",
     "ncc": "ncc build ./src/index.mts",
-    "ba": "ts-node-esm ./src/binance/index.mts"
+    "ba": "ts-node-esm ./src/binance/index.mts",
+    "file": "node ./src/ai/processFile.js",
+    "gen": "node ./src/ai/index_md.js"
   },
   "standard-version": {
     "skip": {
@@ -128,7 +130,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.6.1",
     "nanospinner": "^1.1.0",
-    "openai": "^3.2.1",
+    "openai": "^4.86.2",
     "qrcode": "^1.5.4",
     "semver": "^7.3.7",
     "shortid": "^2.2.16",
