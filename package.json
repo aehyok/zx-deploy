@@ -85,8 +85,8 @@
     "docker": "ts-node-esm ./src/docker-course/index.mts",
     "ncc": "ncc build ./src/index.mts",
     "ba": "ts-node-esm ./src/binance/index.mts",
-    "file": "node ./src/ai/processFile.js",
-    "gen": "node ./src/ai/index_md.js"
+    "convert": "node ./src/ai/convert.js",
+    "split": "node ./src/ai/split.js"
   },
   "standard-version": {
     "skip": {
