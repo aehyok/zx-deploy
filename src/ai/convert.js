@@ -112,14 +112,24 @@ async function processDirectory(sourcePath, relativePath = '') {
 // 处理单个文本文件
 async function processTextFile(sourceFilePath, relativeFilePath) {
   try {
+    // 创建输出文件路径，保持相同的目录结构
+    const outputPath = path.join(outputFolder, relativeFilePath);
+
+    // 检查输出文件是否已存在且不为空
+    if (fs.existsSync(outputPath)) {
+      const existingContent = fs.readFileSync(outputPath, 'utf8');
+      if (existingContent && existingContent.trim().length > 0) {
+        console.log(`文件已存在且不为空，跳过处理: ${relativeFilePath}`);
+        return; // 跳过后续处理
+      }
+    }
+
     // 读取文件内容
     const data = fs.readFileSync(sourceFilePath, 'utf8');
     
     // console.log(`正在处理: ${data}`);
     var result = await ds.callApi(systemPrompt, data, false);
     // console.log(result, "result--------------")
-    // 创建输出文件路径，保持相同的目录结构
-    const outputPath = path.join(outputFolder, relativeFilePath);
     
     // 将修改后的内容写入新文件
     fs.writeFileSync(outputPath, result, 'utf8');
