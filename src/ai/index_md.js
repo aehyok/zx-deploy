@@ -1,9 +1,19 @@
 const { OpenAI } = require('openai');
+const { config } = require("dotenv");
+
+config();
+
+console.log(process.env.DB_HOST); // 输出: localhost
 
 // 初始化OpenAI客户端
+// const client = new OpenAI({
+//   apiKey: 'sk-4ce2e53a474c4287b0066c007ec6fd78',
+//   baseURL: 'https://api.deepseek.com'
+// });
+
 const client = new OpenAI({
-  apiKey: 'sk-4ce2e53a474c4287b0066c007ec6fd78',
-  baseURL: 'https://api.deepseek.com'
+  apiKey: process.env.apiKey,
+  baseURL: process.env.apiBaseUrl
 });
 
 
@@ -39,7 +49,7 @@ async function callAPI(system, content, isJson) {
     if (isJson) {
       console.log("进入json模式");
       response = await client.chat.completions.create({
-        model: "deepseek-chat",
+        model: "deepseek-v3",
         // model: "deepseek-reasoner",
         messages: messages,
         response_format: { type: 'json_object' }
@@ -56,7 +66,7 @@ async function callAPI(system, content, isJson) {
     else {
       console.log("进入非json模式");
       response = await client.chat.completions.create({
-        model: "deepseek-chat",
+        model: "deepseek-r1",
         // model: "deepseek-reasoner",
         messages: messages,
       });

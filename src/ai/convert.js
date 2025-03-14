@@ -101,7 +101,7 @@ async function processDirectory(sourcePath, relativePath = '') {
   }
   
   console.log(`共找到 ${files.length} 个文件需要处理`);
-  const batchSize = 5;
+  const batchSize = 16;
   for(let index = 0; index < files.length; index += batchSize) {
     const batch = files.slice(index, index + batchSize);
     console.log(`并发处理批次 ${index/batchSize + 1}, 文件数: ${batch.length}`);
