@@ -74,6 +74,9 @@ async function processDirectory(sourcePath, relativePath = '') {
   // 读取当前目录中的所有文件和文件夹
   const entries = fs.readdirSync(path.join(sourcePath, relativePath), { withFileTypes: true });
   
+  // 收集需要处理的文件
+  const files = [];
+
   for (const entry of entries) {
     const entryRelativePath = path.join(relativePath, entry.name);
     const sourceEntryPath = path.join(sourcePath, entryRelativePath);
@@ -89,8 +92,20 @@ async function processDirectory(sourcePath, relativePath = '') {
       await processDirectory(sourcePath, entryRelativePath);
     } else if (entry.isFile() && path.extname(entry.name).toLowerCase() === '.txt') {
       // 如果是txt文件，则处理它
-      await processTextFile(sourceEntryPath, entryRelativePath);
+      // await processTextFile(sourceEntryPath, entryRelativePath);
+      files.push({
+        sourceFilePath: sourceEntryPath,
+        relativeFilePath: entryRelativePath
+      });
     }
+  }
+  
+  console.log(`共找到 ${files.length} 个文件需要处理`);
+  const batchSize = 5;
+  for(let index = 0; index < files.length; index += batchSize) {
+    const batch = files.slice(index, index + batchSize);
+    console.log(`并发处理批次 ${index/batchSize + 1}, 文件数: ${batch.length}`);
+    await Promise.all(batch.map(file => processTextFile(file.sourceFilePath, file.relativeFilePath)));
   }
 }
 
@@ -100,9 +115,9 @@ async function processTextFile(sourceFilePath, relativeFilePath) {
     // 读取文件内容
     const data = fs.readFileSync(sourceFilePath, 'utf8');
     
-    console.log(`正在处理: ${data}`);
+    // console.log(`正在处理: ${data}`);
     var result = await ds.callApi(systemPrompt, data, false);
-    console.log(result, "result--------------")
+    // console.log(result, "result--------------")
     // 创建输出文件路径，保持相同的目录结构
     const outputPath = path.join(outputFolder, relativeFilePath);
     

@@ -1,5 +1,4 @@
 import { createConnection } from "mysql2";
-import { ChatCompletionResponseMessageRoleEnum } from "openai";
 import shortid from "shortid";
 
 const executeSql = async(sql, params) => {

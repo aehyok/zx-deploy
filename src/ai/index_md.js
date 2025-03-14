@@ -45,12 +45,12 @@ async function callAPI(system, content, isJson) {
         response_format: { type: 'json_object' }
       });
 
-      console.log("response---ai", response);
-      console.log("response---ai", response.choices[0].message.content);
+      // console.log("response---ai", response);
+      // console.log("response---ai", response.choices[0].message.content);
   
-      console.log("response---ai", typeof response.choices[0].message.content);
+      // console.log("response---ai", typeof response.choices[0].message.content);
       var result = response.choices[0].message.content;
-      console.log(response.choices[0].message.content);
+      // console.log(response.choices[0].message.content);
       return JSON.parse(result);
     }
     else {
@@ -61,10 +61,10 @@ async function callAPI(system, content, isJson) {
         messages: messages,
       });
 
-      console.log("response---ai", response);
-      console.log("response---ai", response.choices[0].message.content);
+      // console.log("response---ai", response);
+      // console.log("response---ai", response.choices[0].message.content);
   
-      console.log("response---ai", typeof response.choices[0].message.content);
+      // console.log("response---ai", typeof response.choices[0].message.content);
       var result = response.choices[0].message.content;
       return result;
     }
