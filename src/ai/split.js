@@ -162,7 +162,7 @@ async function processDirectory(sourcePath, relativePath = '') {
   }
 
   console.log(`共找到 ${files.length} 个文件需要处理`);
-  const batchSize = 8;
+  const batchSize = 16;
   for(let index = 0; index < files.length; index += batchSize) {
     const batch = files.slice(index, index + batchSize);
     console.log(`并发处理批次 ${index/batchSize + 1}, 文件数: ${batch.length}`);
@@ -173,30 +173,62 @@ async function processDirectory(sourcePath, relativePath = '') {
 // 处理单个文本文件
 async function processSplitFile(sourceFilePath, relativeFilePath) {
   try {
-    // 读取文件内容
-    const data = fs.readFileSync(sourceFilePath, 'utf8');
+    const filePath = relativeFilePath.replace(/\\(\d+)/, (match, number) => `\\${number}-1`);
     
-    // console.log(`正在处理: ${data}`);
-    var result = await ds.callApi( systemPrompt, data, true);
-
-    // console.log(result, "result---content");
-    if (result.content.length != 4) {
-      console.log(`文件 ${relativeFilePath} 未处理`);
-      return;
-    }
-
-    // 写一个for循环用来处理result.content,将其中的\n字符去掉，然后写入到outputFolder中
-    for (let i = 0; i < result.content.length; i++) {
-      const temp = result.content[i].content.replace(/\n/g
-        , "");
-      const filePath = relativeFilePath.replace(/\\(\d+)/, (match, number) => `\\${number}-${i+1}`);
-          // 创建输出文件路径，保持相同的目录结构
+    // 创建输出文件路径，保持相同的目录结构
     const outputPath = path.join(outputFolder, filePath);
-    
-    // 将修改后的内容写入新文件
-    fs.writeFileSync(outputPath, temp, 'utf8');
+
+    console.log(fs.existsSync(outputPath), "是否存在");
+    // 检查输出文件是否已存在且不为空
+    if (fs.existsSync(outputPath)) {
+      const existingContent = fs.readFileSync(outputPath, 'utf8');
+      if (existingContent && existingContent.trim().length > 0) {
+        console.log(`文件已存在且不为空，跳过处理: ${relativeFilePath}`);
+        
+        /// 已存在的文件处理一下换行符号等
+        for (let i = 0; i < 4; i++) {
+          const filePath = relativeFilePath.replace(/\\(\d+)/, (match, number) => `\\${number}-${i+1}`);
+          
+          console.log(filePath, "当前文件路径filePath");
+
+          // 创建输出文件路径，保持相同的目录结构
+          const outputPath = path.join(outputFolder, filePath);
+
+          const data = fs.readFileSync(outputPath, 'utf8');
+
+          const temp = data.replace(/\n/g
+            , "");
+
+          
+          // 将修改后的内容写入新文件
+          fs.writeFileSync(outputPath, temp, 'utf8');
+        }
+      }
+    } else {
+      // 读取文件内容
+      const data = fs.readFileSync(sourceFilePath, 'utf8');
+      
+      var result = await ds.callApi( systemPrompt, data, true);
+
+      console.log(result.length, "result---content");
+      if (result.length != 4) {
+        console.log(`文件 ${relativeFilePath} 未处理`);
+        return;
+      }
+
+      // 写一个for循环用来处理result.content,将其中的\n字符去掉，然后写入到outputFolder中
+      for (let i = 0; i < result.length; i++) {
+        const temp = result[i].content.replace(/\n/g
+          , "");
+        const filePath = relativeFilePath.replace(/\\(\d+)/, (match, number) => `\\${number}-${i+1}`);
+        
+        // 创建输出文件路径，保持相同的目录结构
+        const outputPath = path.join(outputFolder, filePath);
+        
+        // 将修改后的内容写入新文件
+        fs.writeFileSync(outputPath, temp, 'utf8');
+      }
     }
-    // console.log(result.content, "result---content1111");
     
     console.log(`已处理: ${relativeFilePath}`);
   } catch (err) {
