@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const ds = require('./index_md.js');
-
+const ds = require('./utilAI.js');
+const { writeLog } = require('./sqlHelper.js');
 
 const systemPrompt = `
 ---------------------
@@ -162,6 +162,7 @@ async function processDirectory(sourcePath, relativePath = '') {
   }
 
   console.log(`共找到 ${files.length} 个文件需要处理`);
+  writeLog("split", sourcePath, relativePath, "info", `共找到 ${files.length} 个文件需要处理`);
   const batchSize = 16;
   for(let index = 0; index < files.length; index += batchSize) {
     const batch = files.slice(index, index + batchSize);

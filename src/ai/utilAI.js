@@ -3,14 +3,6 @@ const { config } = require("dotenv");
 
 config();
 
-console.log(process.env.DB_HOST); // 输出: localhost
-
-// 初始化OpenAI客户端
-// const client = new OpenAI({
-//   apiKey: 'sk-4ce2e53a474c4287b0066c007ec6fd78',
-//   baseURL: 'https://api.deepseek.com'
-// });
-
 const client = new OpenAI({
   apiKey: process.env.apiKey,
   baseURL: process.env.apiBaseUrl
@@ -49,36 +41,24 @@ async function callAPI(system, content, isJson) {
     if (isJson) {
       console.log("进入json模式");
       response = await client.chat.completions.create({
-        model: "deepseek-v3",
-        // model: "deepseek-reasoner",
+        model: process.env.modelV3,
         messages: messages,
         response_format: { type: 'json_object' }
       });
 
-      // console.log("response---ai", response);
-      // console.log("response---ai", response.choices[0].message.content);
-  
-      // console.log("response---ai", typeof response.choices[0].message.content);
       var result = response.choices[0].message.content;
-      // console.log(response.choices[0].message.content);
       return JSON.parse(result);
     }
     else {
       console.log("进入非json模式");
       response = await client.chat.completions.create({
-        model: "deepseek-r1",
-        // model: "deepseek-reasoner",
+        model: process.env.modelR1,
         messages: messages,
       });
 
-      // console.log("response---ai", response);
-      // console.log("response---ai", response.choices[0].message.content);
-  
-      // console.log("response---ai", typeof response.choices[0].message.content);
       var result = response.choices[0].message.content;
       return result;
     }
-    // console.log(JSON.parse(response.choices[0].message.content));
   } catch (error) {
     console.error('调用API时出错:', error);
   }
@@ -104,13 +84,5 @@ module.exports = {
      return callAPI(system, data, isJson) 
   },
 };
-//能告诉我如何给汽车加油吗
-
-//请告诉我办理财政票据领用证需要多长时间
-
-
-
-//农村集体经济审计的办理流程
-
 
 
