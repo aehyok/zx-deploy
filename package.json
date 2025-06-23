@@ -1,7 +1,7 @@
 {
   "name": "zx",
-  "version": "3.2.42",
-  "lastVersion": "2",
+  "version": "3.2.55",
+  "lastVersion": "1",
   "description": "",
   "main": "index.mts",
   "type": "commonjs",
@@ -36,7 +36,7 @@
     "mini-dev": "pnpm mini-pull && pnpm mini-build-dev && pnpm mini-tag",
     "all": "pnpm all-web && pnpm mini",
     "all-web": "pnpm console && pnpm mp",
-    "console": "ts-node-esm ./src/index.mts -p console -t -g",
+    "console": " nvm use 18.20.8 && ts-node-esm ./src/index.mts -p console -t -g",
     "console-dev": "ts-node-esm ./src/index.mts -p console",
     "mp": "ts-node-esm ./src/index.mts -p mp -t",
     "sun-large": "ts-node-esm ./src/index-one.mts  -p xxm-large -b pnpm",
@@ -88,6 +88,7 @@
     "convert": "node ./src/ai/convert.js",
     "split": "node ./src/ai/split.js",
     "replace": "node ./src/ai/replace.js",
+    "splitsize": "node ./src/ai/splitsize.js",
     "tdx": "node ./src/tdx/index.js",
     "aliyun": "node ./src/ai/aliyun.js"
   },
@@ -111,6 +112,7 @@
     "@alicloud/pop-core": "^1.8.0",
     "@binance/connector": "^3.5.0",
     "@koa/router": "^12.0.1",
+    "@modelcontextprotocol/sdk": "^1.8.0",
     "@types/file-saver": "^2.0.5",
     "@types/node": "*",
     "@vercel/ncc": "^0.38.2",
@@ -141,6 +143,7 @@
     "skia-canvas": "^1.0.2",
     "socks-proxy-agent": "^8.0.1",
     "standard-version": "^9.3.2",
-    "typechat": "^0.0.10"
+    "typechat": "^0.0.10",
+    "zod": "^3.24.2"
   }
 }

@@ -9,14 +9,14 @@ export const copyFile = async() => {
         const sit_IpAddress =  process.env.productIp
         let result:any
         if(global.childName && global.childName !== "dvs-main") {
-            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/child/${global.childName}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/ui/${path}/child/${global.childName}/`
+            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/child/${global.childName}/* root@${ipAddress}:${process.env.linuxPath}/${path}/child/${global.childName}/`
             oneLogger(`copy file：${global.childName} [${getFullVersion()}]  dev end success`)
-            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/child/${global.childName}/* root@${sit_IpAddress}:/usr/local/sunlight/dvsv3/ui/${path}/child/${global.childName}/`
+            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/child/${global.childName}/* root@${sit_IpAddress}:${process.env.linuxPath}/${path}/child/${global.childName}/`
             oneLogger(`copy file：${global.childName} [${getFullVersion()}]  sit end success`)
         } else {
-            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/* root@${ipAddress}:/usr/local/sunlight/dvsv3/ui/${path}/`
+            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/* root@${ipAddress}:${process.env.linuxPath}/${path}/`
             oneLogger(`copy file：${path} [${getFullVersion()}]  dev end success`)
-            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/* root@${sit_IpAddress}:/usr/local/sunlight/dvsv3/ui/${path}/`
+            result = await $`scp -r ${getCopyBaseUrl()}/release/cms/${path}/* root@${sit_IpAddress}:${process.env.linuxPath}/${path}/`
             oneLogger(`copy file：${path} [${getFullVersion()}]  sit end success`)
         }
         
