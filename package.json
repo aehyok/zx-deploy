@@ -1,6 +1,6 @@
 {
   "name": "zx",
-  "version": "3.2.60",
+  "version": "3.2.65",
   "lastVersion": "4",
   "description": "",
   "main": "index.mts",
@@ -54,8 +54,8 @@
     "sun-basic": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-basic -e xjp",
     "sun-systemservice": "ts-node-esm ./src/dotnetcore/build-server-net8.mts -p sun-systemservice -e xjp",
     "sun-all": "pnpm sun-ncdp && pnpm sun-basic && pnpm sun-systemservice",
-    "dvs-ncdp-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-ncdp -e dev -r linux-arm64",
-    "dvs-query-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-query -e dev -r linux-arm64",
+    "dvs-ncdp-dev": "tsx ./src/dotnetcore/build-server.mts -p dvs-ncdp -e dev -r linux-x64",
+    "dvs-query-dev": "tsx ./src/dotnetcore/build-server.mts -p dvs-query -e dev -r linux-arm64",
     "dvs-ncdp-px": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-ncdp -e px -r linux-arm64",
     "dvs-ncdp-xe": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-ncdp -e xe -r linux-arm64",
     "dvs-basic-dev": "ts-node-esm ./src/dotnetcore/build-server.mts -p dvs-basic -e dev -r linux-arm64",
