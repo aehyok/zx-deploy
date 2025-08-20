@@ -18,7 +18,7 @@ let projectName = argv.p;
 
 
 // 区分环境 dev sit px xe
-let env = argv.e; 
+let env = argv.e;
 
 // 区分framework版本 3.1和 6.0
 console.log(argv.f, "f");
@@ -26,7 +26,7 @@ let frameworkVersion = argv.f;
 if(frameworkVersion == '3.1') {
   frameworkVersion= 'netcoreapp3.1'
 } else {
-  frameworkVersion = 'net6.0'
+  frameworkVersion = 'net8.0'
 }
 
 // linux-x64

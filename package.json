@@ -1,7 +1,7 @@
 {
   "name": "zx",
-  "version": "3.2.67",
-  "lastVersion": "3",
+  "version": "3.3.6",
+  "lastVersion": "2",
   "description": "",
   "main": "index.mts",
   "type": "module",
